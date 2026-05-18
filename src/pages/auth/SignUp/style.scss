@@ -1,0 +1,284 @@
+$primary: #1b3671;
+$primary-hover: #a93226;
+$primary-shadow: rgba(192, 57, 43, 0.35);
+$primary-card-shadow: rgba(192, 57, 43, 0.12);
+$gold: #ffd700;
+$border-color: #f0f0f0;
+$text-muted: #888;
+$text-dark: #1a1a1a;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f2f8 0%, #e4e8f0 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.register-header {
+  @include flex-between;
+  background: $primary;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 24px;
+  height: 64px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__logo {
+    height: 44px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  &__rate {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 4px 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    &-icon {
+      color: $gold !important;
+      font-size: 14px !important;
+    }
+
+    &-value {
+      color: $gold;
+      font-weight: 700;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-register {
+      color: $primary;
+      font-size: 14px;
+      font-weight: 600;
+      background: #fff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #f0f0f0;
+        color: $primary;
+      }
+    }
+
+    &-login {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+    }
+  }
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+.register-main {
+  @include flex-center;
+  flex: 1;
+  padding: 36px 16px;
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+.register-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.07),
+    0 10px 40px -4px $primary-card-shadow;
+  padding: 40px 36px 32px;
+  width: 100%;
+  max-width: 480px;
+  border: 1px solid $border-color;
+
+  &__accent {
+    height: 4px;
+    background: linear-gradient(90deg, $primary 0%, #2a52a8 50%, #3b6fd4 100%);
+    border-radius: 12px 12px 0 0;
+    margin: -40px -36px 32px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  &__logo {
+    text-align: center;
+    margin-bottom: 18px;
+
+    &-img {
+      height: 50px;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: $text-muted;
+    margin-bottom: 26px;
+  }
+
+  // ── Form label ──
+  .ant-form-item-label > label {
+    font-size: 13px;
+    color: #444;
+    font-weight: 500;
+  }
+
+  // ── Ant Design overrides ──
+  .ant-input-affix-wrapper,
+  .ant-select-selector,
+  .ant-input {
+    border-radius: 8px !important;
+  }
+
+  .ant-select-selector {
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .ant-form-item-explain-error {
+    font-size: 12px;
+  }
+
+  // ── Two-column row ──
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+
+  // ── Divider ──
+  &__divider {
+    margin: 4px 0 16px !important;
+    border-color: $border-color !important;
+  }
+
+  // ── Submit button ──
+  &__submit-btn {
+    height: 44px !important;
+    border-radius: 8px !important;
+    background: $primary !important;
+    border-color: $primary !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    letter-spacing: 0.3px !important;
+    box-shadow: 0 4px 14px rgba(27, 54, 113, 0.35) !important;
+    transition:
+      background 0.2s,
+      transform 0.1s !important;
+
+    &:hover {
+      background: darken($primary, 8%) !important;
+      border-color: darken($primary, 8%) !important;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // ── Terms ──
+  &__terms {
+    font-size: 12px;
+    color: $text-muted;
+
+    a {
+      color: $primary;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  }
+
+  // ── Login link ──
+  &__login {
+    text-align: center;
+
+    &-text {
+      font-size: 13px;
+      color: $text-muted;
+    }
+
+    &-link {
+      color: $primary !important;
+      font-weight: 600 !important;
+    }
+  }
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+.register-footer {
+  text-align: center;
+  padding: 16px 24px;
+  background: #f8f8f8;
+  border-top: 1px solid #ebebeb;
+  color: #aaa;
+  font-size: 12px;
+}
+
+@media (max-width: 520px) {
+  .register-header {
+    padding: 0 14px;
+
+    &__rate {
+      display: none;
+    }
+  }
+
+  .register-card {
+    padding: 32px 20px 24px;
+
+    &__accent {
+      margin: -32px -20px 28px;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+}
