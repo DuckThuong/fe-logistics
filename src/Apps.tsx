@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { App as AntdApp, ConfigProvider } from "antd";
 import RouterWeb from "./routers/Routers";
+import { UserProvider } from "./common/contexts/UserContext";
 import { LoadingProvider } from "./providers/loadingProvider";
 import { NotificationProvider } from "./providers/notificationProvider";
-import { UserProvider } from "./common/contexts/UserContext";
 
 const App = () => {
   const queryClient = new QueryClient({
@@ -26,6 +26,7 @@ const App = () => {
         theme={{
           token: {
             fontFamily: "Open Sans",
+            colorPrimary: "#c0392b",
           },
         }}
       >
