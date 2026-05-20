@@ -29,7 +29,7 @@ export default function LoginPage() {
           <a href={ROUTER_PATH.HOME} title="Trang chủ">
             <img
               src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Hồng Kỳ Logistics"
+              alt="Công Ty Logistics"
               className="login-header__logo"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -60,7 +60,7 @@ export default function LoginPage() {
           <div className="login-card__logo">
             <img
               src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Hồng Kỳ Logistics"
+              alt="Công Ty Logistics"
               className="login-card__logo-img"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -152,7 +152,7 @@ export default function LoginPage() {
       </main>
 
       <footer className="login-footer">
-        Copyright © 2026 Hồng Kỳ Logistics
+        Copyright © 2026 Công Ty Logistics
       </footer>
     </div>
   );

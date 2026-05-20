@@ -31,7 +31,7 @@ const REASONS = [
   {
     icon: '🛡️',
     title: 'Bảo hiểm hàng hóa',
-    desc: '"Hàng của bạn cũng là hàng của chúng tôi." Hồng Kỳ cam kết bảo hộ toàn bộ hàng hóa từ kho Trung Quốc về đến tay khách hàng tại Việt Nam.',
+    desc: '"Hàng của bạn cũng là hàng của chúng tôi." Công Ty cam kết bảo hộ toàn bộ hàng hóa từ kho Trung Quốc về đến tay khách hàng tại Việt Nam.',
   },
 ];
 
@@ -46,7 +46,7 @@ const WhyChooseSection = () => {
           <h2>
             Lý do chọn
             <br />
-            <span className="text-gradient">Hồng Kỳ Logistics</span>
+            <span className="text-gradient">Công Ty Logistics</span>
           </h2>
           <p>
             Chúng tôi không chỉ là đơn vị vận chuyển — chúng tôi là đối tác

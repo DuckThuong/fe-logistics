@@ -42,7 +42,7 @@ const Footer = () => {
                 <a href="/" className="hk-footer__logo">
                   <div className="hk-footer__logo-icon">HK</div>
                   <div>
-                    <div className="hk-footer__logo-name">Hồng Kỳ Logistics</div>
+                    <div className="hk-footer__logo-name">Công Ty Logistics</div>
                     <div className="hk-footer__logo-tagline">Chuyên hàng Trung Quốc</div>
                   </div>
                 </a>
@@ -136,7 +136,7 @@ const Footer = () => {
       <div className="hk-footer__bottom">
         <div className="container">
           <div className="hk-footer__bottom-inner">
-            <p>© 2024 <strong>Hồng Kỳ Logistics</strong>. Đã thông báo Bộ Công Thương.</p>
+            <p>© 2024 <strong>Công Ty Logistics</strong>. Đã thông báo Bộ Công Thương.</p>
             <div className="hk-footer__bottom-links">
               <a href="/chinh-sach/chinh-sach-bao-mat-thong-tin">Bảo mật</a>
               <a href="/chinh-sach">Điều khoản</a>

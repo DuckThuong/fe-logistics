@@ -20,7 +20,7 @@ const CTASection = () => {
           <h2 className={`hk-cta__title ${animateClass('fade-up', inView, 2)}`}>
             Sẵn sàng hợp tác cùng
             <br />
-            <span>Hồng Kỳ Logistics?</span>
+            <span>Công Ty Logistics?</span>
           </h2>
 
           <p className={`hk-cta__desc ${animateClass('fade-up', inView, 3)}`}>

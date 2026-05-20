@@ -1,6 +1,7 @@
 import { Row, Col, Button } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { animateClass, useInView } from '@/hooks/useInView';
+import { ROUTER_PATH } from '@/routers/Route';
 import './ServicesSection.scss';
 
 const SERVICES = [
@@ -9,7 +10,7 @@ const SERVICES = [
     title: 'Đặt hàng Trung Quốc',
     desc: 'Order hàng từ Taobao, 1688, Tmall và các sàn nội địa Trung Quốc. Kiểm tra hàng trước khi gửi về.',
     features: ['Order nhanh bằng link', 'Kiểm tra hàng miễn phí', 'Hỗ trợ mặc cả với seller'],
-    href: '/dich-vu/dat-hang-trung-quoc',
+    href: ROUTER_PATH.SERVICE_ORDER,
     highlight: true,
   },
   {
@@ -17,14 +18,14 @@ const SERVICES = [
     title: 'Thanh toán hộ',
     desc: 'Nạp tiền vào Alipay, WeChat, thanh toán Taobao, 1688, Tmall khi mua hàng. Không phí dịch vụ.',
     features: ['Nạp Alipay / WeChat', 'Thanh toán Taobao, 1688', 'Tỉ giá cạnh tranh'],
-    href: '/dich-vu/thanh-toan-ho',
+    href: ROUTER_PATH.SERVICE_PAYMENT,
   },
   {
     icon: '🚚',
     title: 'Ký gửi vận chuyển',
     desc: 'Bạn đã có hàng bên Trung Quốc? Ký gửi để chúng tôi vận chuyển về Việt Nam nhanh, an toàn.',
     features: ['Nhận hàng tại kho TQ', 'Bảo hiểm hàng hoá', 'Tra cứu đơn thời gian thực'],
-    href: '/dich-vu/ky-gui',
+    href: ROUTER_PATH.SERVICE_SHIPPING,
   },
   {
     icon: '🏢',
@@ -55,7 +56,7 @@ const ServicesSection = () => {
             <br />
             <span className="text-gradient">cho tất cả những gì bạn cần</span>
           </h2>
-          <p>Từ đặt hàng, thanh toán đến vận chuyển — Hồng Kỳ lo trọn gói</p>
+          <p>Từ đặt hàng, thanh toán đến vận chuyển — Công Ty lo trọn gói</p>
         </div>
 
         <Row gutter={[20, 20]}>

@@ -51,12 +51,12 @@ export const NAV_ITEMS = [
   { label: 'Giới thiệu', href: ROUTER_PATH.ABOUT_PAGE, icon: 'ti-info-circle' },
   {
     label: 'Dịch vụ',
-    href: '#dich-vu',
+    href: ROUTER_PATH.SERVICE,
     icon: 'ti-packages',
     children: [
-      { label: 'Đặt hàng Trung Quốc', href: '#dat-hang', icon: 'ti-shopping-cart' },
-      { label: 'Thanh toán hộ', href: '#thanh-toan', icon: 'ti-credit-card' },
-      { label: 'Vận chuyển hộ', href: '#van-chuyen', icon: 'ti-truck-delivery' },
+      { label: 'Đặt hàng Trung Quốc', href: ROUTER_PATH.SERVICE_ORDER, icon: 'ti-shopping-cart' },
+      { label: 'Thanh toán hộ', href: ROUTER_PATH.SERVICE_PAYMENT, icon: 'ti-credit-card' },
+      { label: 'Vận chuyển hộ', href: ROUTER_PATH.SERVICE_SHIPPING, icon: 'ti-truck-delivery' },
     ],
   },
   {

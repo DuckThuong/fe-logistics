@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Breadcrumb, Tag } from 'antd';
-import { animateClass, useInView } from '@/hooks/useInView';
 import {
   HomeOutlined,
   InfoCircleOutlined,
@@ -12,8 +11,8 @@ import {
   StopOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { ROUTER_PATH } from '@/routers/Route';
 import './style.scss';
+import { ROUTER_PATH } from '@/routers/Route';
 
 const PAGE_HIGHLIGHTS = [
   { icon: <TeamOutlined />, label: '10+ năm kinh nghiệm' },
@@ -44,27 +43,13 @@ const refusals = [
 ];
 
 const AboutPage: React.FC = () => {
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const { ref: introRef, inView: introInView } = useInView();
-  const { ref: servicesRef, inView: servicesInView } = useInView();
-  const { ref: refusalRef, inView: refusalInView } = useInView();
-  const { ref: closingRef, inView: closingInView } = useInView();
-
-  useEffect(() => {
-    const timer = requestAnimationFrame(() => setHeaderVisible(true));
-    return () => cancelAnimationFrame(timer);
-  }, []);
-
   return (
     <div className="about-page">
       <div className="about-page__header">
-        <div
-          className={`about-page__header-bg ${animateClass('fade-in', headerVisible, 0)}`}
-          aria-hidden
-        />
+        <div className="about-page__header-bg" aria-hidden />
         <div className="container about-page__header-inner">
           <Breadcrumb
-            className={`about-page__breadcrumb ${animateClass('fade-down', headerVisible, 1)}`}
+            className="about-page__breadcrumb"
             items={[
               { title: <Link to={ROUTER_PATH.MAIN_PAGE}><HomeOutlined /> Trang chủ</Link> },
               { title: <span>Về chúng tôi</span> },
@@ -74,26 +59,18 @@ const AboutPage: React.FC = () => {
 
           <div className="about-page__header-main">
             <div className="about-page__header-copy">
-              <Tag
-                className={`about-page__badge ${animateClass('fade-down', headerVisible, 2)}`}
-                icon={<InfoCircleOutlined />}
-              >
+              <Tag className="about-page__badge" icon={<InfoCircleOutlined />}>
                 Về Công Ty Logistics
               </Tag>
-              <h1 className={`about-page__title ${animateClass('fade-up', headerVisible, 3)}`}>
-                Giới Thiệu
-              </h1>
-              <p className={`about-page__subtitle ${animateClass('fade-in', headerVisible, 4)}`}>
+              <h1 className="about-page__title">Giới Thiệu</h1>
+              <p className="about-page__subtitle">
                 Đơn vị trung gian uy tín trong lĩnh vực đặt hàng, thanh toán ủy thác và vận chuyển
                 hàng hóa từ Trung Quốc về Việt Nam.
               </p>
 
               <ul className="about-page__highlights">
-                {PAGE_HIGHLIGHTS.map((item, index) => (
-                  <li
-                    key={item.label}
-                    className={`about-page__highlight ${animateClass('fade-up', headerVisible, index + 5)}`}
-                  >
+                {PAGE_HIGHLIGHTS.map((item) => (
+                  <li key={item.label} className="about-page__highlight">
                     <span className="about-page__highlight-icon">{item.icon}</span>
                     <span>{item.label}</span>
                   </li>
@@ -101,18 +78,12 @@ const AboutPage: React.FC = () => {
               </ul>
             </div>
 
-            <nav
-              className={`about-page__quick-nav ${animateClass('fade-left', headerVisible, 3)}`}
-              aria-label="Điều hướng nhanh trong trang"
-            >
+            <nav className="about-page__quick-nav" aria-label="Điều hướng nhanh trong trang">
               <span className="about-page__quick-nav-label">Xem nhanh</span>
               <ul className="about-page__quick-links">
-                {QUICK_LINKS.map((link, index) => (
+                {QUICK_LINKS.map((link) => (
                   <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className={`about-page__quick-link ${animateClass('fade-left', headerVisible, index + 4)}`}
-                    >
+                    <a href={link.href} className="about-page__quick-link">
                       {link.icon}
                       {link.label}
                     </a>
@@ -126,8 +97,8 @@ const AboutPage: React.FC = () => {
 
       {/* Content */}
       <div className="container about-page__content">
-        <div id="gioi-thieu" className="about-page__intro" ref={introRef as React.Ref<HTMLDivElement>}>
-          <div className={`about-page__intro-text ${animateClass('fade-right', introInView, 1)}`}>
+        <div id="gioi-thieu" className="about-page__intro">
+          <div className="about-page__intro-text">
             <p>
               <strong>Công Ty Logistics</strong> là đơn vị trung gian cung cấp các dịch vụ:
               Đặt hàng, Thanh toán Ủy thác, Vận chuyển hàng hóa từ Trung Quốc về Việt Nam.
@@ -137,7 +108,7 @@ const AboutPage: React.FC = () => {
               cao của Đối tác và Khách hàng.
             </p>
           </div>
-          <div className={`about-page__intro-image ${animateClass('fade-left', introInView, 2)}`}>
+          <div className="about-page__intro-image">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrR3pcB_D8iLltcq5xMFJYLF3oPNZVeirC9Q&s"
               alt="Công Ty Logistics"
@@ -146,16 +117,13 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Services Provided */}
-        <div id="dich-vu" className="about-page__section" ref={servicesRef as React.Ref<HTMLDivElement>}>
-          <h2 className={`about-page__section-title ${animateClass('fade-up', servicesInView, 1)}`}>
+        <div id="dich-vu" className="about-page__section">
+          <h2 className="about-page__section-title">
             I. Các dịch vụ do Công Ty Logistics cung cấp:
           </h2>
           <ul className="about-page__list">
             {services.map((item, index) => (
-              <li
-                key={index}
-                className={`about-page__list-item ${animateClass('fade-up', servicesInView, index + 2)}`}
-              >
+              <li key={index} className="about-page__list-item">
                 <span className="about-page__list-icon">✓</span>
                 <span>{item}</span>
               </li>
@@ -164,20 +132,13 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Refusal Section */}
-        <div
-          id="tu-choi"
-          className="about-page__section about-page__section--warning"
-          ref={refusalRef as React.Ref<HTMLDivElement>}
-        >
-          <h2 className={`about-page__section-title ${animateClass('fade-up', refusalInView, 1)}`}>
+        <div id="tu-choi" className="about-page__section about-page__section--warning">
+          <h2 className="about-page__section-title">
             II. Công Ty Logistics từ chối cung cấp dịch vụ khi khách hàng có hành vi sau:
           </h2>
           <ul className="about-page__list">
             {refusals.map((item, index) => (
-              <li
-                key={index}
-                className={`about-page__list-item about-page__list-item--warning ${animateClass('fade-up', refusalInView, index + 2)}`}
-              >
+              <li key={index} className="about-page__list-item about-page__list-item--warning">
                 <span className="about-page__list-icon">–</span>
                 <span>{item}</span>
               </li>
@@ -186,15 +147,12 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Closing */}
-        <div
-          className={`about-page__closing ${animateClass('fade-up', closingInView, 1)}`}
-          ref={closingRef as React.Ref<HTMLDivElement>}
-        >
-          <p className={animateClass('fade-in', closingInView, 2)}>
+        <div className="about-page__closing">
+          <p>
             <strong>Công Ty Logistics</strong> xin chân thành cảm ơn và mong muốn được đồng
             hành cùng Quý Khách hàng!
           </p>
-          <p className={animateClass('fade-in', closingInView, 3)}>
+          <p>
             <strong>Trân trọng!</strong>
           </p>
         </div>

@@ -25,7 +25,7 @@ const PlatformsSection = () => {
             <span className="text-gradient">các sàn TMĐT lớn nhất thế giới</span>
           </h2>
           <p>
-            Chỉ cần một tài khoản Hồng Kỳ, bạn có thể đặt hàng từ mọi sàn
+            Chỉ cần một tài khoản Công Ty, bạn có thể đặt hàng từ mọi sàn
             thương mại điện tử nội địa Trung Quốc
           </p>
         </div>

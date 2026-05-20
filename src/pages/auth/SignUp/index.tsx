@@ -48,7 +48,7 @@ export default function RegisterPage() {
           <a href={ROUTER_PATH.HOME} title="Trang chủ">
             <img
               src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Hồng Kỳ Logistics"
+              alt="Công Ty Logistics"
               className="register-header__logo"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -88,7 +88,7 @@ export default function RegisterPage() {
           <div className="register-card__logo">
             <img
               src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Hồng Kỳ Logistics"
+              alt="Công Ty Logistics"
               className="register-card__logo-img"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -257,7 +257,7 @@ export default function RegisterPage() {
               <Checkbox>
                 <span className="register-card__terms">
                   Tôi đồng ý với <a href="#/">điều khoản sử dụng</a> và{" "}
-                  <a href="#/">chính sách bảo mật</a> của Hồng Kỳ Logistics
+                  <a href="#/">chính sách bảo mật</a> của Công Ty Logistics
                 </span>
               </Checkbox>
             </Form.Item>
@@ -295,7 +295,7 @@ export default function RegisterPage() {
 
       {/* ── Footer ── */}
       <footer className="register-footer">
-        Copyright © 2026 Hồng Kỳ Logistics
+        Copyright © 2026 Công Ty Logistics
       </footer>
     </div>
   );

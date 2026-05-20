@@ -8,7 +8,7 @@ const STEPS = [
     step: '01',
     icon: '🔍',
     title: 'Tìm sản phẩm',
-    desc: 'Tìm kiếm sản phẩm trên Taobao, 1688 hoặc Tmall. Dán link vào hệ thống Hồng Kỳ.',
+    desc: 'Tìm kiếm sản phẩm trên Taobao, 1688 hoặc Tmall. Dán link vào hệ thống Công Ty.',
   },
   {
     step: '02',
@@ -20,7 +20,7 @@ const STEPS = [
     step: '03',
     icon: '💳',
     title: 'Thanh toán',
-    desc: 'Nạp tiền vào ví Hồng Kỳ và xác nhận thanh toán. Chúng tôi thanh toán hộ cho nhà cung cấp.',
+    desc: 'Nạp tiền vào ví Công Ty và xác nhận thanh toán. Chúng tôi thanh toán hộ cho nhà cung cấp.',
   },
   {
     step: '04',
@@ -53,7 +53,7 @@ const HowToOrderSection = () => {
             </h2>
             <p className={`hk-how__desc ${animateClass('fade-up', inView, 3)}`}>
               Bạn đang tìm nguồn hàng nội địa Trung, hay muốn mua những mặt
-              hàng độc đáo chỉ có ở Trung Quốc? Hồng Kỳ giúp bạn làm điều đó
+              hàng độc đáo chỉ có ở Trung Quốc? Công Ty giúp bạn làm điều đó
               dễ dàng hơn bao giờ hết.
             </p>
             <Button type="primary" size="large" className={`hk-how__cta ${animateClass('fade-up', inView, 4)}`} href="/dang-ky">
