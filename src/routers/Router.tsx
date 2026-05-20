@@ -16,6 +16,12 @@ import { KyGuiPricePage } from "@/pages/price/pages/KyGuiPricePage";
 import { ChinhNgachPricePage } from "@/pages/price/pages/ChinhNgachPricePage";
 import { PriceHub } from "@/pages/price/pages/PriceHub";
 import { PriceLayout } from "@/pages/price/pages";
+import { WarehouseLayout } from "@/pages/warehouse/pages";
+import { WarehouseHub } from "@/pages/warehouse/pages/WarehouseHub";
+import { InboundWarehousePage } from "@/pages/warehouse/pages/InboundWarehousePage";
+import { StorageWarehousePage } from "@/pages/warehouse/pages/StorageWarehousePage";
+import { OutboundWarehousePage } from "@/pages/warehouse/pages/OutboundWarehousePage";
+import { ProhibitedPolicyPage } from "@/pages/warehouse/pages/ProhibitedPolicyPage";
 
 export const WebRouter = () => (
   <Routes>
@@ -36,6 +42,13 @@ export const WebRouter = () => (
         <Route path={ROUTER_NAME.PRICE_ORDER} element={<OrderPricePage />} />
         <Route path={ROUTER_NAME.PRICE_KY_GUI} element={<KyGuiPricePage />} />
         <Route path={ROUTER_NAME.PRICE_CHINH_NGACH} element={<ChinhNgachPricePage />} />
+      </Route>
+      <Route path={ROUTER_PATH.POLICY} element={<WarehouseLayout />}>
+        <Route index element={<WarehouseHub />} />
+        <Route path={ROUTER_NAME.POLICY_LUU_KHO} element={<InboundWarehousePage />} />
+        <Route path={ROUTER_NAME.POLICY_KHIEN_NAI} element={<StorageWarehousePage />} />
+        <Route path={ROUTER_NAME.POLICY_BAO_MAT} element={<OutboundWarehousePage />} />
+        <Route path={ROUTER_NAME.POLICY_CAM_NHAP_KHAU} element={<ProhibitedPolicyPage />} />
       </Route>
     </Route>
 

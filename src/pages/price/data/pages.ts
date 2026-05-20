@@ -1,6 +1,3 @@
-import orderHtml from "./html/order.html?raw";
-import kyGuiHtml from "./html/ky-gui.html?raw";
-import chinhNgachHtml from "./html/chinh-ngach.html?raw";
 import { ROUTER_PATH } from "@/routers/Route";
 import { OrderHtml } from "./html/order";
 import { KyGuiHtml } from "./html/kygui";
