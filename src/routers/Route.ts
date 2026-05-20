@@ -10,6 +10,10 @@ export const ROUTER_NAME = {
   SERVICE_ORDER: "dat-hang-trung-quoc",
   SERVICE_PAYMENT: "thanh-toan-ho",
   SERVICE_SHIPPING: "van-chuyen-ho",
+  PRICE: "bang-gia",
+  PRICE_ORDER: "bang-gia-dich-vu-order-hang-trung-quoc",
+  PRICE_KY_GUI: "bang-gia-dich-vu-ky-gui-hang-hoa",
+  PRICE_CHINH_NGACH: "bang-gia-dich-vu-van-chuyen-chinh-ngach-trung-quoc-viet-nam",
 };
 
 export const ROUTER_PATH = {
@@ -22,4 +26,8 @@ export const ROUTER_PATH = {
   SERVICE_ORDER: `${ROUTER}/${ROUTER_NAME.SERVICE}/${ROUTER_NAME.SERVICE_ORDER}`,
   SERVICE_PAYMENT: `${ROUTER}/${ROUTER_NAME.SERVICE}/${ROUTER_NAME.SERVICE_PAYMENT}`,
   SERVICE_SHIPPING: `${ROUTER}/${ROUTER_NAME.SERVICE}/${ROUTER_NAME.SERVICE_SHIPPING}`,
+  PRICE: `${ROUTER}/${ROUTER_NAME.PRICE}`,
+  PRICE_ORDER: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_ORDER}`,
+  PRICE_KY_GUI: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_KY_GUI}`,
+  PRICE_CHINH_NGACH: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_CHINH_NGACH}`,
 };

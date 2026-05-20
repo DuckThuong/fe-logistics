@@ -61,12 +61,12 @@ export const NAV_ITEMS = [
   },
   {
     label: 'Bảng giá',
-    href: '#bang-gia',
+    href: ROUTER_PATH.PRICE,
     icon: 'ti-receipt-2',
     children: [
-      { label: 'Giá Order Hàng TQ', href: '#gia-order', icon: 'ti-tag' },
-      { label: 'Giá Ký Gửi Hàng Hoá', href: '#gia-ky-gui', icon: 'ti-package' },
-      { label: 'Giá Vận Chuyển Chính Ngạch', href: '#gia-van-chuyen', icon: 'ti-route' },
+      { label: 'Giá Order Hàng TQ', href: ROUTER_PATH.PRICE_ORDER, icon: 'ti-tag' },
+      { label: 'Giá Ký Gửi Hàng Hoá', href: ROUTER_PATH.PRICE_KY_GUI, icon: 'ti-package' },
+      { label: 'Giá Vận Chuyển Chính Ngạch', href: ROUTER_PATH.PRICE_CHINH_NGACH, icon: 'ti-route' },
     ],
   },
   {
