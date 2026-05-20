@@ -1,0 +1,19 @@
+import { Outlet } from 'react-router-dom';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
+import '@/global.scss';
+import './MainLayout.scss';
+
+const MainLayout = () => {
+  return (
+    <div className="app-layout">
+      <Header />
+      <main className="app-layout__main">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default MainLayout;
