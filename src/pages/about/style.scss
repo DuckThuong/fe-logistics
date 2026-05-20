@@ -1,0 +1,297 @@
+@use '../../_variables' as *;
+@use '../../_mixins' as *;
+
+.about-page {
+  &__header {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, $bg-dark 0%, #16213e 100%);
+    padding-top: $header-height !important;
+    padding-bottom: $spacing-2xl !important;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__header-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 70% 60% at 80% 0%, rgba($primary, 0.25) 0%, transparent 60%),
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: auto, 48px 48px, 48px 48px;
+    pointer-events: none;
+  }
+
+  &__header-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__header-main {
+    display: grid;
+    grid-template-columns: 1fr minmax(220px, 280px);
+    gap: $spacing-2xl;
+    align-items: start;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+
+  &__badge {
+    margin-bottom: $spacing-md !important;
+    border: 1px solid rgba($primary, 0.35) !important;
+    background: rgba($primary, 0.12) !important;
+    color: #ff8a80 !important;
+    border-radius: $radius-full !important;
+    padding: 4px 14px !important;
+    font-size: $font-size-sm !important;
+  }
+
+  &__subtitle {
+    max-width: 640px;
+    margin: 0 0 $spacing-lg;
+    font-size: $font-size-base;
+    line-height: 1.7;
+    color: rgba($text-white, 0.72);
+  }
+
+  &__highlights {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: rgba($text-white, 0.9);
+  }
+
+  &__highlight-icon {
+    display: flex;
+    color: $primary-light;
+    font-size: $font-size-base;
+  }
+
+  &__quick-nav {
+    padding: $spacing-lg;
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  &__quick-nav-label {
+    display: block;
+    margin-bottom: $spacing-md;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba($text-white, 0.5);
+  }
+
+  &__quick-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__quick-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: rgba($text-white, 0.85);
+    transition: $transition-fast;
+
+    .anticon {
+      color: $primary-light;
+      font-size: $font-size-base;
+    }
+
+    &:hover {
+      background: rgba($primary, 0.15);
+      color: $text-white;
+    }
+  }
+
+  &__breadcrumb {
+    margin-bottom: $spacing-lg;
+
+    .ant-breadcrumb-link,
+    .ant-breadcrumb-separator {
+      color: rgba($text-white, 0.6) !important;
+
+      a {
+        color: rgba($text-white, 0.6) !important;
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
+    }
+
+    .ant-breadcrumb-link:last-child {
+      color: rgba($text-white, 0.9) !important;
+    }
+  }
+
+  &__title {
+    font-size: clamp(28px, 4vw, $font-size-3xl);
+    font-weight: $font-weight-extrabold;
+    color: $text-white;
+    margin: 0 0 $spacing-md;
+    letter-spacing: -0.5px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__intro,
+  &__section {
+    scroll-snap-margin-top: calc($header-height + $spacing-lg);
+
+    @supports (scroll-margin-top: 0) {
+      scroll-margin-top: calc($header-height + $spacing-lg);
+    }
+  }
+
+  &__content {
+    padding-bottom: $spacing-4xl;
+    max-width: 900px;
+  }
+
+  &__intro {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $spacing-xl;
+    align-items: start;
+    margin-bottom: $spacing-2xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__intro-text {
+    p {
+      font-size: $font-size-base;
+      line-height: 1.8;
+      color: $text-secondary;
+
+      strong {
+        color: $primary;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  &__intro-image {
+    flex-shrink: 0;
+
+    img {
+      width: 240px;
+      border-radius: $radius-lg;
+      box-shadow: $shadow-md;
+
+      @media (max-width: $breakpoint-md) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__section {
+    margin-bottom: $spacing-2xl;
+    padding: $spacing-xl;
+    background: $bg-section;
+    border-radius: $radius-lg;
+    border-left: 4px solid $primary;
+
+    &--warning {
+      border-left-color: $accent-gold;
+      background: rgba($accent-blue, 0.05);
+    }
+  }
+
+  &__section-title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin-bottom: $spacing-lg;
+    line-height: 1.4;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__list-item {
+    display: flex;
+    gap: $spacing-sm;
+    font-size: $font-size-base;
+    color: $text-secondary;
+    line-height: 1.7;
+
+    &--warning {
+      color: darken($text-secondary, 10%);
+    }
+  }
+
+  &__list-icon {
+    color: $primary;
+    font-weight: $font-weight-bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: $font-size-md;
+
+    .about-page__list-item--warning & {
+      color: $accent-gold;
+    }
+  }
+
+  &__closing {
+    padding: $spacing-xl;
+    background: rgba($primary, 0.05);
+    border-radius: $radius-lg;
+    border: 1px solid rgba($accent-gold, 0.15);
+    font-size: $font-size-base;
+    line-height: 1.8;
+    color: $text-secondary;
+
+    p {
+      margin-bottom: $spacing-sm;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        color: $text-primary;
+      }
+    }
+  }
+}

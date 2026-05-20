@@ -2,45 +2,9 @@ import { useState, useEffect } from 'react';
 import { Button, Drawer } from 'antd';
 import './Header.scss';
 import { ROUTER_PATH } from '@/routers/Route';
+import { NAV_ITEMS } from '@/common/constants/constants';
 
-const NAV_ITEMS = [
-  { label: 'Giới thiệu', href: '#gioi-thieu', icon: 'ti-info-circle' },
-  {
-    label: 'Dịch vụ',
-    href: '#dich-vu',
-    icon: 'ti-packages',
-    children: [
-      { label: 'Đặt hàng Trung Quốc', href: '#dat-hang', icon: 'ti-shopping-cart' },
-      { label: 'Thanh toán hộ', href: '#thanh-toan', icon: 'ti-credit-card' },
-      { label: 'Vận chuyển hộ', href: '#van-chuyen', icon: 'ti-truck-delivery' },
-    ],
-  },
-  {
-    label: 'Bảng giá',
-    href: '#bang-gia',
-    icon: 'ti-receipt-2',
-    children: [
-      { label: 'Giá Order Hàng TQ', href: '#gia-order', icon: 'ti-tag' },
-      { label: 'Giá Ký Gửi Hàng Hoá', href: '#gia-ky-gui', icon: 'ti-package' },
-      { label: 'Giá Vận Chuyển Chính Ngạch', href: '#gia-van-chuyen', icon: 'ti-route' },
-    ],
-  },
-  {
-    label: 'Chính sách',
-    href: '#chinh-sach',
-    icon: 'ti-shield-check',
-    children: [
-      { label: 'Quy định lưu kho', href: '#luu-kho', icon: 'ti-building-warehouse' },
-      { label: 'Hàng vận chuyển hộ', href: '#van-chuyen-ho', icon: 'ti-truck' },
-      { label: 'Chính sách khiếu nại', href: '#khieu-nai', icon: 'ti-message-report' },
-      { label: 'Chính sách bảo mật', href: '#bao-mat', icon: 'ti-lock' },
-      { label: 'Quy định thanh toán hộ', href: '#thanh-toan-ho', icon: 'ti-wallet' },
-      { label: 'Hàng hoá cấm nhập khẩu', href: '#hang-cam', icon: 'ti-ban' },
-    ],
-  },
-  { label: 'Hướng dẫn', href: '#huong-dan', icon: 'ti-book-2' },
-  { label: 'Tin tức', href: '#tin-tuc', icon: 'ti-news' },
-];
+
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
