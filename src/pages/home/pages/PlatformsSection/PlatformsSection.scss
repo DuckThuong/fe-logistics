@@ -1,0 +1,119 @@
+@use '../../../../variables' as *;
+@use '../../../../mixins' as *;
+
+.hk-platforms {
+  background: $bg-section;
+
+  &__card {
+    background: $bg-white;
+    border-radius: $radius-lg;
+    padding: $spacing-xl $spacing-lg;
+    text-align: center;
+    border: 1px solid $border-color;
+    @include card-hover;
+    height: 100%;
+
+    &:hover {
+      border-color: rgba(208, 40, 30, 0.2);
+
+      .hk-platforms__card-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-md;
+    background: color-mix(in srgb, var(--platform-color, #d0281e) 12%, transparent);
+    @include flex-center;
+    font-size: 28px;
+    margin: 0 auto $spacing-md;
+    transition: $transition-base;
+  }
+
+  &__card-name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin-bottom: $spacing-xs;
+    font-family: $font-display;
+  }
+
+  &__card-desc {
+    font-size: $font-size-sm;
+    color: $text-light;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  // Extension Banner
+  &__extension-banner {
+    margin-top: $spacing-2xl;
+    background: linear-gradient(135deg, $secondary 0%, $secondary-light 100%);
+    border-radius: $radius-xl;
+    padding: $spacing-xl $spacing-2xl;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-xl;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    @include md {
+      flex-direction: column;
+      text-align: center;
+      padding: $spacing-xl;
+    }
+  }
+
+  &__extension-banner-content {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+
+    @include sm {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+
+    strong {
+      display: block;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: $text-white-60;
+    }
+  }
+
+  &__extension-banner-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+  }
+
+  &__extension-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    background: $primary-gradient;
+    color: $text-white;
+    border-radius: $radius-md;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-base;
+    white-space: nowrap;
+    transition: $transition-base;
+    box-shadow: $shadow-primary;
+    flex-shrink: 0;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(208, 40, 30, 0.45);
+    }
+  }
+}

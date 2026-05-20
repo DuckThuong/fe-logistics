@@ -1,0 +1,128 @@
+@use '../../../../variables' as *;
+@use '../../../../mixins' as *;
+
+.hk-how {
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4xl;
+    align-items: start;
+
+    @include lg {
+      grid-template-columns: 1fr;
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__header { 
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(var(--header-height) + $spacing-xl);
+
+    @include lg {
+      position: static;
+    }
+  }
+
+  &__title {
+    @include section-title;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__desc {
+    @include section-subtitle;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: $spacing-sm !important;
+    height: 52px !important;
+    padding: 0 28px !important;
+    border-radius: $radius-md !important;
+    font-weight: $font-weight-semibold !important;
+  }
+
+  // ===========================
+  // STEPS
+  // ===========================
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__step {
+    display: flex;
+    gap: $spacing-lg;
+  }
+
+  &__step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__step-number {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: $primary-gradient;
+    @include flex-center;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-extrabold;
+    color: $text-white;
+    flex-shrink: 0;
+    box-shadow: $shadow-primary;
+    font-family: $font-display;
+  }
+
+  &__step-line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, rgba(208, 40, 30, 0.4), rgba(208, 40, 30, 0.05));
+    margin: 4px 0;
+    min-height: 32px;
+  }
+
+  &__step-content {
+    display: flex;
+    gap: $spacing-md;
+    padding-bottom: $spacing-xl;
+    flex: 1;
+  }
+
+  &__step-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    background: $bg-section;
+    border: 1px solid $border-color;
+    @include flex-center;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  &__step-body {
+    flex: 1;
+
+    h3 {
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      color: $text-primary;
+      margin-bottom: 6px;
+      line-height: 1.3;
+      font-family: $font-display;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $text-secondary;
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+}

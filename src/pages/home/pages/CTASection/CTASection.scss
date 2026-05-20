@@ -1,0 +1,180 @@
+@use '../../../../variables' as *;
+@use '../../../../mixins' as *;
+
+.hk-cta {
+  position: relative;
+  background: $bg-dark;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+
+    &--1 {
+      width: 600px;
+      height: 400px;
+      background: rgba(208, 40, 30, 0.2);
+      top: -100px;
+      left: -100px;
+    }
+
+    &--2 {
+      width: 500px;
+      height: 400px;
+      background: rgba(15, 52, 96, 0.3);
+      bottom: -100px;
+      right: -100px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: 8px 20px;
+    border-radius: $radius-full;
+    background: rgba(208, 40, 30, 0.15);
+    border: 1px solid rgba(208, 40, 30, 0.3);
+    color: #ff8a80;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: $font-weight-extrabold;
+    color: $text-white;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: $spacing-lg;
+    font-family: $font-display;
+
+    span {
+      @include gradient-text;
+      background: $primary-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__desc {
+    font-size: $font-size-md;
+    color: $text-white-60;
+    line-height: 1.7;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+  }
+
+  &__btn-primary {
+    height: 56px !important;
+    padding: 0 32px !important;
+    border-radius: $radius-md !important;
+    font-size: $font-size-md !important;
+    font-weight: $font-weight-semibold !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: $spacing-sm !important;
+    background: $primary-gradient !important;
+    box-shadow: $shadow-primary !important;
+    border: none !important;
+
+    &:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 20px 60px rgba(208, 40, 30, 0.5) !important;
+    }
+
+    .anticon {
+      transition: transform 0.2s ease;
+    }
+
+    &:hover .anticon {
+      transform: translateX(4px);
+    }
+  }
+
+  &__hotline {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    text-decoration: none;
+    transition: $transition-fast;
+
+    &:hover {
+      transform: translateY(-2px);
+
+      .hk-cta__hotline-icon {
+        background: rgba(76, 175, 80, 0.3);
+      }
+    }
+  }
+
+  &__hotline-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(76, 175, 80, 0.15);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    @include flex-center;
+    color: #4caf50;
+    font-size: $font-size-lg;
+    transition: $transition-fast;
+  }
+
+  &__hotline-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  &__hotline-label {
+    font-size: $font-size-xs;
+    color: $text-white-60;
+    font-weight: $font-weight-medium;
+  }
+
+  &__hotline-number {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-extrabold;
+    color: $text-white;
+    font-family: $font-display;
+    letter-spacing: 0.5px;
+  }
+
+  &__trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xl;
+    flex-wrap: wrap;
+  }
+
+  &__trust-item {
+    font-size: $font-size-sm;
+    color: $text-white-60;
+    font-weight: $font-weight-medium;
+  }
+}

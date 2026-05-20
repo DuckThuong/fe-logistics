@@ -1,0 +1,260 @@
+@use '../../../../variables' as *;
+@use '../../../../mixins' as *;
+
+.hk-dashboard {
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4xl;
+    align-items: center;
+
+    @include lg {
+      grid-template-columns: 1fr;
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__title {
+    @include section-title;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  &__feature {
+    display: flex;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+
+  &__feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    background: rgba(208, 40, 30, 0.1);
+    @include flex-center;
+    font-size: $font-size-lg;
+    color: $primary;
+    flex-shrink: 0;
+    transition: $transition-base;
+
+    .hk-dashboard__feature:hover & {
+      background: $primary-gradient;
+      color: $text-white;
+      transform: scale(1.05);
+    }
+  }
+
+  &__feature-body {
+    h3 {
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      color: $text-primary;
+      margin-bottom: 4px;
+      font-family: $font-display;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $text-secondary;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  // ===========================
+  // MOCKUP
+  // ===========================
+  &__mockup {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+
+    @include lg {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  &__mockup-inner {
+    background: $secondary;
+    border-radius: $radius-xl;
+    padding: $spacing-xl;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: $shadow-xl, 0 0 0 1px rgba(208, 40, 30, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  &__mockup-glow {
+    position: absolute;
+    bottom: -40px;
+    left: 10%;
+    right: 10%;
+    height: 100px;
+    background: $primary;
+    filter: blur(60px);
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  // Wallet Card
+  &__wallet {
+    background: $primary-gradient;
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+    margin-bottom: $spacing-lg;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: 30px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &__wallet-label {
+    font-size: $font-size-xs;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: $font-weight-medium;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  &__wallet-amount {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-extrabold;
+    color: $text-white;
+    font-family: $font-display;
+    margin-bottom: $spacing-lg;
+
+    span {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      opacity: 0.8;
+      margin-left: 4px;
+    }
+  }
+
+  &__wallet-actions {
+    display: flex;
+    gap: $spacing-sm;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__wallet-action {
+    flex: 1;
+    padding: 8px 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: $radius-sm;
+    color: $text-white;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: $transition-fast;
+    font-family: $font-body;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  // Orders
+  &__orders-header {
+    @include flex-between;
+    margin-bottom: $spacing-md;
+
+    span {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $text-white;
+    }
+  }
+
+  &__orders-view-all {
+    font-size: $font-size-xs;
+    color: $primary-light;
+    font-weight: $font-weight-medium;
+    transition: $transition-fast;
+
+    &:hover {
+      color: lighten(#f03d31, 10%);
+    }
+  }
+
+  &__order-item {
+    @include flex-between;
+    padding: $spacing-md;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: $radius-md;
+    margin-bottom: $spacing-sm;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: $transition-fast;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.07);
+    }
+  }
+
+  &__order-left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__order-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__order-id {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $text-white;
+    font-family: 'Courier New', monospace;
+  }
+
+  &__order-status {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    margin-top: 2px;
+  }
+
+  &__order-amount {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $text-white;
+    font-family: $font-display;
+  }
+}

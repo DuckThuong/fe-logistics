@@ -1,0 +1,139 @@
+@use '../../../../variables' as *;
+@use '../../../../mixins' as *;
+
+.hk-services {
+  background: $bg-section;
+
+  &__card {
+    height: 100%;
+    background: $bg-white;
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+    border: 1px solid $border-color;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    @include card-hover;
+    transition: $transition-base;
+
+    &:hover {
+      border-color: rgba(208, 40, 30, 0.25);
+    }
+
+    &--highlight {
+      background: linear-gradient(145deg, $secondary 0%, $secondary-light 100%);
+      border-color: rgba(208, 40, 30, 0.3);
+      box-shadow: $shadow-xl;
+
+      &:hover {
+        border-color: rgba(208, 40, 30, 0.5);
+        transform: translateY(-6px);
+      }
+
+      .hk-services__card-title {
+        color: $text-white;
+      }
+
+      .hk-services__card-desc {
+        color: $text-white-60;
+      }
+
+      .hk-services__card-features li {
+        color: $text-white-80;
+      }
+
+      .hk-services__card-link {
+        color: $primary-light;
+
+        &:hover {
+          color: lighten(#f03d31, 15%);
+        }
+      }
+
+      .hk-services__card-icon {
+        background: rgba(208, 40, 30, 0.2);
+        border-color: rgba(208, 40, 30, 0.3);
+      }
+    }
+  }
+
+  &__card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-md;
+    background: rgba(208, 40, 30, 0.08);
+    border: 1px solid rgba(208, 40, 30, 0.12);
+    @include flex-center;
+    font-size: 24px;
+    flex-shrink: 0;
+    transition: $transition-base;
+
+    .hk-services__card:hover & {
+      background: $primary-gradient;
+      border-color: transparent;
+    }
+  }
+
+  &__card-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin: 0;
+    font-family: $font-display;
+  }
+
+  &__card-desc {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+
+  &__card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      font-size: $font-size-sm;
+      color: $text-secondary;
+    }
+  }
+
+  &__check {
+    color: $primary;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    flex-shrink: 0;
+  }
+
+  &__card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $primary;
+    transition: $transition-fast;
+    margin-top: auto;
+
+    .anticon {
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: $primary-dark;
+
+      .anticon {
+        transform: translateX(4px);
+      }
+    }
+  }
+}

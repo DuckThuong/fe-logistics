@@ -1,0 +1,220 @@
+@use '../../../../variables' as *;
+@use '../../../../mixins' as *;
+
+.hk-footer {
+  background: $secondary;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  &__top {
+    padding: $spacing-4xl 0 $spacing-3xl;
+  }
+
+  // ===========================
+  // BRAND
+  // ===========================
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  &__logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-sm;
+    background: $primary-gradient;
+    @include flex-center;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-extrabold;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  &__logo-name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $text-white;
+    line-height: 1.2;
+  }
+
+  &__logo-tagline {
+    font-size: $font-size-xs;
+    color: $text-white-60;
+    font-weight: $font-weight-medium;
+  }
+
+  &__brand-desc {
+    font-size: $font-size-sm;
+    color: $text-white-60;
+    line-height: 1.7;
+    margin-bottom: $spacing-xl;
+  }
+
+  // Contact
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $text-white-60;
+    line-height: 1.5;
+
+    .anticon {
+      color: $primary-light;
+      margin-top: 2px;
+      flex-shrink: 0;
+      font-size: $font-size-sm;
+    }
+
+    a {
+      color: $text-white-80;
+      transition: $transition-fast;
+      font-weight: $font-weight-semibold;
+
+      &:hover {
+        color: $primary-light;
+      }
+    }
+  }
+
+  // Social
+  &__social {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-sm;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    @include flex-center;
+    color: $text-white-60;
+    font-size: $font-size-lg;
+    transition: $transition-base;
+
+    &:hover {
+      background: $primary-gradient;
+      border-color: transparent;
+      color: $text-white;
+      transform: translateY(-2px);
+    }
+  }
+
+  // ===========================
+  // LINKS
+  // ===========================
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    h4 {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin-bottom: $spacing-sm;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    a {
+      font-size: $font-size-sm;
+      color: $text-white-60;
+      transition: $transition-fast;
+      line-height: 1.5;
+
+      &:hover {
+        color: $primary-light;
+        padding-left: 4px;
+      }
+    }
+  }
+
+  // ===========================
+  // APP
+  // ===========================
+  &__app {
+    h4 {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin-bottom: $spacing-md;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: $font-size-xs;
+      color: $text-white-60;
+      margin-top: $spacing-sm;
+    }
+  }
+
+  &__qr {
+    width: 100px;
+    height: 100px;
+    border-radius: $radius-md;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @include flex-center;
+  }
+
+  &__qr-placeholder {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-extrabold;
+    color: $text-white-60;
+    font-family: $font-display;
+  }
+
+  // ===========================
+  // BOTTOM BAR
+  // ===========================
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: $spacing-lg 0;
+  }
+
+  &__bottom-inner {
+    @include flex-between;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    p {
+      font-size: $font-size-sm;
+      color: $text-white-60;
+      margin: 0;
+
+      strong {
+        color: $text-white-80;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+
+  &__bottom-links {
+    display: flex;
+    gap: $spacing-xl;
+
+    a {
+      font-size: $font-size-sm;
+      color: $text-white-60;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $primary-light;
+      }
+    }
+  }
+}
