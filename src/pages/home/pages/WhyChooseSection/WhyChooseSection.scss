@@ -29,7 +29,7 @@
     }
 
     &:hover {
-      border-color: rgba(208, 40, 30, 0.2);
+      border-color: rgba($primary, 0.2);
       box-shadow: $shadow-md;
       transform: translateY(-4px);
 

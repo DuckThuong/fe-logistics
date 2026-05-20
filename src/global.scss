@@ -87,7 +87,7 @@ a {
 
 .section-badge {
   @include tag-badge;
-  background: rgba(208, 40, 30, 0.1);
+  background: rgba($primary, 0.1);
   color: $primary;
   margin-bottom: $spacing-md;
 }

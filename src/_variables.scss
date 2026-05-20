@@ -1,10 +1,12 @@
 // ===========================
-// COLOR PALETTE
+// COLOR PALETTE — Logistics Orange
 // ===========================
-$primary: #d0281e;
-$primary-dark: #a81f17;
-$primary-light: #f03d31;
-$primary-gradient: linear-gradient(135deg, #d0281e 0%, #f05a4e 100%);
+$logistics-orange: #ff6a00;
+$primary: $logistics-orange;
+$primary-dark: #e55d00;
+$primary-light: #ff8533;
+$primary-soft: #ffb380; // accent text on dark backgrounds
+$primary-gradient: linear-gradient(135deg, #ff6a00 0%, #ff8533 100%);
 
 $secondary: #1a1a2e;
 $secondary-light: #16213e;
@@ -86,7 +88,7 @@ $shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
 $shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
 $shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.16);
 $shadow-xl: 0 16px 60px rgba(0, 0, 0, 0.24);
-$shadow-primary: 0 8px 32px rgba(208, 40, 30, 0.35);
+$shadow-primary: 0 8px 32px rgba(255, 106, 0, 0.35);
 $shadow-card: 0 4px 24px rgba(26, 26, 46, 0.08);
 
 // ===========================

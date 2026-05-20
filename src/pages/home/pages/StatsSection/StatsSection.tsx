@@ -91,7 +91,7 @@ const StatsSection = () => {
           <div className={`hk-stats__numbers ${animateClass('fade-right', inView, 1)}`} ref={countRef}>
             <div
               className={`section-badge ${animateClass('fade-up', inView, 1)}`}
-              style={{ background: 'rgba(208,40,30,0.2)', color: '#ff8a80' }}
+              style={{ background: 'rgba(255,106,0,0.2)', color: '#ffb380' }}
             >
               Con số ấn tượng
             </div>

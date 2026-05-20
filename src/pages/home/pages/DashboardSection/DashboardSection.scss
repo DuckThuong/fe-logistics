@@ -35,7 +35,7 @@
     width: 44px;
     height: 44px;
     border-radius: $radius-md;
-    background: rgba(208, 40, 30, 0.1);
+    background: rgba($primary, 0.1);
     @include flex-center;
     font-size: $font-size-lg;
     color: $primary;
@@ -85,7 +85,7 @@
     border-radius: $radius-xl;
     padding: $spacing-xl;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: $shadow-xl, 0 0 0 1px rgba(208, 40, 30, 0.1);
+    box-shadow: $shadow-xl, 0 0 0 1px rgba($primary, 0.1);
     position: relative;
     z-index: 1;
   }
@@ -203,7 +203,7 @@
     transition: $transition-fast;
 
     &:hover {
-      color: lighten(#f03d31, 10%);
+      color: lighten($primary-light, 10%);
     }
   }
 

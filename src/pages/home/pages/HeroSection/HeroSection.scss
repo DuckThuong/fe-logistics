@@ -22,7 +22,7 @@
   &__bg-gradient {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(208, 40, 30, 0.35) 0%, transparent 65%),
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba($primary, 0.35) 0%, transparent 65%),
       $bg-dark;
   }
 
@@ -44,7 +44,7 @@
     &--1 {
       width: 600px;
       height: 600px;
-      background: rgba(208, 40, 30, 0.15);
+      background: rgba($primary, 0.15);
       top: -200px;
       right: -100px;
       animation-delay: 0s;
@@ -62,7 +62,7 @@
     &--3 {
       width: 300px;
       height: 300px;
-      background: rgba(208, 40, 30, 0.1);
+      background: rgba($primary, 0.1);
       top: 50%;
       right: 20%;
       animation-delay: -6s;
@@ -90,9 +90,9 @@
     gap: $spacing-sm;
     padding: 8px 18px;
     border-radius: $radius-full;
-    background: rgba(208, 40, 30, 0.15);
-    border: 1px solid rgba(208, 40, 30, 0.3);
-    color: #ff8a80;
+    background: rgba($primary, 0.15);
+    border: 1px solid rgba($primary, 0.3);
+    color: $primary-soft;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
     margin-bottom: $spacing-xl;
@@ -180,7 +180,7 @@
 
     &:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 16px 48px rgba(208, 40, 30, 0.5) !important;
+      box-shadow: 0 16px 48px rgba($primary, 0.5) !important;
     }
 
     .anticon {
@@ -229,7 +229,7 @@
     transition: $transition-fast;
 
     &:hover {
-      color: lighten(#f03d31, 10%);
+      color: lighten($primary-light, 10%);
     }
   }
 

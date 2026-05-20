@@ -14,7 +14,7 @@
     height: 100%;
 
     &:hover {
-      border-color: rgba(208, 40, 30, 0.2);
+      border-color: rgba($primary, 0.2);
 
       .hk-platforms__card-icon {
         transform: scale(1.1);
@@ -26,7 +26,7 @@
     width: 64px;
     height: 64px;
     border-radius: $radius-md;
-    background: color-mix(in srgb, var(--platform-color, #d0281e) 12%, transparent);
+    background: color-mix(in srgb, var(--platform-color, #{$primary}) 12%, transparent);
     @include flex-center;
     font-size: 28px;
     margin: 0 auto $spacing-md;
@@ -113,7 +113,7 @@
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(208, 40, 30, 0.45);
+      box-shadow: 0 12px 40px rgba($primary, 0.45);
     }
   }
 }

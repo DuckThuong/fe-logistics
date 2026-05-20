@@ -82,7 +82,7 @@
   &__step-line {
     width: 2px;
     flex: 1;
-    background: linear-gradient(to bottom, rgba(208, 40, 30, 0.4), rgba(208, 40, 30, 0.05));
+    background: linear-gradient(to bottom, rgba($primary, 0.4), rgba($primary, 0.05));
     margin: 4px 0;
     min-height: 32px;
   }

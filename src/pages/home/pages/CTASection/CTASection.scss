@@ -19,7 +19,7 @@
     &--1 {
       width: 600px;
       height: 400px;
-      background: rgba(208, 40, 30, 0.2);
+      background: rgba($primary, 0.2);
       top: -100px;
       left: -100px;
     }
@@ -47,9 +47,9 @@
     gap: $spacing-sm;
     padding: 8px 20px;
     border-radius: $radius-full;
-    background: rgba(208, 40, 30, 0.15);
-    border: 1px solid rgba(208, 40, 30, 0.3);
-    color: #ff8a80;
+    background: rgba($primary, 0.15);
+    border: 1px solid rgba($primary, 0.3);
+    color: $primary-soft;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
     margin-bottom: $spacing-xl;
@@ -104,7 +104,7 @@
 
     &:hover {
       transform: translateY(-3px) !important;
-      box-shadow: 0 20px 60px rgba(208, 40, 30, 0.5) !important;
+      box-shadow: 0 20px 60px rgba($primary, 0.5) !important;
     }
 
     .anticon {
