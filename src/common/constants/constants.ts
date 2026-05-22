@@ -80,6 +80,6 @@ export const NAV_ITEMS = [
       { label: 'Hàng hoá cấm nhập khẩu', href: ROUTER_PATH.POLICY_CAM_NHAP_KHAU, icon: 'ti-ban' },
     ],
   },
-  { label: 'Hướng dẫn', href: ROUTER_PATH.POLICY_HUONG_DAN, icon: 'ti-book-2' },
+  { label: 'Hướng dẫn', href: ROUTER_PATH.HUONG_DAN, icon: 'ti-book-2' },
   { label: 'Tin tức', href: ROUTER_PATH.POLICY_TIN_TUC, icon: 'ti-news' },
 ];

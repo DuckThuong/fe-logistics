@@ -22,6 +22,13 @@ import { InboundWarehousePage } from "@/pages/warehouse/pages/InboundWarehousePa
 import { StorageWarehousePage } from "@/pages/warehouse/pages/StorageWarehousePage";
 import { OutboundWarehousePage } from "@/pages/warehouse/pages/OutboundWarehousePage";
 import { ProhibitedPolicyPage } from "@/pages/warehouse/pages/ProhibitedPolicyPage";
+import { TaticLayout } from "@/pages/tatic/pages";
+import { TaticHub } from "@/pages/tatic/pages/TaticHub";
+import { TaoDonGuidePage } from "@/pages/tatic/pages/TaoDonGuidePage";
+import { NapTienGuidePage } from "@/pages/tatic/pages/NapTienGuidePage";
+import { ShipNoiDiaGuidePage } from "@/pages/tatic/pages/ShipNoiDiaGuidePage";
+import { OrderTaobaoGuidePage } from "@/pages/tatic/pages/OrderTaobaoGuidePage";
+import { TaoTaiKhoanGuidePage } from "@/pages/tatic/pages/TaoTaiKhoanGuidePage";
 
 export const WebRouter = () => (
   <Routes>
@@ -49,6 +56,14 @@ export const WebRouter = () => (
         <Route path={ROUTER_NAME.POLICY_KHIEN_NAI} element={<StorageWarehousePage />} />
         <Route path={ROUTER_NAME.POLICY_BAO_MAT} element={<OutboundWarehousePage />} />
         <Route path={ROUTER_NAME.POLICY_CAM_NHAP_KHAU} element={<ProhibitedPolicyPage />} />
+      </Route>
+      <Route path={ROUTER_PATH.HUONG_DAN} element={<TaticLayout />}>
+        <Route index element={<TaticHub />} />
+        <Route path={ROUTER_NAME.HUONG_DAN_TAO_DON} element={<TaoDonGuidePage />} />
+        <Route path={ROUTER_NAME.HUONG_DAN_NAP_TIEN} element={<NapTienGuidePage />} />
+        <Route path={ROUTER_NAME.HUONG_DAN_SHIP_NOI_DIA} element={<ShipNoiDiaGuidePage />} />
+        <Route path={ROUTER_NAME.HUONG_DAN_ORDER_TAOBAO} element={<OrderTaobaoGuidePage />} />
+        <Route path={ROUTER_NAME.HUONG_DAN_TAO_TAI_KHOAN} element={<TaoTaiKhoanGuidePage />} />
       </Route>
     </Route>
 

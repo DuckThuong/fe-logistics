@@ -1,7 +1,8 @@
+import { Outlet } from "react-router-dom";
 import "./style.scss";
 
-const TaticPage = () => {
-  return <div className="new-page"></div>;
-};
-
-export default TaticPage;
+export const TaticLayout = () => (
+  <div className="tatic-layout">
+    <Outlet />
+  </div>
+);

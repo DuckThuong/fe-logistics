@@ -7,6 +7,7 @@ import {
   EnvironmentOutlined,
   ClockCircleOutlined,
 } from '@ant-design/icons';
+import { ROUTER_PATH } from '@/routers/Route';
 import './Footer.scss';
 
 const SERVICES_LINKS = [
@@ -17,8 +18,8 @@ const SERVICES_LINKS = [
 ];
 
 const SUPPORT_LINKS = [
-  { label: 'Hướng dẫn tạo tài khoản', href: '/huong-dan' },
-  { label: 'Hướng dẫn tạo đơn hàng', href: '/huong-dan' },
+  { label: 'Hướng dẫn tạo tài khoản', href: ROUTER_PATH.HUONG_DAN },
+  { label: 'Hướng dẫn tạo đơn hàng', href: ROUTER_PATH.HUONG_DAN },
   { label: 'Tải tiện ích Chrome', href: '#' },
   { label: 'Bảng giá dịch vụ', href: '/bang-gia' },
 ];
