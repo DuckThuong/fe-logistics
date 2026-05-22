@@ -1,5 +1,8 @@
+import { Outlet } from "react-router-dom";
 import "./style.scss";
 
-export const NewPage = () => {
-  return <div className="new-page"></div>;
-};
+export const NewLayout = () => (
+  <div className="new-layout">
+    <Outlet />
+  </div>
+);

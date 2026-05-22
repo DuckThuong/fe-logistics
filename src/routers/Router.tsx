@@ -29,6 +29,12 @@ import { NapTienGuidePage } from "@/pages/tatic/pages/NapTienGuidePage";
 import { ShipNoiDiaGuidePage } from "@/pages/tatic/pages/ShipNoiDiaGuidePage";
 import { OrderTaobaoGuidePage } from "@/pages/tatic/pages/OrderTaobaoGuidePage";
 import { TaoTaiKhoanGuidePage } from "@/pages/tatic/pages/TaoTaiKhoanGuidePage";
+import { NewLayout } from "@/pages/new/pages";
+import { NewHub } from "@/pages/new/pages/NewHub";
+import { BangGiaNewsPage } from "@/pages/new/pages/BangGiaNewsPage";
+import { TimNguonNewsPage } from "@/pages/new/pages/TimNguonNewsPage";
+import { SaleTmalNewsPage } from "@/pages/new/pages/SaleTmalNewsPage";
+import { SanMyPhamNewsPage } from "@/pages/new/pages/SanMyPhamNewsPage";
 
 export const WebRouter = () => (
   <Routes>
@@ -64,6 +70,13 @@ export const WebRouter = () => (
         <Route path={ROUTER_NAME.HUONG_DAN_SHIP_NOI_DIA} element={<ShipNoiDiaGuidePage />} />
         <Route path={ROUTER_NAME.HUONG_DAN_ORDER_TAOBAO} element={<OrderTaobaoGuidePage />} />
         <Route path={ROUTER_NAME.HUONG_DAN_TAO_TAI_KHOAN} element={<TaoTaiKhoanGuidePage />} />
+      </Route>
+      <Route path={ROUTER_PATH.TIN_TUC} element={<NewLayout />}>
+        <Route index element={<NewHub />} />
+        <Route path={ROUTER_NAME.TIN_TUC_BANG_GIA} element={<BangGiaNewsPage />} />
+        <Route path={ROUTER_NAME.TIN_TUC_TIM_NGUON} element={<TimNguonNewsPage />} />
+        <Route path={ROUTER_NAME.TIN_TUC_SALE_TMAL} element={<SaleTmalNewsPage />} />
+        <Route path={ROUTER_NAME.TIN_TUC_SAN_MY_PHAM} element={<SanMyPhamNewsPage />} />
       </Route>
     </Route>
 
