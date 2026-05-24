@@ -25,7 +25,6 @@ const SUPPORT_LINKS = [
 ];
 
 const POLICY_LINKS = [
-  { label: 'Chính sách lưu kho', href: '/chinh-sach/chinh-sach-va-quy-dinh-luu-kho-hang-hoa' },
   { label: 'Chính sách khiếu nại', href: '/chinh-sach/chinh-sach-khieu-nai' },
   { label: 'Chính sách bảo mật', href: '/chinh-sach/chinh-sach-bao-mat-thong-tin' },
   { label: 'Hàng hoá cấm nhập khẩu', href: '/chinh-sach/danh-muc-hang-hoa-cam-nhap-khau' },
@@ -120,21 +119,11 @@ const Footer = () => {
               </div>
             </Col>
 
-            {/* App QR */}
-            <Col xs={12} sm={8} md={4}>
-              <div className="hk-footer__app">
-                <h4>Tải App</h4>
-                <div className="hk-footer__qr">
-                  <div className="hk-footer__qr-placeholder">QR</div>
-                </div>
-                <p>Quét mã để tải app đặt hàng</p>
-              </div>
-            </Col>
           </Row>
         </div>
       </div>
 
-      <div className="hk-footer__bottom">
+      {/* <div className="hk-footer__bottom">
         <div className="container">
           <div className="hk-footer__bottom-inner">
             <p>© 2024 <strong>Công Ty Logistics</strong>. Đã thông báo Bộ Công Thương.</p>
@@ -144,7 +133,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

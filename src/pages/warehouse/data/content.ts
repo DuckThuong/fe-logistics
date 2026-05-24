@@ -4,12 +4,6 @@ const IMG_BASE = "https://images.unsplash.com";
 
 export const WAREHOUSE_HUB_ITEMS = [
   {
-    title: "Chính sách và quy định lưu kho hàng hoá",
-    tag: "Chính sách",
-    image: `${IMG_BASE}/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=60`,
-    href: ROUTER_PATH.POLICY_LUU_KHO,
-  },
-  {
     title: "Chính sách khiếu nại",
     tag: "Chính sách",
     image: `${IMG_BASE}/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=60`,

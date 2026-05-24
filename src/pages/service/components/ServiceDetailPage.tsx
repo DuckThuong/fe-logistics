@@ -12,7 +12,10 @@ type ServiceDetailPageProps = {
   sections: ServiceSection[];
 };
 
-export const ServiceDetailPage = ({ title, sections }: ServiceDetailPageProps) => {
+export const ServiceDetailPage = ({
+  title,
+  sections,
+}: ServiceDetailPageProps) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -42,14 +45,18 @@ export const ServiceDetailPage = ({ title, sections }: ServiceDetailPageProps) =
               { title },
             ]}
           />
-          <h1 className={`service-page__title ${animateClass("fade-up", visible, 2)}`}>
+          <h1
+            className={`service-page__title ${animateClass("fade-up", visible, 2)}`}
+          >
             {title}
           </h1>
         </div>
       </div>
 
       <div className="container service-page__body">
-        <article className={`service-page__article ${animateClass("fade-up", visible, 3)}`}>
+        <article
+          className={`service-page__article ${animateClass("fade-up", visible, 3)}`}
+        >
           {sections.map((section) => (
             <section key={section.title} className="service-article__section">
               <h3 className="service-article__heading">{section.title}</h3>
@@ -59,7 +66,9 @@ export const ServiceDetailPage = ({ title, sections }: ServiceDetailPageProps) =
                 </p>
               ))}
               {section.quote && (
-                <blockquote className="service-article__quote">{section.quote}</blockquote>
+                <blockquote className="service-article__quote">
+                  {section.quote}
+                </blockquote>
               )}
               {section.bullets && (
                 <ul className="service-article__list">
@@ -71,7 +80,7 @@ export const ServiceDetailPage = ({ title, sections }: ServiceDetailPageProps) =
             </section>
           ))}
         </article>
-        <ServiceSidebar />
+        {/* <ServiceSidebar /> */}
       </div>
     </div>
   );

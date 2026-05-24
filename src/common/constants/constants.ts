@@ -48,38 +48,73 @@ export const TAG_COLORS: Record<string, string> = {
 };
 
 export const NAV_ITEMS = [
-  { label: 'Giới thiệu', href: ROUTER_PATH.ABOUT_PAGE, icon: 'ti-info-circle' },
+  { label: "Giới thiệu", href: ROUTER_PATH.ABOUT_PAGE, icon: "ti-info-circle" },
   {
-    label: 'Dịch vụ',
+    label: "Dịch vụ",
     href: ROUTER_PATH.SERVICE,
-    icon: 'ti-packages',
+    icon: "ti-packages",
     children: [
-      { label: 'Đặt hàng Trung Quốc', href: ROUTER_PATH.SERVICE_ORDER, icon: 'ti-shopping-cart' },
-      { label: 'Thanh toán hộ', href: ROUTER_PATH.SERVICE_PAYMENT, icon: 'ti-credit-card' },
-      { label: 'Vận chuyển hộ', href: ROUTER_PATH.SERVICE_SHIPPING, icon: 'ti-truck-delivery' },
+      {
+        label: "Đặt hàng Trung Quốc",
+        href: ROUTER_PATH.SERVICE_ORDER,
+        icon: "ti-shopping-cart",
+      },
+      {
+        label: "Thanh toán hộ",
+        href: ROUTER_PATH.SERVICE_PAYMENT,
+        icon: "ti-credit-card",
+      },
+      {
+        label: "Vận chuyển hộ",
+        href: ROUTER_PATH.SERVICE_SHIPPING,
+        icon: "ti-truck-delivery",
+      },
     ],
   },
   {
-    label: 'Bảng giá',
+    label: "Bảng giá",
     href: ROUTER_PATH.PRICE,
-    icon: 'ti-receipt-2',
+    icon: "ti-receipt-2",
     children: [
-      { label: 'Giá Order Hàng TQ', href: ROUTER_PATH.PRICE_ORDER, icon: 'ti-tag' },
-      { label: 'Giá Ký Gửi Hàng Hoá', href: ROUTER_PATH.PRICE_KY_GUI, icon: 'ti-package' },
-      { label: 'Giá Vận Chuyển Chính Ngạch', href: ROUTER_PATH.PRICE_CHINH_NGACH, icon: 'ti-route' },
+      {
+        label: "Giá Order Hàng TQ",
+        href: ROUTER_PATH.PRICE_ORDER,
+        icon: "ti-tag",
+      },
+      {
+        label: "Giá Ký Gửi Hàng Hoá",
+        href: ROUTER_PATH.PRICE_KY_GUI,
+        icon: "ti-package",
+      },
+      {
+        label: "Giá Vận Chuyển Chính Ngạch",
+        href: ROUTER_PATH.PRICE_CHINH_NGACH,
+        icon: "ti-route",
+      },
     ],
   },
   {
-    label: 'Chính sách',
+    label: "Chính sách",
     href: ROUTER_PATH.POLICY,
-    icon: 'ti-shield-check',
+    icon: "ti-shield-check",
     children: [
-      { label: 'Quy định lưu kho', href: ROUTER_PATH.POLICY_LUU_KHO, icon: 'ti-building-warehouse' },
-      { label: 'Chính sách khiếu nại', href: ROUTER_PATH.POLICY_KHIEN_NAI, icon: 'ti-message-report' },
-      { label: 'Chính sách bảo mật', href: ROUTER_PATH.POLICY_BAO_MAT, icon: 'ti-lock' },
-      { label: 'Hàng hoá cấm nhập khẩu', href: ROUTER_PATH.POLICY_CAM_NHAP_KHAU, icon: 'ti-ban' },
+      {
+        label: "Chính sách khiếu nại",
+        href: ROUTER_PATH.POLICY_KHIEN_NAI,
+        icon: "ti-message-report",
+      },
+      {
+        label: "Chính sách bảo mật",
+        href: ROUTER_PATH.POLICY_BAO_MAT,
+        icon: "ti-lock",
+      },
+      {
+        label: "Hàng hoá cấm nhập khẩu",
+        href: ROUTER_PATH.POLICY_CAM_NHAP_KHAU,
+        icon: "ti-ban",
+      },
     ],
   },
-  { label: 'Hướng dẫn', href: ROUTER_PATH.HUONG_DAN, icon: 'ti-book-2' },
-  { label: 'Tin tức', href: ROUTER_PATH.TIN_TUC, icon: 'ti-news' },
+  // { label: 'Hướng dẫn', href: ROUTER_PATH.HUONG_DAN, icon: 'ti-book-2' },
+  { label: "Tin tức", href: ROUTER_PATH.TIN_TUC, icon: "ti-news" },
 ];

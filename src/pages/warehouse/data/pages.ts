@@ -1,5 +1,4 @@
 import { ROUTER_PATH } from "@/routers/Route";
-import { InboundHtml } from "./html/inbound";
 import { StorageHtml } from "./html/storage";
 import { OutboundHtml } from "./html/outbound";
 import { ProhibitedHtml } from "./html/prohibited";
@@ -11,12 +10,6 @@ export type WarehousePageMeta = {
 };
 
 const normalizeHtml = (html: string) => html.trim();
-
-export const WAREHOUSE_INBOUND_PAGE: WarehousePageMeta = {
-  title: "Chính sách và quy định lưu kho hàng hoá",
-  date: "20.05.2026",
-  contentHtml: normalizeHtml(InboundHtml),
-};
 
 export const WAREHOUSE_STORAGE_PAGE: WarehousePageMeta = {
   title: "Chính sách khiếu nại",
@@ -37,7 +30,6 @@ export const WAREHOUSE_PROHIBITED_PAGE: WarehousePageMeta = {
 };
 
 export const WAREHOUSE_SIDEBAR_LINKS = [
-  { title: WAREHOUSE_INBOUND_PAGE.title, href: ROUTER_PATH.POLICY_LUU_KHO },
   { title: WAREHOUSE_STORAGE_PAGE.title, href: ROUTER_PATH.POLICY_KHIEN_NAI },
   { title: WAREHOUSE_OUTBOUND_PAGE.title, href: ROUTER_PATH.POLICY_BAO_MAT },
   { title: WAREHOUSE_PROHIBITED_PAGE.title, href: ROUTER_PATH.POLICY_CAM_NHAP_KHAU },

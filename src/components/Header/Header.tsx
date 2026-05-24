@@ -76,7 +76,7 @@ const Header = () => {
             </div>
           ))}
         </nav>
-
+        {/* 
         <div className="hk-header__actions">
           <Button className="hk-header__btn-login" href={ROUTER_PATH.LOGIN} icon={<i className="ti ti-login" />}>
             Đăng nhập
@@ -84,7 +84,7 @@ const Header = () => {
           <Button type="primary" className="hk-header__btn-register" href={ROUTER_PATH.SIGNIN} icon={<i className="ti ti-user-plus" />}>
             Đăng ký
           </Button>
-        </div>
+        </div> */}
 
         <button
           className="hk-header__mobile-toggle"

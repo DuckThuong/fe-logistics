@@ -56,7 +56,7 @@ export const WarehouseHub = () => {
 
           <p className={`warehouse-hub__hero-subtitle ${animateClass("fade-in", visible, 4)}`}>
             <LayoutOutlined className="warehouse-hub__hero-subtitle-icon" />
-            Tổng hợp các quy định quan trọng về lưu kho, khiếu nại, bảo mật và hàng cấm để
+            Tổng hợp các quy định quan trọng về khiếu nại, bảo mật và hàng cấm để
             <strong>&nbsp;bạn chủ động vận hành đơn hàng đúng chuẩn ngay từ đầu</strong>.
           </p>
         </div>

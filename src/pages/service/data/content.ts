@@ -69,23 +69,23 @@ export const ORDER_PAGE_SECTIONS: ServiceSection[] = [
       "Đem đến cho khách hàng chất lượng dịch vụ là tốt nhất, thời gian giao nhận là nhanh nhất, giá cước là cạnh tranh nhất.",
     ],
   },
+  // {
+  //   title: "3. Triết lý",
+  //   quote:
+  //     "Nghĩ đến lợi ích của người khách hàng trước khi nghĩ đến lợi ích của mình",
+  //   bullets: [
+  //     "Khách hàng là giá trị cơ bản của bất kỳ doanh nghiệp nào, là lý do duy nhất để doanh nghiệp tồn tại và phát triển. Chính sách “khách hàng là trung tâm” chỉ lối dẫn đường cho mọi hoạt động của công ty.",
+  //     "Chúng tôi lắng nghe, phân tích, thấu hiểu nhu cầu của từng khách hàng và áp dụng kinh nghiệm, kỹ năng, tư duy của mình để giải quyết tối ưu những nhu cầu đó, giúp khách hàng tập trung vào các hoạt động kinh doanh cốt lõi của mình.",
+  //   ],
+  // },
   {
-    title: "3. Triết lý",
-    quote:
-      "Nghĩ đến lợi ích của người khách hàng trước khi nghĩ đến lợi ích của mình",
-    bullets: [
-      "Khách hàng là giá trị cơ bản của bất kỳ doanh nghiệp nào, là lý do duy nhất để doanh nghiệp tồn tại và phát triển. Chính sách “khách hàng là trung tâm” chỉ lối dẫn đường cho mọi hoạt động của công ty.",
-      "Chúng tôi lắng nghe, phân tích, thấu hiểu nhu cầu của từng khách hàng và áp dụng kinh nghiệm, kỹ năng, tư duy của mình để giải quyết tối ưu những nhu cầu đó, giúp khách hàng tập trung vào các hoạt động kinh doanh cốt lõi của mình.",
-    ],
-  },
-  {
-    title: "4. Đội ngũ nhân viên",
+    title: "3. Đội ngũ nhân viên",
     bullets: [
       "Đội ngũ nhân viên của chúng tôi là những người trẻ trung, nhiệt huyết; giỏi về chuyên môn, tận tình với công việc, luôn đoàn kết gắn bó tạo ra sức mạnh làm nền tảng cho sự phát triển bền vững của Công Ty",
     ],
   },
   {
-    title: "5. Định hướng phát triển",
+    title: "4. Định hướng phát triển",
     bullets: [
       "Giữ vững và ngày càng tăng tốc độ phát triển trên mọi chỉ tiêu: Doanh số, nhân lực, giá trị thương hiệu,….",
       "Nâng cao uy tín hơn nữa, phấn đấu trở thành đối tác của nhiều khách hàng lớn hơn.",
