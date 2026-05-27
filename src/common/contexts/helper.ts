@@ -34,3 +34,7 @@ export const useCountdown = (initialSeconds: number) => {
   const ss = String(secs % 60).padStart(2, "0");
   return `${mm}:${ss}`;
 };
+
+export const emptyString = (value: string) => {
+  return !value || value.trim() === "";
+};
