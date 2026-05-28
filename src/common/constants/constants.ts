@@ -117,3 +117,8 @@ export const NAV_ITEMS = [
   },
   { label: "Tin tức", href: ROUTER_PATH.TIN_TUC, icon: "ti-news" },
 ];
+
+export const ABOUT_OPTION_TYPES = {
+  options: "options",
+  quick_link: "quick-link",
+};

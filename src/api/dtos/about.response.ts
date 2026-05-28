@@ -31,7 +31,7 @@ interface AboutSection {
 interface AboutOptions {
   icon: string;
   type: string;
-  content: string;
+  value: string;
 }
 
 interface AboutDescription {
