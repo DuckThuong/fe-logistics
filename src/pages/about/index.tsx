@@ -23,32 +23,6 @@ import { isAxiosError } from "axios";
 import { useNotification } from "@/providers/notificationProvider";
 import { emptyString } from "@/common/contexts/helper";
 
-const QUICK_LINKS = [
-  { href: "#gioi-thieu", label: "Tổng quan", icon: <ReadOutlined /> },
-  {
-    href: "#dich-vu",
-    label: "Dịch vụ cung cấp",
-    icon: <UnorderedListOutlined />,
-  },
-  { href: "#tu-choi", label: "Chính sách từ chối", icon: <StopOutlined /> },
-];
-
-const services = [
-  "Tư vấn tìm kiếm nguồn hàng trên các website bán buôn, bán lẻ hàng đầu Trung Quốc: alibaba.com, 1688.com, taobao.com, tmall.com…",
-  "Mua hàng hộ và Kiểm tra hàng hóa",
-  "Thanh toán hộ đơn hàng theo ủy thác, ký gửi hàng hóa theo yêu cầu",
-  "Đóng gói và Vận chuyển hàng hóa về Việt Nam",
-  "Đổi trả hàng hóa (đối với Khách hàng order của Công Ty Logistics)",
-];
-
-const refusals = [
-  "Phát tán, chia sẻ, đăng tải thông tin sai sự thật/sai bản chất các tình huống/thông tin với mục đích xấu, gây ảnh hưởng đến uy tín của Công Ty Logistics.",
-  "Gian lận trong giao dịch: nhận đủ hàng nhưng báo thiếu, nhận nhầm hàng của khách khác nhưng cố tình không trả, thiếu công nợ nhưng không thanh toán.",
-  "Sử dụng lời lẽ khiếm nhã, có thái độ coi thường, thiếu tôn trọng và thể hiện sự bất hợp tác với nhân viên Công Ty Logistics.",
-  "Cố ý mua bán sản phẩm là hàng Quốc cấm, hàng không được phép nhập và vận chuyển về Việt Nam.",
-  "Có những yêu cầu không chính đáng, vượt ra ngoài phạm vi quản lý và cung cấp dịch vụ của Công Ty Logistics.",
-];
-
 const AboutPage: React.FC = () => {
   const { setLoading } = useLoading();
   const { showNotification } = useNotification();
@@ -151,17 +125,19 @@ const AboutPage: React.FC = () => {
             >
               <span className="about-page__quick-nav-label">Xem nhanh</span>
               <ul className="about-page__quick-links">
-                {QUICK_LINKS.map((link, index) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className={`about-page__quick-link ${animateClass("fade-left", headerVisible, index + 4)}`}
-                    >
-                      {link.icon}
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {aboutContent?.otherOptions
+                  .filter((option) => option.type === "QUICK_LINK")
+                  .map((item, index) => (
+                    <li key={item.content + index}>
+                      <a
+                        href={item.content}
+                        className={`about-page__quick-link ${animateClass("fade-left", headerVisible, index + 4)}`}
+                      >
+                        {item.icon}
+                        {item.content.replace("#", "")}
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </nav>
           </div>
@@ -184,7 +160,7 @@ const AboutPage: React.FC = () => {
                   ?.title || ""}
               </strong>
               {aboutContent?.sections.find((s) => s.sortIndex === 1)
-                ?.description || ""}
+                ?.description[0]?.text || ""}
             </p>
           </div>
           <div
@@ -212,13 +188,13 @@ const AboutPage: React.FC = () => {
                 {emptyString(item.title)}
               </h2>
               <ul className="about-page__list">
-                {services.map((item, index) => (
+                {item.description?.map((desc, index) => (
                   <li
                     key={index}
                     className={`about-page__list-item ${animateClass("fade-up", servicesInView, index + 2)}`}
                   >
                     <span className="about-page__list-icon">✓</span>
-                    <span>{item}</span>
+                    <span>{desc.text}</span>
                   </li>
                 ))}
               </ul>
@@ -236,8 +212,11 @@ const AboutPage: React.FC = () => {
               {aboutContent?.sections?.find((s) => s.sortIndex === 1)?.title ||
                 ""}
             </strong>
-            {aboutContent?.sections?.find((s) => s.sortIndex === 1)
-              ?.description || ""}
+            {aboutContent?.sections
+              ?.find((s) => s.sortIndex === 1)
+              ?.description?.map((desc, index) => (
+                <span key={index}>{desc.text}</span>
+              )) || ""}
           </p>
           <p className={animateClass("fade-in", closingInView, 3)}>
             <strong>Trân trọng!</strong>

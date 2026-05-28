@@ -4,7 +4,7 @@ export interface AboutResponseDto {
   url: string;
   shortDescription: string;
   content: string;
-  description: string;
+  description: string[];
   otherOptions: AboutOptions[];
   sortIndex: 1;
   active: true;
@@ -20,7 +20,7 @@ interface AboutSection {
   pageId: number;
   pageTitle: string;
   title: string;
-  description: string;
+  description: AboutDescription[];
   images: string[];
   sortIndex: number;
   active: boolean;
@@ -32,4 +32,9 @@ interface AboutOptions {
   icon: string;
   type: string;
   content: string;
+}
+
+interface AboutDescription {
+  icon: string;
+  text: string;
 }
