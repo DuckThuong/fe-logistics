@@ -231,6 +231,7 @@ const AboutPage: React.FC = () => {
               {aboutContent?.sections?.find((s) => s.sortIndex === 1)?.title ||
                 ""}
             </strong>
+            <span> </span>
             {aboutContent?.sections
               ?.find((s) => s.sortIndex === 1)
               ?.description?.map((desc, index) => (
