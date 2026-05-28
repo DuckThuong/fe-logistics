@@ -172,7 +172,8 @@ const AboutPage: React.FC = () => {
             <p>
               <strong>
                 {aboutContent?.sections?.find((s) => s.sortIndex === 1)
-                  ?.title || ""}
+                  ?.title || ""}{" "}
+                <span> </span>
               </strong>
               {aboutContent?.sections?.find((s) => s.sortIndex === 1)
                 ?.description?.[0]?.text || ""}
