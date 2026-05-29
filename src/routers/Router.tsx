@@ -31,7 +31,7 @@ import { BangGiaNewsPage } from "@/pages/new/pages/BangGiaNewsPage";
 import { TimNguonNewsPage } from "@/pages/new/pages/TimNguonNewsPage";
 import { SaleTmalNewsPage } from "@/pages/new/pages/SaleTmalNewsPage";
 import { SanMyPhamNewsPage } from "@/pages/new/pages/SanMyPhamNewsPage";
-import { ServiceDetailPage } from "@/pages/service/pages/ServiceDetailPage";
+import { ServiceDetail } from "@/pages/service/pages/ServiceDetailPage";
 
 export const WebRouter = () => (
   <Routes>
@@ -43,10 +43,7 @@ export const WebRouter = () => (
       <Route path={ROUTER_PATH.ABOUT_PAGE} element={<AboutPage />} />
       <Route path={ROUTER_PATH.SERVICE} element={<ServiceLayout />}>
         <Route index element={<ServiceHub />} />
-        <Route
-          path={ROUTER_NAME.SERVICE_DETAIL}
-          element={<ServiceDetailPage />}
-        />
+        <Route path={ROUTER_NAME.SERVICE_DETAIL} element={<ServiceDetail />} />
       </Route>
       <Route path={ROUTER_PATH.PRICE} element={<PriceLayout />}>
         <Route index element={<PriceHub />} />

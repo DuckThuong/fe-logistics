@@ -5,23 +5,51 @@ import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
 import type { ServiceSection } from "../data/content";
-
+import { getServiceById } from "@/api/configs/common.config";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { useLoading } from "@/providers/loadingProvider";
+import { useNotification } from "@/providers/notificationProvider";
+import { useQuery } from "@tanstack/react-query";
+import { isAxiosError } from "axios";
+import { emptyString } from "@/common/contexts/helper";
 type ServiceDetailPageProps = {
-  title: string;
-  sections: ServiceSection[];
+  id?: number;
 };
 
-export const ServiceDetailPage = ({
-  title,
-  sections,
-}: ServiceDetailPageProps) => {
+export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
   const [visible, setVisible] = useState(false);
+  const { setLoading } = useLoading();
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
 
+  const { data: serviceContent, isLoading } = useQuery({
+    queryKey: [CONTENT_ENDPOINTS.GET_SERVICE_BY_ID, id],
+    queryFn: () => getServiceById(id),
+    throwOnError: (error) => {
+      let message = DEFAULT_MESSAGE;
+      if (isAxiosError(error)) {
+        const apiMessage = error.response?.data?.message;
+        if (typeof apiMessage === "string") {
+          message = apiMessage;
+        } else if (Array.isArray(apiMessage) && apiMessage[0]) {
+          message = apiMessage[0];
+        }
+      }
+      showNotification(message, NOTI_ERROR);
+      return false;
+    },
+  });
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading, setLoading]);
+
+  console.log({ serviceContent });
   return (
     <div className="service-page">
       <div className="service-page__header">
@@ -41,13 +69,13 @@ export const ServiceDetailPage = ({
                 ),
               },
               { title: <Link to={ROUTER_PATH.SERVICE}>Dịch vụ</Link> },
-              { title },
+              { title: emptyString(serviceContent?.name) },
             ]}
           />
           <h1
             className={`service-page__title ${animateClass("fade-up", visible, 2)}`}
           >
-            {title}
+            {emptyString(serviceContent?.name)}
           </h1>
         </div>
       </div>
@@ -56,10 +84,10 @@ export const ServiceDetailPage = ({
         <article
           className={`service-page__article ${animateClass("fade-up", visible, 3)}`}
         >
-          {sections.map((section) => (
-            <section key={section.title} className="service-article__section">
-              <h3 className="service-article__heading">{section.title}</h3>
-              {section.paragraphs?.map((paragraph) => (
+          {serviceContent?.sections.map((item) => (
+            <section key={item.title} className="service-article__section">
+              <h3 className="service-article__heading">{item.title}</h3>
+              {/* {section.paragraphs?.map((paragraph) => (
                 <p key={paragraph} className="service-article__paragraph">
                   {paragraph}
                 </p>
@@ -75,11 +103,13 @@ export const ServiceDetailPage = ({
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-              )}
+              )} */}
+              {item?.description?.map((desc, index) => (
+                <div dangerouslySetInnerHTML={{ __html: desc.text }} />
+              ))}
             </section>
           ))}
         </article>
-        {/* <ServiceSidebar /> */}
       </div>
     </div>
   );

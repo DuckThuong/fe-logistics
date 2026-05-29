@@ -11,12 +11,13 @@ import { useQuery } from "@tanstack/react-query";
 import { Breadcrumb, Tag } from "antd";
 import { isAxiosError } from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ServiceHub = () => {
+  const navigate = useNavigate();
   const { setLoading } = useLoading();
-  const [visible, setVisible] = useState(false);
   const { showNotification } = useNotification();
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
@@ -39,8 +40,6 @@ export const ServiceHub = () => {
       return false;
     },
   });
-
-  console.log("Service Content:", serviceContent);
 
   useEffect(() => {
     setLoading(isLoading);
@@ -105,8 +104,26 @@ export const ServiceHub = () => {
         {serviceContent?.children
           ?.filter((item) => item.sortIndex == 1)
           ?.map((child) => (
-            <Link
-              to={ROUTER_PATH.SERVICE_DETAIL.replace(":serviceUrl", child.url)}
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() =>
+                navigate(
+                  ROUTER_PATH.SERVICE_DETAIL.replace(":serviceUrl", child.url),
+                  { state: { serviceId: child.id } },
+                )
+              }
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  navigate(
+                    ROUTER_PATH.SERVICE_DETAIL.replace(
+                      ":serviceUrl",
+                      child.url,
+                    ),
+                    { state: { serviceId: child.id } },
+                  );
+                }
+              }}
               className={`service-hub__card service-hub__card--featured ${animateClass("fade-up", visible, 3)}`}
             >
               <img
@@ -120,19 +137,37 @@ export const ServiceHub = () => {
                   {child.shortDescription}
                 </h2>
               </div>
-            </Link>
+            </div>
           ))}
 
         <div className="service-hub__grid">
           {serviceContent?.children
             ?.filter((item) => item.sortIndex > 1)
             ?.map((child, index) => (
-              <Link
+              <div
                 key={index}
-                to={ROUTER_PATH.SERVICE_DETAIL.replace(
-                  ":serviceUrl",
-                  child.url,
-                )}
+                role="button"
+                tabIndex={0}
+                onClick={() =>
+                  navigate(
+                    ROUTER_PATH.SERVICE_DETAIL.replace(
+                      ":serviceUrl",
+                      child.url,
+                    ),
+                    { state: { serviceId: child.id } },
+                  )
+                }
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    navigate(
+                      ROUTER_PATH.SERVICE_DETAIL.replace(
+                        ":serviceUrl",
+                        child.url,
+                      ),
+                      { state: { serviceId: child.id } },
+                    );
+                  }
+                }}
                 className={`service-hub__card ${animateClass("fade-up", visible, index + 4)}`}
               >
                 <img
@@ -146,7 +181,7 @@ export const ServiceHub = () => {
                     {child.shortDescription}
                   </h2>
                 </div>
-              </Link>
+              </div>
             ))}
         </div>
       </div>

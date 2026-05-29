@@ -1,6 +1,9 @@
 import axiosClient from "../axiosClient";
 import type { AboutResponseDto } from "../dtos/about.response";
-import type { ServiceResponseDto } from "../dtos/service.response";
+import type {
+  ServiceChildDto,
+  ServiceResponseDto,
+} from "../dtos/service.response";
 import {
   COMMON_ENDPOINT,
   CONTENT_ENDPOINTS,
@@ -21,5 +24,14 @@ export const getServiceContent = async (): Promise<ServiceResponseDto> => {
       url: CONTENT_ENDPOINTS.GET_SERIVICE_CONTENT,
     },
   });
+  return response.data.data;
+};
+
+export const getServiceById = async (id: number): Promise<ServiceChildDto> => {
+  const endpoint = CONTENT_ENDPOINTS.GET_SERVICE_BY_ID.replace(
+    "{id}",
+    id.toString(),
+  );
+  const response = await axiosClient.get(endpoint);
   return response.data.data;
 };

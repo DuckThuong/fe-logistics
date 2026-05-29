@@ -54,3 +54,63 @@ interface ServiceFeatured {
   type: "SERVICE";
   url: "dat-hang-trung-quoc";
 }
+
+export interface SectionDescriptionDto {
+  type: string;
+  icon: string;
+  text: string;
+  boldParts: string[];
+  headers: string[] | null;
+  cellRows: string[][] | null;
+}
+
+export interface SectionDto {
+  id: number;
+  pageId: number;
+  pageTitle: string;
+  title: string;
+  description: SectionDescriptionDto[];
+  images: unknown[];
+  sortIndex: number;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ServiceChildDto {
+  id: number;
+  name: string;
+  url: string;
+  shortDescription: string;
+  image: string | null;
+  description: string[];
+  content: string;
+  otherOptions: unknown[];
+  sortIndex: number;
+  active: boolean;
+  type: string;
+  parentId: number | null;
+  children: ServiceChildDto[] | null;
+  sections: SectionDto[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ServiceByIdResponseDto {
+  id: number;
+  name: string;
+  url: string;
+  shortDescription: string;
+  image: string | null;
+  description: string[];
+  content: string;
+  otherOptions: unknown[];
+  sortIndex: number;
+  active: boolean;
+  type: string;
+  parentId: number | null;
+  children: ServiceChildDto[] | null;
+  sections: SectionDto[];
+  createdAt: string;
+  updatedAt: string;
+}
