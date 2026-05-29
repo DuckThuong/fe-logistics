@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Breadcrumb, Tag } from "antd";
-import { animateClass, useInView } from "@/hooks/useInView";
-import {
-  HomeOutlined,
-  InfoCircleOutlined,
-  TeamOutlined,
-  SafetyCertificateOutlined,
-  RocketOutlined,
-  ReadOutlined,
-  UnorderedListOutlined,
-  StopOutlined,
-} from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { ROUTER_PATH } from "@/routers/Route";
-import "./style.scss";
-import { useQuery } from "@tanstack/react-query";
-import { ABOUT_ENDPOINT } from "@/api/endpoints/about.endpoint";
-import { getAboutContent } from "@/api/configs/about.config";
-import { useLoading } from "@/providers/loadingProvider";
 import {
   ABOUT_OPTION_TYPES,
   DEFAULT_MESSAGE,
   NOTI_ERROR,
 } from "@/common/constants/constants";
-import { isAxiosError } from "axios";
-import { useNotification } from "@/providers/notificationProvider";
 import { emptyString, toRoman } from "@/common/contexts/helper";
+import { animateClass, useInView } from "@/hooks/useInView";
+import { useLoading } from "@/providers/loadingProvider";
+import { useNotification } from "@/providers/notificationProvider";
+import { ROUTER_PATH } from "@/routers/Route";
+import { HomeOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import { useQuery } from "@tanstack/react-query";
+import { Breadcrumb, Tag } from "antd";
+import { isAxiosError } from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./style.scss";
+import { getAboutContent } from "@/api/configs/common.config";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
 
 const AboutPage: React.FC = () => {
   const { setLoading } = useLoading();
@@ -42,7 +33,7 @@ const AboutPage: React.FC = () => {
   }, []);
 
   const { data: aboutContent, isLoading } = useQuery({
-    queryKey: [ABOUT_ENDPOINT.GET_ABOUT_CONTENT],
+    queryKey: [CONTENT_ENDPOINTS.GET_ABOUT_CONTENT],
     queryFn: () => getAboutContent(),
     throwOnError: (error) => {
       let message = DEFAULT_MESSAGE;
@@ -82,7 +73,7 @@ const AboutPage: React.FC = () => {
                 ),
               },
               { title: <span>Về chúng tôi</span> },
-              { title: "Giới thiệu" },
+              { title: emptyString(aboutContent?.name) },
             ]}
           />
 

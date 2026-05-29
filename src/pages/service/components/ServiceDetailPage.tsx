@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
 import type { ServiceSection } from "../data/content";
-import { ServiceSidebar } from "./ServiceSidebar";
 
 type ServiceDetailPageProps = {
   title: string;
