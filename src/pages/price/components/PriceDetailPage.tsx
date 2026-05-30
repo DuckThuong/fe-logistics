@@ -1,30 +1,62 @@
-import { useEffect, useState } from "react";
-import { Breadcrumb } from "antd";
-import { CalendarOutlined, HomeOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { ROUTER_PATH } from "@/routers/Route";
+import { getPriceContent } from "@/api/configs/common.config";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
 import { animateClass } from "@/hooks/useInView";
-import type { PricePageMeta } from "../data/pages";
-import { PriceSidebar } from "./PriceSidebar";
+import { useLoading } from "@/providers/loadingProvider";
+import { useNotification } from "@/providers/notificationProvider";
+import { ROUTER_PATH } from "@/routers/Route";
+import { CalendarOutlined, HomeOutlined } from "@ant-design/icons";
+import { useQuery } from "@tanstack/react-query";
+import { Breadcrumb } from "antd";
+import { isAxiosError } from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-type PriceDetailPageProps = {
-  page: PricePageMeta;
-};
-
-export const PriceDetailPage = ({ page }: PriceDetailPageProps) => {
+export const PriceDetailPage = () => {
   const [visible, setVisible] = useState(false);
+  const { setLoading } = useLoading();
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
 
+  const { data: data, isLoading } = useQuery({
+    queryKey: [CONTENT_ENDPOINTS.GET_PRICE_CONTENT],
+    queryFn: () => getPriceContent(),
+    throwOnError: (error) => {
+      let message = DEFAULT_MESSAGE;
+      if (isAxiosError(error)) {
+        const apiMessage = error.response?.data?.message;
+        if (typeof apiMessage === "string") {
+          message = apiMessage;
+        } else if (Array.isArray(apiMessage) && apiMessage[0]) {
+          message = apiMessage[0];
+        }
+      }
+      showNotification(message, NOTI_ERROR);
+      return false;
+    },
+  });
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading, setLoading]);
+
   return (
     <div className="price-page">
-      <section className="price-hub__hero price-page__hero" aria-labelledby="price-detail-heading">
+      <section
+        className="price-hub__hero price-page__hero"
+        aria-labelledby="price-detail-heading"
+      >
         <div className="price-hub__hero-bg">
-          <div className={`price-hub__hero-bg-gradient ${animateClass("fade-in", visible, 0)}`} />
-          <div className={`price-hub__hero-bg-grid ${animateClass("fade-out", visible, 0)}`} />
+          <div
+            className={`price-hub__hero-bg-gradient ${animateClass("fade-in", visible, 0)}`}
+          />
+          <div
+            className={`price-hub__hero-bg-grid ${animateClass("fade-out", visible, 0)}`}
+          />
           <div className="price-hub__hero-bg-blob price-hub__hero-bg-blob--1" />
           <div className="price-hub__hero-bg-blob price-hub__hero-bg-blob--2" />
           <div className="price-hub__hero-bg-blob price-hub__hero-bg-blob--3" />
@@ -42,7 +74,7 @@ export const PriceDetailPage = ({ page }: PriceDetailPageProps) => {
                 ),
               },
               { title: <Link to={ROUTER_PATH.PRICE}>Bảng giá</Link> },
-              { title: page.title },
+              { title: data?.shortDescription },
             ]}
           />
 
@@ -50,24 +82,41 @@ export const PriceDetailPage = ({ page }: PriceDetailPageProps) => {
             id="price-detail-heading"
             className={`price-hub__hero-title price-page__hero-title ${animateClass("fade-up", visible, 2)}`}
           >
-            {page.title}
+            {data?.shortDescription}
           </h1>
 
-          <p className={`price-hub__hero-subtitle ${animateClass("fade-in", visible, 3)}`}>
-            <CalendarOutlined className="price-hub__hero-subtitle-icon" aria-hidden />
-            <time dateTime={page.date}>Cập nhật: {page.date}</time>
+          <p
+            className={`price-hub__hero-subtitle ${animateClass("fade-in", visible, 3)}`}
+          >
+            <CalendarOutlined
+              className="price-hub__hero-subtitle-icon"
+              aria-hidden
+            />
+            <time dateTime={data?.updatedAt}>Cập nhật: {data?.updatedAt}</time>
           </p>
         </div>
       </section>
 
       <div className="container price-page__body">
-        <article className={`price-page__article ${animateClass("fade-up", visible, 4)}`}>
-          <div
-            className="price-page__content entry-content"
-            dangerouslySetInnerHTML={{ __html: page.contentHtml }}
-          />
+        <article
+          className={`price-page__article ${animateClass("fade-up", visible, 4)}`}
+        >
+          <h1 style={{ textAlign: "justify" }}>
+            <span style={{ fontSize: "16px" }}>
+              <span style={{ color: "#000000" }}>
+                <span
+                  style={{
+                    fontFamily: "Times New Roman, Times, serif",
+                  }}
+                >
+                  <span style={{ backgroundColor: "white" }}>
+                    <strong></strong>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </h1>
         </article>
-        <PriceSidebar />
       </div>
     </div>
   );

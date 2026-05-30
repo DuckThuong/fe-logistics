@@ -180,7 +180,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
   <span style="font-size: 22px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -266,7 +266,7 @@ export const ChinhNgachHtml = `
 >
   <tbody>
     <tr>
-      <td style="background-color: #ed7d31; width: 207.95pt">
+      <td style="background-color: #e30613; width: 207.95pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -283,7 +283,7 @@ export const ChinhNgachHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 207.05pt">
+      <td style="background-color: #e30613; width: 207.05pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -414,7 +414,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -468,7 +468,7 @@ export const ChinhNgachHtml = `
 >
   <tbody>
     <tr>
-      <td style="background-color: #ed7d31; width: 207.8pt">
+      <td style="background-color: #e30613; width: 207.8pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -485,7 +485,7 @@ export const ChinhNgachHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 219.75pt">
+      <td style="background-color: #e30613; width: 219.75pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -667,7 +667,7 @@ export const ChinhNgachHtml = `
 >
   <tbody>
     <tr>
-      <td style="background-color: #ed7d31; width: 122.8pt">
+      <td style="background-color: #e30613; width: 122.8pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -684,7 +684,7 @@ export const ChinhNgachHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 71.2pt">
+      <td style="background-color: #e30613; width: 71.2pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -701,7 +701,7 @@ export const ChinhNgachHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 70.55pt">
+      <td style="background-color: #e30613; width: 70.55pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -718,7 +718,7 @@ export const ChinhNgachHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 92.15pt">
+      <td style="background-color: #e30613; width: 92.15pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
           <span style="color: #000000"
             ><span style="font-size: 16px"
@@ -1176,7 +1176,7 @@ export const ChinhNgachHtml = `
       </td>
       <td style="background-color: white; width: 71.2pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
-          <span style="color: #ff0000"
+          <span style="color: #e30613"
             ><span style="font-size: 16px"
               ><span
                 style="
@@ -1193,7 +1193,7 @@ export const ChinhNgachHtml = `
       </td>
       <td style="background-color: white; width: 70.55pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
-          <span style="color: #ff0000"
+          <span style="color: #e30613"
             ><span style="font-size: 16px"
               ><span
                 style="
@@ -1210,7 +1210,7 @@ export const ChinhNgachHtml = `
       </td>
       <td style="background-color: white; width: 92.15pt">
         <p style="margin-left: 0cm; margin-right: 0cm; text-align: center">
-          <span style="color: #ff0000"
+          <span style="color: #e30613"
             ><span style="font-size: 16px"
               ><span
                 style="
@@ -1304,7 +1304,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: justify">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -1323,7 +1323,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: justify">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -1346,7 +1346,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: justify">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -1370,7 +1370,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: justify">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -1389,7 +1389,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: justify">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:
@@ -1410,7 +1410,7 @@ export const ChinhNgachHtml = `
 
 <p style="margin-left: 0cm; margin-right: 0cm; text-align: justify">
   <span style="font-size: 16px"
-    ><span style="color: #ff0000"
+    ><span style="color: #e30613"
       ><span
         style="
           font-family:

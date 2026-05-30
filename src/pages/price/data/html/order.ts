@@ -155,7 +155,7 @@ export const OrderHtml = `
           Times,
           serif;
       "
-      >&nbsp;<span style="color: #ff0000"
+      >&nbsp;<span style="color: #e30613"
         ><strong>Bảng gi&aacute; cập nhật ng&agrave;y 06/05/2026</strong></span
       ></span
     ></span
@@ -214,7 +214,7 @@ export const OrderHtml = `
 >
   <tbody>
     <tr>
-      <td style="background-color: #ed7d31; width: 207.95pt">
+      <td style="background-color: #e30613; width: 207.95pt">
         <p style="text-align: center">
           <span
             style="
@@ -231,7 +231,7 @@ export const OrderHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 207.05pt">
+      <td style="background-color: #e30613; width: 207.05pt">
         <p style="text-align: center">
           <span
             style="
@@ -357,7 +357,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em
           >Lưu &yacute;: Ph&iacute; mua h&agrave;ng tối thiểu của một đơn
           h&agrave;ng l&agrave; 10,000đ/đơn.</em
@@ -421,7 +421,7 @@ export const OrderHtml = `
 >
   <tbody>
     <tr>
-      <td style="background-color: #ed7d31; width: 127.8pt">
+      <td style="background-color: #e30613; width: 127.8pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -439,7 +439,7 @@ export const OrderHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 92.95pt">
+      <td style="background-color: #e30613; width: 92.95pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -454,7 +454,7 @@ export const OrderHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 100.6pt">
+      <td style="background-color: #e30613; width: 100.6pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -471,7 +471,7 @@ export const OrderHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 100.35pt">
+      <td style="background-color: #e30613; width: 100.35pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -755,7 +755,7 @@ export const OrderHtml = `
       </td>
       <td style="width: 92.95pt">
         <p style="text-align: center">
-          <span style="color: #ff0000"
+          <span style="color: #e30613"
             ><span style="font-size: 16px"
               ><span
                 style="
@@ -772,7 +772,7 @@ export const OrderHtml = `
       </td>
       <td style="width: 100.6pt">
         <p style="text-align: center">
-          <span style="color: #ff0000"
+          <span style="color: #e30613"
             ><span style="font-size: 16px"
               ><span
                 style="
@@ -789,7 +789,7 @@ export const OrderHtml = `
       </td>
       <td style="width: 100.35pt">
         <p style="text-align: center">
-          <span style="color: #ff0000"
+          <span style="color: #e30613"
             ><span style="font-size: 16px"
               ><span
                 style="
@@ -907,7 +907,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em><u>Lưu &yacute;</u>:&nbsp; &nbsp;</em></span
       ></span
     ></span
@@ -923,7 +923,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em
           >* Thời gian h&agrave;ng về tới kho Việt Nam l&agrave; t&iacute;nh từ
           l&uacute;c xuất kho Trung Quốc v&agrave; trong điều kiện th&ocirc;ng
@@ -944,7 +944,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em
           >* Những kiện&nbsp;h&agrave;ng đủ điều kiện Công Ty sẽ tự sắp xếp cho
           xếp line Thương mại điện tử, thời gian th&ocirc;ng quan ổn định (trừ
@@ -964,7 +964,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em
           >* Bảng gi&aacute; tr&ecirc;n kh&ocirc;ng &aacute;p dụng với
           c&aacute;c mặt h&agrave;ng kh&oacute; đi như c&aacute;c mặt
@@ -987,7 +987,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em
           >* Ph&iacute; vận chuyển đối với h&agrave;ng l&ocirc; nhỏ hơn&nbsp;1
           khối sẽ&nbsp;được t&iacute;nh theo một trong hai c&aacute;ch l&agrave;
@@ -1008,7 +1008,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em
           >- C&acirc;n nặng quy đổi được t&iacute;nh theo c&ocirc;ng thức:</em
         >
@@ -1027,7 +1027,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em>- Ph&acirc;n biệt h&agrave;ng cồng kềnh</em>: H&agrave;ng cồng kềnh
         l&agrave; h&agrave;ng c&oacute; c&acirc;n nặng quy đổi lớn hơn c&acirc;n
         nặng thực tế, khi đ&oacute; Công Ty sẽ sử dụng c&ocirc;ng thức
@@ -1047,7 +1047,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><em>* Quy tắc l&agrave;m tr&ograve;n c&acirc;n nặng:</em>
         <em>Khối lượng kiện h&agrave;ng tối thiểu l&agrave; 0,5kg. </em></span
       ></span
@@ -1064,7 +1064,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         >- C&aacute;c đơn h&agrave;ng c&oacute; trọng lượng nhỏ hơn 0,5kg
         th&igrave; Công Ty sẽ l&agrave;m tr&ograve;n th&agrave;nh 0,5kg.
         Ngo&agrave;i ra Công Ty sẽ kh&ocirc;ng l&agrave;m tr&ograve;n c&acirc;n
@@ -1083,7 +1083,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         >V&iacute; dụ: Kiện h&agrave;ng c&oacute; trọng lượng l&agrave; 0,4kg
         Công Ty sẽ l&agrave;m tr&ograve;n th&agrave;nh 0,5kg. Kiện h&agrave;ng
         c&oacute; trong lượng l&agrave; 0,6kg Công Ty sẽ giữ nguy&ecirc;n
@@ -1102,7 +1102,7 @@ export const OrderHtml = `
         serif;
     "
     ><span style="font-size: 16px"
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         >-
         <em
           >Với đơn h&agrave;ng gồm nhiều sản phẩm v&agrave; shop Trung Quốc

@@ -71,7 +71,7 @@ export const KyGuiHtml = `
 >
   <tbody>
     <tr>
-      <td style="background-color: #ed7d31; width: 127.8pt">
+      <td style="background-color: #e30613; width: 127.8pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -88,7 +88,7 @@ export const KyGuiHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 92.95pt">
+      <td style="background-color: #e30613; width: 92.95pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -103,7 +103,7 @@ export const KyGuiHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 100.6pt">
+      <td style="background-color: #e30613; width: 100.6pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -120,7 +120,7 @@ export const KyGuiHtml = `
           >
         </p>
       </td>
-      <td style="background-color: #ed7d31; width: 100.35pt">
+      <td style="background-color: #e30613; width: 100.35pt">
         <p style="text-align: center">
           <span style="font-size: 16px"
             ><span
@@ -836,7 +836,7 @@ export const KyGuiHtml = `
           Times,
           serif;
       "
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><strong>Hotline: 0964 67 1688</strong></span
       ></span
     ></span
@@ -852,7 +852,7 @@ export const KyGuiHtml = `
           Times,
           serif;
       "
-      ><span style="color: #ff0000"
+      ><span style="color: #e30613"
         ><strong>Email: hongkylogistics.lienhe@gmail.com</strong></span
       ></span
     ></span
@@ -868,11 +868,11 @@ export const KyGuiHtml = `
           Times,
           serif;
       "
-      ><span style="color: #ff0000"><strong>Fanpage: </strong></span
+      ><span style="color: #e30613"><strong>Fanpage: </strong></span
       ><a
         href="https://www.facebook.com/vanchuyenhongky"
         target="/Users/nguyentrang/Documents/Trang chủ Hongky/x/_blank"
-        ><span style="color: #ff0000"
+        ><span style="color: #e30613"
           ><strong>https://www.facebook.com/vanchuyenhongky</strong></span
         ></a
       ></span

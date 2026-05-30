@@ -8,10 +8,6 @@ import NotFoundPage from "@/pages/NotFoundPage";
 import AboutPage from "@/pages/about";
 import { ServiceLayout } from "@/pages/service/pages";
 import { ServiceHub } from "@/pages/service/pages/ServiceHub";
-import { OrderPricePage } from "@/pages/price/pages/OrderPricePage";
-import { KyGuiPricePage } from "@/pages/price/pages/KyGuiPricePage";
-import { ChinhNgachPricePage } from "@/pages/price/pages/ChinhNgachPricePage";
-import { PriceHub } from "@/pages/price/pages/PriceHub";
 import { PriceLayout } from "@/pages/price/pages";
 import { WarehouseLayout } from "@/pages/warehouse/pages";
 import { WarehouseHub } from "@/pages/warehouse/pages/WarehouseHub";
@@ -45,15 +41,7 @@ export const WebRouter = () => (
         <Route index element={<ServiceHub />} />
         <Route path={ROUTER_NAME.SERVICE_DETAIL} element={<ServiceDetail />} />
       </Route>
-      <Route path={ROUTER_PATH.PRICE} element={<PriceLayout />}>
-        <Route index element={<PriceHub />} />
-        <Route path={ROUTER_NAME.PRICE_ORDER} element={<OrderPricePage />} />
-        <Route path={ROUTER_NAME.PRICE_KY_GUI} element={<KyGuiPricePage />} />
-        <Route
-          path={ROUTER_NAME.PRICE_CHINH_NGACH}
-          element={<ChinhNgachPricePage />}
-        />
-      </Route>
+      <Route path={ROUTER_PATH.PRICE} element={<PriceLayout />}></Route>
       <Route path={ROUTER_PATH.POLICY} element={<WarehouseLayout />}>
         <Route index element={<WarehouseHub />} />
         <Route
