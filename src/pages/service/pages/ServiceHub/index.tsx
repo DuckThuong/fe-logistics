@@ -6,6 +6,7 @@ import { animateClass } from "@/hooks/useInView";
 import { useLoading } from "@/providers/loadingProvider";
 import { useNotification } from "@/providers/notificationProvider";
 import { ROUTER_PATH } from "@/routers/Route";
+import { navigateToServiceDetail } from "@/pages/service/utils/navigateToService";
 import { AppstoreOutlined, HomeOutlined } from "@ant-design/icons";
 import { useQuery } from "@tanstack/react-query";
 import { Breadcrumb, Tag } from "antd";
@@ -107,21 +108,10 @@ export const ServiceHub = () => {
             <div
               role="button"
               tabIndex={0}
-              onClick={() =>
-                navigate(
-                  ROUTER_PATH.SERVICE_DETAIL.replace(":serviceUrl", child.url),
-                  { state: { serviceId: child.id } },
-                )
-              }
+              onClick={() => navigateToServiceDetail(navigate, child)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
-                  navigate(
-                    ROUTER_PATH.SERVICE_DETAIL.replace(
-                      ":serviceUrl",
-                      child.url,
-                    ),
-                    { state: { serviceId: child.id } },
-                  );
+                  navigateToServiceDetail(navigate, child);
                 }
               }}
               className={`service-hub__card service-hub__card--featured ${animateClass("fade-up", visible, 3)}`}
@@ -148,24 +138,10 @@ export const ServiceHub = () => {
                 key={index}
                 role="button"
                 tabIndex={0}
-                onClick={() =>
-                  navigate(
-                    ROUTER_PATH.SERVICE_DETAIL.replace(
-                      ":serviceUrl",
-                      child.url,
-                    ),
-                    { state: { serviceId: child.id } },
-                  )
-                }
+                onClick={() => navigateToServiceDetail(navigate, child)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
-                    navigate(
-                      ROUTER_PATH.SERVICE_DETAIL.replace(
-                        ":serviceUrl",
-                        child.url,
-                      ),
-                      { state: { serviceId: child.id } },
-                    );
+                    navigateToServiceDetail(navigate, child);
                   }
                 }}
                 className={`service-hub__card ${animateClass("fade-up", visible, index + 4)}`}

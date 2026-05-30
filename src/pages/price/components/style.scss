@@ -1,0 +1,238 @@
+@use '../../../_variables' as *;
+@use '../../../_mixins' as *;
+
+.price-hub {
+  &__hero {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__hero-bg-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 90% 70% at 50% -30%, rgba($primary, 0.38) 0%, transparent 60%),
+      $bg-dark;
+  }
+
+  &__hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  &__hero-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    animation: float 8s ease-in-out infinite;
+
+    &--1 {
+      width: 420px;
+      height: 420px;
+      background: rgba($primary, 0.14);
+      top: -140px;
+      right: -80px;
+    }
+
+    &--2 {
+      width: 320px;
+      height: 320px;
+      background: rgba(15, 52, 96, 0.35);
+      bottom: -80px;
+      left: -60px;
+      animation-delay: -3s;
+    }
+
+    &--3 {
+      width: 240px;
+      height: 240px;
+      background: rgba($primary, 0.1);
+      top: 40%;
+      right: 18%;
+      animation-delay: -5s;
+    }
+  }
+
+  &__hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: calc($header-height + $spacing-2xl);
+    padding-bottom: $spacing-3xl;
+  }
+
+  &__hero-breadcrumb {
+    margin-bottom: $spacing-lg;
+
+    .ant-breadcrumb-link,
+    .ant-breadcrumb-separator {
+      color: $text-white-60 !important;
+    }
+
+    a {
+      color: $text-white-80 !important;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $primary-soft !important;
+      }
+    }
+
+    .ant-breadcrumb-link:last-child {
+      color: $text-white !important;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__hero-title {
+    margin: 0 0 $spacing-md !important;
+    font-size: clamp(28px, 4.2vw, 44px) !important;
+    font-weight: $font-weight-extrabold !important;
+    line-height: 1.15 !important;
+    color: $text-white !important;
+    letter-spacing: -1px;
+    font-family: $font-display;
+    max-width: 720px;
+  }
+
+  &__hero-subtitle {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    margin: 0 !important;
+    max-width: 560px;
+    font-size: $font-size-md !important;
+    line-height: 1.65 !important;
+    color: $text-white-60 !important;
+  }
+
+  &__hero-subtitle-icon {
+    margin-top: 4px;
+    flex-shrink: 0;
+    font-size: $font-size-lg;
+    color: rgba($primary-light, 0.85);
+  }
+}
+
+.price-page {
+  padding-bottom: $spacing-4xl;
+
+  &__hero {
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__hero-title {
+    max-width: min(960px, 100%);
+    font-size: clamp(22px, 3.2vw, 38px) !important;
+    line-height: 1.25 !important;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__option-banner {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__intro {
+    font-size: $font-size-md;
+    margin-bottom: $spacing-lg !important;
+  }
+
+  &__sections {
+    width: 100%;
+  }
+
+  &__section-card.ant-card {
+    background: transparent;
+    box-shadow: none !important;
+    border: none;
+    border-radius: 0 !important;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .ant-card-body {
+      padding: $spacing-lg 0 !important;
+
+      @media (max-width: $breakpoint-md) {
+        padding: $spacing-md 0 !important;
+      }
+    }
+  }
+
+  &__section {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  &__main-title {
+    text-align: center !important;
+    color: $text-primary !important;
+    margin-bottom: $spacing-sm !important;
+    text-transform: uppercase;
+  }
+
+  &__tagline {
+    text-align: center !important;
+    font-style: italic;
+    margin-bottom: $spacing-md !important;
+  }
+
+  &__disclaimer {
+    margin-bottom: 0;
+  }
+
+  &__heading,
+  &__section-heading {
+    color: $text-primary !important;
+    margin-top: 0 !important;
+    margin-bottom: $spacing-md !important;
+  }
+
+  &__section-heading {
+    color: $primary !important;
+  }
+
+  &__closing {
+    text-align: center !important;
+    color: $primary !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+  }
+
+  &__paragraph {
+    margin-bottom: $spacing-md !important;
+    text-align: justify;
+    white-space: pre-line;
+  }
+
+  &__table {
+    margin-bottom: $spacing-md;
+
+    .ant-table-thead > tr > th {
+      background: $primary !important;
+      color: $text-white !important;
+      font-weight: $font-weight-bold;
+      text-align: center;
+      white-space: pre-line;
+    }
+
+    .ant-table-tbody > tr > td {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}

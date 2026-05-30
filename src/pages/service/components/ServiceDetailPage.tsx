@@ -29,7 +29,8 @@ export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
 
   const { data: serviceContent, isLoading } = useQuery({
     queryKey: [CONTENT_ENDPOINTS.GET_SERVICE_BY_ID, id],
-    queryFn: () => getServiceById(id),
+    queryFn: () => getServiceById(id!),
+    enabled: Boolean(id),
     throwOnError: (error) => {
       let message = DEFAULT_MESSAGE;
       if (isAxiosError(error)) {

@@ -68,3 +68,6 @@ export const ROUTER_PATH = {
   POLICY_TIN_TUC: `${ROUTER}/${ROUTER_NAME.TIN_TUC}`,
   POLICY_TIN_TUC_DETAIL: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.POLICY_TIN_TUC_DETAIL}`,
 };
+
+export const getServiceDetailPath = (serviceUrl: string) =>
+  ROUTER_PATH.SERVICE_DETAIL.replace(":serviceUrl", serviceUrl);

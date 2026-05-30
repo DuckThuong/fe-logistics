@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button, Drawer } from "antd";
 import "./Header.scss";
 import { ROUTER_PATH } from "@/routers/Route";
-import { NAV_ITEMS } from "@/common/constants/constants";
+import type { NavItemChild } from "@/common/constants/constants";
+import { useNavItems } from "@/hooks/useNavItems";
 
 const isInternalPath = (href: string) => href?.startsWith("/");
 
@@ -12,14 +13,16 @@ const HeaderLink = ({
   className,
   children,
   onClick,
+  state,
 }: {
   href: string;
   className: string;
   children: ReactNode;
   onClick?: () => void;
+  state?: NavItemChild["state"];
 }) =>
   isInternalPath(href) ? (
-    <Link to={href} className={className} onClick={onClick}>
+    <Link to={href} state={state} className={className} onClick={onClick}>
       {children}
     </Link>
   ) : (
@@ -29,6 +32,7 @@ const HeaderLink = ({
   );
 
 const Header = () => {
+  const navItems = useNavItems();
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   useEffect(() => {
@@ -51,7 +55,7 @@ const Header = () => {
         </Link>
 
         <nav className="hk-header__nav">
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <div
               key={item.label}
               className={`hk-header__nav-item ${item.children ? "hk-header__nav-item--dropdown" : ""}`}
@@ -76,8 +80,9 @@ const Header = () => {
                   <div className="hk-header__dropdown-panel">
                     {item.children.map((child) => (
                       <HeaderLink
-                        key={child.label}
+                        key={child.href}
                         href={child.href}
+                        state={child.state}
                         className="hk-header__dropdown-item"
                       >
                         {child.icon && (
@@ -121,7 +126,7 @@ const Header = () => {
         }
       >
         <nav className="hk-mobile-nav">
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <div key={item.label} className="hk-mobile-nav__group">
               <HeaderLink
                 href={item.href}
@@ -140,8 +145,9 @@ const Header = () => {
                 <div className="hk-mobile-nav__sub">
                   {item.children.map((child) => (
                     <HeaderLink
-                      key={child.label}
+                      key={child.href}
                       href={child.href}
+                      state={child.state}
                       className="hk-mobile-nav__sub-link"
                       onClick={() => setDrawerOpen(false)}
                     >

@@ -12,11 +12,15 @@ import { HomeOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { useQuery } from "@tanstack/react-query";
 import { Breadcrumb, Tag } from "antd";
 import { isAxiosError } from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import { getAboutContent } from "@/api/configs/common.config";
 import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import {
+  handleAboutQuickNavClick,
+  toAnchorId,
+} from "@/pages/about/utils/aboutAnchors";
 
 const AboutPage: React.FC = () => {
   const { setLoading } = useLoading();
@@ -53,6 +57,34 @@ const AboutPage: React.FC = () => {
   useEffect(() => {
     setLoading(isLoading);
   }, [isLoading, setLoading]);
+
+  const quickLinks = useMemo(
+    () =>
+      aboutContent?.otherOptions?.filter(
+        (option) => option.type === ABOUT_OPTION_TYPES.quick_link,
+      ) ?? [],
+    [aboutContent?.otherOptions],
+  );
+
+  const introAnchorId = quickLinks[0]
+    ? toAnchorId(quickLinks[0].value)
+    : "gioi-thieu";
+
+  const contentSections = useMemo(
+    () =>
+      [...(aboutContent?.sections ?? [])]
+        .filter((section) => section.active && section.sortIndex > 1)
+        .sort((a, b) => a.sortIndex - b.sortIndex),
+    [aboutContent?.sections],
+  );
+
+  const getSectionAnchorId = (sectionIndex: number, sectionTitle: string) => {
+    const link = quickLinks[sectionIndex + 1];
+    if (link?.value) {
+      return toAnchorId(link.value);
+    }
+    return toAnchorId(sectionTitle) || `section-${sectionIndex}`;
+  };
 
   return (
     <div className="about-page">
@@ -125,15 +157,17 @@ const AboutPage: React.FC = () => {
             >
               <span className="about-page__quick-nav-label">Xem nhanh</span>
               <ul className="about-page__quick-links">
-                {aboutContent?.otherOptions
-                  ?.filter(
-                    (option) => option.type == ABOUT_OPTION_TYPES.quick_link,
-                  )
-                  ?.map((item, index) => (
-                    <li key={item.value + index}>
+                {quickLinks.map((item, index) => {
+                  const anchorId = toAnchorId(item.value);
+
+                  return (
+                    <li key={`${anchorId}-${index}`}>
                       <a
-                        href={`#${item.value}`}
+                        href={`#${anchorId}`}
                         className={`about-page__quick-link ${animateClass("fade-left", headerVisible, index + 4)}`}
+                        onClick={(event) =>
+                          handleAboutQuickNavClick(event, anchorId)
+                        }
                       >
                         <img
                           src={item.icon}
@@ -143,7 +177,8 @@ const AboutPage: React.FC = () => {
                         {item.value}
                       </a>
                     </li>
-                  ))}
+                  );
+                })}
               </ul>
             </nav>
           </div>
@@ -153,8 +188,8 @@ const AboutPage: React.FC = () => {
       {/* Content */}
       <div className="container about-page__content">
         <div
-          id="gioi-thieu"
-          className="about-page__intro"
+          id={introAnchorId}
+          className="about-page__intro about-page__anchor-target"
           ref={introRef as React.Ref<HTMLDivElement>}
         >
           <div
@@ -182,13 +217,11 @@ const AboutPage: React.FC = () => {
         </div>
 
         <div ref={servicesRef as React.Ref<HTMLDivElement>}>
-          {aboutContent?.sections
-            ?.filter((s) => s.sortIndex > 1)
-            ?.map((item) => (
+          {contentSections.map((item, sectionIndex) => (
               <div
                 key={item.id}
-                id="dich-vu"
-                className={`about-page__section ${
+                id={getSectionAnchorId(sectionIndex, item.title)}
+                className={`about-page__section about-page__anchor-target ${
                   item.sortIndex === 2 ? "about-page__section--services" : ""
                 }`}
               >
@@ -209,7 +242,7 @@ const AboutPage: React.FC = () => {
                   ))}
                 </ul>
               </div>
-            )) || <></>}
+            ))}
         </div>
 
         {/* Closing */}

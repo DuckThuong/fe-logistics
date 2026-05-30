@@ -1,16 +1,22 @@
 import { getPriceContent } from "@/api/configs/common.config";
+import type { OtherOptionDto } from "@/api/dtos/priceResponse.dto";
 import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
 import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { formatDateDDMMYYYY } from "@/common/contexts/format";
 import { animateClass } from "@/hooks/useInView";
 import { useLoading } from "@/providers/loadingProvider";
 import { useNotification } from "@/providers/notificationProvider";
 import { ROUTER_PATH } from "@/routers/Route";
 import { CalendarOutlined, HomeOutlined } from "@ant-design/icons";
 import { useQuery } from "@tanstack/react-query";
-import { Breadcrumb } from "antd";
+import { Alert, Breadcrumb, Card, Space, Typography } from "antd";
 import { isAxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { PriceSectionBlock } from "./PriceSectionBlock";
+import "./style.scss";
+
+const { Paragraph, Text } = Typography;
 
 export const PriceDetailPage = () => {
   const [visible, setVisible] = useState(false);
@@ -22,7 +28,7 @@ export const PriceDetailPage = () => {
     return () => cancelAnimationFrame(timer);
   }, []);
 
-  const { data: data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: [CONTENT_ENDPOINTS.GET_PRICE_CONTENT],
     queryFn: () => getPriceContent(),
     throwOnError: (error) => {
@@ -43,6 +49,16 @@ export const PriceDetailPage = () => {
   useEffect(() => {
     setLoading(isLoading);
   }, [isLoading, setLoading]);
+
+  const sections = useMemo(
+    () =>
+      [...(data?.sections ?? [])]
+        .filter((section) => section.active)
+        .sort((a, b) => a.sortIndex - b.sortIndex),
+    [data?.sections],
+  );
+
+  const updatedLabel = formatDateDDMMYYYY(data?.updatedAt);
 
   return (
     <div className="price-page">
@@ -74,26 +90,29 @@ export const PriceDetailPage = () => {
                 ),
               },
               { title: <Link to={ROUTER_PATH.PRICE}>Bảng giá</Link> },
-              { title: data?.shortDescription },
+              { title: data?.shortDescription ?? data?.name },
             ]}
           />
 
-          <h1
+          <Typography.Title
             id="price-detail-heading"
+            level={1}
             className={`price-hub__hero-title price-page__hero-title ${animateClass("fade-up", visible, 2)}`}
           >
-            {data?.shortDescription}
-          </h1>
+            {data?.shortDescription ?? data?.name}
+          </Typography.Title>
 
-          <p
-            className={`price-hub__hero-subtitle ${animateClass("fade-in", visible, 3)}`}
-          >
-            <CalendarOutlined
-              className="price-hub__hero-subtitle-icon"
-              aria-hidden
-            />
-            <time dateTime={data?.updatedAt}>Cập nhật: {data?.updatedAt}</time>
-          </p>
+          {updatedLabel && (
+            <Typography.Paragraph
+              className={`price-hub__hero-subtitle ${animateClass("fade-in", visible, 3)}`}
+            >
+              <CalendarOutlined
+                className="price-hub__hero-subtitle-icon"
+                aria-hidden
+              />
+              <time dateTime={data?.updatedAt}>Cập nhật: {updatedLabel}</time>
+            </Typography.Paragraph>
+          )}
         </div>
       </section>
 
@@ -101,21 +120,41 @@ export const PriceDetailPage = () => {
         <article
           className={`price-page__article ${animateClass("fade-up", visible, 4)}`}
         >
-          <h1 style={{ textAlign: "justify" }}>
-            <span style={{ fontSize: "16px" }}>
-              <span style={{ color: "#000000" }}>
-                <span
-                  style={{
-                    fontFamily: "Times New Roman, Times, serif",
-                  }}
+          <div className="price-page__content">
+            {data?.otherOptions?.map((option: OtherOptionDto) => (
+              <Alert
+                key={option.value}
+                type="info"
+                showIcon
+                className="price-page__option-banner"
+                icon={
+                  option.icon ? (
+                    <img src={option.icon} alt="" width={24} height={24} />
+                  ) : undefined
+                }
+                message={<Text>{option.value}</Text>}
+              />
+            ))}
+
+            {data?.description?.map((line: string) => (
+              <Paragraph key={line} type="secondary" className="price-page__intro">
+                {line}
+              </Paragraph>
+            ))}
+
+            <Space direction="vertical" size="large" className="price-page__sections">
+              {sections.map((section) => (
+                <Card
+                  key={section.id}
+                  variant="borderless"
+                  className="price-page__section-card"
+                  styles={{ body: { padding: 0 } }}
                 >
-                  <span style={{ backgroundColor: "white" }}>
-                    <strong></strong>
-                  </span>
-                </span>
-              </span>
-            </span>
-          </h1>
+                  <PriceSectionBlock section={section} />
+                </Card>
+              ))}
+            </Space>
+          </div>
         </article>
       </div>
     </div>
