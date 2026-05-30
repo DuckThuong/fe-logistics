@@ -1,25 +1,20 @@
-import { ROUTER_PATH } from "@/routers/Route";
-
 export const SERVICE_HUB_ITEMS = [
   {
     title: "Đặt hàng Trung Quốc",
     tag: "Dịch vụ",
     image: "https://hongkylogistics.vn/img/cs.jpg",
-    href: ROUTER_PATH.SERVICE_ORDER,
     featured: true,
   },
   {
     title: "Thanh toán hộ",
     tag: "Dịch vụ",
     image: "https://hongkylogistics.vn/img/cs.jpg",
-    href: ROUTER_PATH.SERVICE_PAYMENT,
     featured: false,
   },
   {
     title: "Vận chuyển hộ",
     tag: "Dịch vụ",
     image: "https://hongkylogistics.vn/img/cs.jpg",
-    href: ROUTER_PATH.SERVICE_SHIPPING,
     featured: false,
   },
 ];
@@ -69,15 +64,6 @@ export const ORDER_PAGE_SECTIONS: ServiceSection[] = [
       "Đem đến cho khách hàng chất lượng dịch vụ là tốt nhất, thời gian giao nhận là nhanh nhất, giá cước là cạnh tranh nhất.",
     ],
   },
-  // {
-  //   title: "3. Triết lý",
-  //   quote:
-  //     "Nghĩ đến lợi ích của người khách hàng trước khi nghĩ đến lợi ích của mình",
-  //   bullets: [
-  //     "Khách hàng là giá trị cơ bản của bất kỳ doanh nghiệp nào, là lý do duy nhất để doanh nghiệp tồn tại và phát triển. Chính sách “khách hàng là trung tâm” chỉ lối dẫn đường cho mọi hoạt động của công ty.",
-  //     "Chúng tôi lắng nghe, phân tích, thấu hiểu nhu cầu của từng khách hàng và áp dụng kinh nghiệm, kỹ năng, tư duy của mình để giải quyết tối ưu những nhu cầu đó, giúp khách hàng tập trung vào các hoạt động kinh doanh cốt lõi của mình.",
-  //   ],
-  // },
   {
     title: "3. Đội ngũ nhân viên",
     bullets: [

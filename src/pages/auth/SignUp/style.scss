@@ -1,7 +1,7 @@
-$primary: #1b3671;
-$primary-hover: #a93226;
-$primary-shadow: rgba(192, 57, 43, 0.35);
-$primary-card-shadow: rgba(192, 57, 43, 0.12);
+$primary: #e30613;
+$primary-hover: #a50000;
+$primary-shadow: rgba(227, 6, 19, 0.35);
+$primary-card-shadow: rgba(227, 6, 19, 0.12);
 $gold: #ffd700;
 $border-color: #f0f0f0;
 $text-muted: #888;
@@ -128,7 +128,7 @@ $text-dark: #1a1a1a;
 
   &__accent {
     height: 4px;
-    background: linear-gradient(90deg, $primary 0%, #2a52a8 50%, #3b6fd4 100%);
+    background: linear-gradient(90deg, $primary 0%, #d71920 50%, #ff3d4a 100%);
     border-radius: 12px 12px 0 0;
     margin: -40px -30px 32px;
     border-top-left-radius: 16px;

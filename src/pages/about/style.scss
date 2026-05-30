@@ -5,6 +5,9 @@
 @include page-header.page-hero-header('about-page');
 
 .about-page {
+  &__anchor-target {
+    scroll-margin-top: calc($header-height + $spacing-md);
+  }
 
   &__header-main {
     display: grid;
