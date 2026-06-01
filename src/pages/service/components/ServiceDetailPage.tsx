@@ -12,7 +12,7 @@ import { useLoading } from "@/providers/loadingProvider";
 import { useNotification } from "@/providers/notificationProvider";
 import { useQuery } from "@tanstack/react-query";
 import { isAxiosError } from "axios";
-import { emptyString } from "@/common/contexts/helper";
+import { emptyString, retractTitle } from "@/common/contexts/helper";
 type ServiceDetailPageProps = {
   id?: number;
 };
@@ -87,24 +87,7 @@ export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
         >
           {serviceContent?.sections.map((item) => (
             <section key={item.title} className="service-article__section">
-              <h3 className="service-article__heading">{item.title}</h3>
-              {/* {section.paragraphs?.map((paragraph) => (
-                <p key={paragraph} className="service-article__paragraph">
-                  {paragraph}
-                </p>
-              ))}
-              {section.quote && (
-                <blockquote className="service-article__quote">
-                  {section.quote}
-                </blockquote>
-              )}
-              {section.bullets && (
-                <ul className="service-article__list">
-                  {section.bullets.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              )} */}
+              <h3 className="service-article__heading">{retractTitle(item.title)[0]?.text || ""}</h3>
               {item?.description?.map((desc, index) => (
                 <div dangerouslySetInnerHTML={{ __html: desc.text }} />
               ))}

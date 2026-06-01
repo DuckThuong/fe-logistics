@@ -38,3 +38,9 @@ interface AboutDescription {
   icon: string;
   text: string;
 }
+
+export interface TitleInterfaceProps {
+  icon: string;
+  text: string;
+  type: string;
+}

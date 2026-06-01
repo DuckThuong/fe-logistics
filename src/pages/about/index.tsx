@@ -3,7 +3,7 @@ import {
   DEFAULT_MESSAGE,
   NOTI_ERROR,
 } from "@/common/constants/constants";
-import { emptyString, toRoman } from "@/common/contexts/helper";
+import { emptyString, retractTitle, toRoman } from "@/common/contexts/helper";
 import { animateClass, useInView } from "@/hooks/useInView";
 import { useLoading } from "@/providers/loadingProvider";
 import { useNotification } from "@/providers/notificationProvider";
@@ -197,8 +197,8 @@ const AboutPage: React.FC = () => {
           >
             <p>
               <strong>
-                {aboutContent?.sections?.find((s) => s.sortIndex === 1)
-                  ?.title || ""}{" "}
+                {retractTitle(aboutContent?.sections?.find((s) => s.sortIndex === 1)
+                  ?.title || "")[0]?.text || ""}
                 <span> </span>
               </strong>
               {aboutContent?.sections?.find((s) => s.sortIndex === 1)
@@ -228,7 +228,7 @@ const AboutPage: React.FC = () => {
                 <h2
                   className={`about-page__section-title ${animateClass("fade-up", servicesInView, 1)}`}
                 >
-                  <span>{toRoman(item?.id)} .</span> {emptyString(item.title)}
+                  <span>{toRoman(item?.id)} .</span> {retractTitle(item.title)[0]?.text || ""}
                 </h2>
                 <ul className="about-page__list">
                   {item?.description?.map((desc, index) => (
@@ -252,7 +252,7 @@ const AboutPage: React.FC = () => {
         >
           <p className={animateClass("fade-in", closingInView, 2)}>
             <strong>
-              {aboutContent?.sections?.find((s) => s.sortIndex === 1)?.title ||
+              {retractTitle(aboutContent?.sections?.find((s) => s.sortIndex === 1)?.title || "")[0]?.text ||
                 ""}
             </strong>
             <span> </span>
