@@ -23,6 +23,8 @@ type PolicyDetailPageProps = {
   id?: number;
 };
 
+const buildSectionAnchorId = (sectionId: number) => `policy-section-${sectionId}`;
+
 export const PolicyDetailPage = ({ id }: PolicyDetailPageProps) => {
   const [visible, setVisible] = useState(false);
   const { setLoading } = useLoading();
@@ -57,7 +59,7 @@ export const PolicyDetailPage = ({ id }: PolicyDetailPageProps) => {
       ?.sort((a, b) => a.sortIndex - b.sortIndex)
       ?.map((section) => {
       return (
-        <div key={section.id}>
+        <div key={section.id} id={buildSectionAnchorId(section.id)} tabIndex={-1}>
           <h2>
             {retractTitle(section.title)[0]?.text || emptyString(section.title)}
           </h2>
@@ -208,7 +210,7 @@ export const PolicyDetailPage = ({ id }: PolicyDetailPageProps) => {
             {renderStaticContent(policyContent?.sections)}
           </div>
         </article>
-        <PolicySidebar />
+        <PolicySidebar sections={policyContent?.sections} />
       </div>
     </div>
   );

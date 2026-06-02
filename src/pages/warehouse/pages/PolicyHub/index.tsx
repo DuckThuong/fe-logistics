@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
-import { Breadcrumb } from "antd";
-import { HomeOutlined, LayoutOutlined, SafetyCertificateFilled } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
-import { ROUTER_PATH } from "@/routers/Route";
+import { getPolicyContent } from "@/api/configs/common.config";
+import type { PolicyChildDto } from "@/api/dtos/policy.response";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { emptyString, retractTitle } from "@/common/contexts/helper";
 import { animateClass } from "@/hooks/useInView";
-import { POLICY_HUB_CHILDREN } from "../../data/content";
-import { navigateToPolicyDetail } from "../../utils/navigateToPolicy";
 import { useLoading } from "@/providers/loadingProvider";
 import { useNotification } from "@/providers/notificationProvider";
+import { ROUTER_PATH } from "@/routers/Route";
+import { HomeOutlined, LayoutOutlined, SafetyCertificateFilled } from "@ant-design/icons";
 import { useQuery } from "@tanstack/react-query";
-import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
-import { getPolicyContent } from "@/api/configs/common.config";
-import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { Breadcrumb } from "antd";
 import { isAxiosError } from "axios";
-import { emptyString, retractTitle } from "@/common/contexts/helper";
-import type { PolicyChildDto } from "@/api/dtos/policy.response";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { navigateToPolicyDetail } from "../../utils/navigateToPolicy";
 
 export const PolicyHub = () => {
   const navigate = useNavigate();
