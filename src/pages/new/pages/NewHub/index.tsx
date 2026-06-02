@@ -19,10 +19,11 @@ import { getNewsContent } from "@/api/configs/common.config";
 import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
 import { isAxiosError } from "axios";
 import { emptyString, retractTitle } from "@/common/contexts/helper";
-import type { NewsChildDto } from "@/api/dtos/news.response";
+import type { NewsChildDto } from "@/api/dtos/new.response";
+import type { OtherOptionDto } from "@/api/dtos/priceResponse.dto";
 
-const getNewsCardDate = (child: NewsChildDto) =>
-  child.otherOptions?.find((option) => option.type === "options")?.value ?? "";
+const getNewsCardDate = (child: NewsChildDto): string =>
+  child.otherOptions?.find((option: OtherOptionDto) => option.type === "text")?.value ?? "";
 
 export const NewHub = () => {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ export const NewHub = () => {
     className: string,
     animationIndex: number,
   ) => (
+    console.log(child),
     <div
       key={child.id}
       role="button"

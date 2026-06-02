@@ -35,7 +35,7 @@ export const PolicySidebar = ({ sections }: PolicySidebarProps) => {
             <li key={item.id}>
               <button
                 type="button"
-                style={{ border: "none" }}
+                style={{ border: "none", textAlign: "left", cursor: "pointer" }}
                 className="warehouse-sidebar__link"
                 onClick={() => handleFocusSection(item.id)}
               >
