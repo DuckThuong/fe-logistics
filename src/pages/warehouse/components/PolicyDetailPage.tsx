@@ -4,24 +4,35 @@ import { CalendarOutlined, HomeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
-import type { WarehousePageMeta } from "../data/pages";
-import { WarehouseSidebar } from "./WarehouseSidebar";
+import type { PolicyPageMeta } from "../data/content";
+import { resolvePolicyPageById } from "../data/content";
+import { PolicySidebar } from "./PolicySidebar";
 
-type WarehouseDetailPageProps = {
-  page: WarehousePageMeta;
+type PolicyDetailPageProps = {
+  id?: number;
+  /** Dữ liệu tĩnh tạm; bỏ khi đã có API getPolicyById. */
+  staticPage?: PolicyPageMeta;
 };
 
-export const WarehouseDetailPage = ({ page }: WarehouseDetailPageProps) => {
+export const PolicyDetailPage = ({ id, staticPage }: PolicyDetailPageProps) => {
   const [visible, setVisible] = useState(false);
+  const page = staticPage ?? resolvePolicyPageById(id);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
 
+  if (!page) {
+    return null;
+  }
+
   return (
     <div className="warehouse-page">
-      <section className="warehouse-hub__hero warehouse-page__hero" aria-labelledby="warehouse-detail-heading">
+      <section
+        className="warehouse-hub__hero warehouse-page__hero"
+        aria-labelledby="warehouse-detail-heading"
+      >
         <div className="warehouse-hub__hero-bg">
           <div className={`warehouse-hub__hero-bg-gradient ${animateClass("fade-in", visible, 0)}`} />
           <div className={`warehouse-hub__hero-bg-grid ${animateClass("fade-out", visible, 0)}`} />
@@ -67,9 +78,8 @@ export const WarehouseDetailPage = ({ page }: WarehouseDetailPageProps) => {
             dangerouslySetInnerHTML={{ __html: page.contentHtml }}
           />
         </article>
-        <WarehouseSidebar />
+        <PolicySidebar />
       </div>
     </div>
   );
 };
-

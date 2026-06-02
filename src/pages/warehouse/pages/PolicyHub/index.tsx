@@ -1,18 +1,54 @@
 import { useEffect, useState } from "react";
 import { Breadcrumb } from "antd";
 import { HomeOutlined, LayoutOutlined, SafetyCertificateFilled } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
-import { WAREHOUSE_HUB_ITEMS } from "../../data/content";
+import { POLICY_HUB_CHILDREN } from "../../data/content";
+import { navigateToPolicyDetail } from "../../utils/navigateToPolicy";
 
-export const WarehouseHub = () => {
+export const PolicyHub = () => {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
+
+  const featuredChild = POLICY_HUB_CHILDREN.find((child) => child.sortIndex === 1);
+  const gridChildren = POLICY_HUB_CHILDREN.filter((child) => child.sortIndex > 1);
+
+  const renderCard = (
+    child: (typeof POLICY_HUB_CHILDREN)[number],
+    className: string,
+    animationIndex: number,
+  ) => (
+    <div
+      key={child.id}
+      role="button"
+      tabIndex={0}
+      onClick={() => navigateToPolicyDetail(navigate, child)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          navigateToPolicyDetail(navigate, child);
+        }
+      }}
+      className={`${className} ${animateClass("fade-up", visible, animationIndex)}`}
+    >
+      <div className="warehouse-hub__card-image-wrap">
+        <img
+          src={child.image}
+          alt={child.shortDescription}
+          className="warehouse-hub__card-image"
+        />
+      </div>
+      <div className="warehouse-hub__card-info">
+        <span className="warehouse-hub__card-tag">{child.name}</span>
+        <p className="warehouse-hub__card-title">{child.shortDescription}</p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="warehouse-hub">
@@ -47,11 +83,12 @@ export const WarehouseHub = () => {
             </div>
           </div>
 
-          <h1 id="warehouse-hub-heading" className={`warehouse-hub__hero-title ${animateClass("fade-up", visible, 3)}`}>
+          <h1
+            id="warehouse-hub-heading"
+            className={`warehouse-hub__hero-title ${animateClass("fade-up", visible, 3)}`}
+          >
             Trung tâm{" "}
-            <span className="warehouse-hub__hero-title-highlight">
-              chính sách dịch vụ
-            </span>
+            <span className="warehouse-hub__hero-title-highlight">chính sách dịch vụ</span>
           </h1>
 
           <p className={`warehouse-hub__hero-subtitle ${animateClass("fade-in", visible, 4)}`}>
@@ -63,25 +100,19 @@ export const WarehouseHub = () => {
       </section>
 
       <div className="container warehouse-hub__content">
-        <div className={`warehouse-hub__grid ${animateClass("fade-up", visible, 5)}`}>
-          {WAREHOUSE_HUB_ITEMS.map((item, index) => (
-            <Link
-              key={item.title}
-              to={item.href}
-              className={`warehouse-hub__card ${animateClass("fade-up", visible, index + 6)}`}
-            >
-              <div className="warehouse-hub__card-image-wrap">
-                <img src={item.image} alt={item.title} className="warehouse-hub__card-image" />
-              </div>
-              <div className="warehouse-hub__card-info">
-                <span className="warehouse-hub__card-tag">{item.tag}</span>
-                <p className="warehouse-hub__card-title">{item.title}</p>
-              </div>
-            </Link>
-          ))}
+        {featuredChild
+          ? renderCard(
+              featuredChild,
+              "warehouse-hub__card warehouse-hub__card--featured",
+              5,
+            )
+          : null}
+        <div className={`warehouse-hub__grid ${animateClass("fade-up", visible, 6)}`}>
+          {gridChildren.map((child, index) =>
+            renderCard(child, "warehouse-hub__card", index + 7),
+          )}
         </div>
       </div>
     </div>
   );
 };
-

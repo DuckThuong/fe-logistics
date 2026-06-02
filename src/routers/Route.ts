@@ -14,6 +14,7 @@ export const ROUTER_NAME = {
   PRICE_CHINH_NGACH:
     "bang-gia-dich-vu-van-chuyen-chinh-ngach-trung-quoc-viet-nam",
   POLICY: "chinh-sach",
+  POLICY_DETAIL: "chinh-sach/:policyUrl",
   POLICY_KHIEN_NAI: "chinh-sach-khieu-nai",
   POLICY_BAO_MAT: "chinh-sach-bao-mat-thong-tin",
   POLICY_CAM_NHAP_KHAU: "danh-muc-hang-hoa-cam-nhap-khau",
@@ -50,6 +51,7 @@ export const ROUTER_PATH = {
   PRICE_KY_GUI: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_KY_GUI}`,
   PRICE_CHINH_NGACH: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_CHINH_NGACH}`,
   POLICY: `${ROUTER}/${ROUTER_NAME.POLICY}`,
+  POLICY_DETAIL: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_DETAIL}`,
   POLICY_KHIEN_NAI: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_KHIEN_NAI}`,
   POLICY_BAO_MAT: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_BAO_MAT}`,
   POLICY_CAM_NHAP_KHAU: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_CAM_NHAP_KHAU}`,
@@ -71,3 +73,6 @@ export const ROUTER_PATH = {
 
 export const getServiceDetailPath = (serviceUrl: string) =>
   ROUTER_PATH.SERVICE_DETAIL.replace(":serviceUrl", serviceUrl);
+
+export const getPolicyDetailPath = (policyUrl: string) =>
+  ROUTER_PATH.POLICY_DETAIL.replace(":policyUrl", policyUrl);

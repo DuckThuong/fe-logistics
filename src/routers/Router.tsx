@@ -10,10 +10,7 @@ import { ServiceLayout } from "@/pages/service/pages";
 import { ServiceHub } from "@/pages/service/pages/ServiceHub";
 import { PriceLayout } from "@/pages/price/pages";
 import { WarehouseLayout } from "@/pages/warehouse/pages";
-import { WarehouseHub } from "@/pages/warehouse/pages/WarehouseHub";
-import { StorageWarehousePage } from "@/pages/warehouse/pages/StorageWarehousePage";
-import { OutboundWarehousePage } from "@/pages/warehouse/pages/OutboundWarehousePage";
-import { ProhibitedPolicyPage } from "@/pages/warehouse/pages/ProhibitedPolicyPage";
+import { PolicyDetail } from "@/pages/warehouse/pages/PolicyDetailPage";
 import { TaticLayout } from "@/pages/tatic/pages";
 import { TaticHub } from "@/pages/tatic/pages/TaticHub";
 import { TaoDonGuidePage } from "@/pages/tatic/pages/TaoDonGuidePage";
@@ -28,6 +25,7 @@ import { TimNguonNewsPage } from "@/pages/new/pages/TimNguonNewsPage";
 import { SaleTmalNewsPage } from "@/pages/new/pages/SaleTmalNewsPage";
 import { SanMyPhamNewsPage } from "@/pages/new/pages/SanMyPhamNewsPage";
 import { ServiceDetail } from "@/pages/service/pages/ServiceDetailPage";
+import { PolicyHub } from "@/pages/warehouse/pages/PolicyHub";
 
 export const WebRouter = () => (
   <Routes>
@@ -43,19 +41,8 @@ export const WebRouter = () => (
       </Route>
       <Route path={ROUTER_PATH.PRICE} element={<PriceLayout />}></Route>
       <Route path={ROUTER_PATH.POLICY} element={<WarehouseLayout />}>
-        <Route index element={<WarehouseHub />} />
-        <Route
-          path={ROUTER_NAME.POLICY_KHIEN_NAI}
-          element={<StorageWarehousePage />}
-        />
-        <Route
-          path={ROUTER_NAME.POLICY_BAO_MAT}
-          element={<OutboundWarehousePage />}
-        />
-        <Route
-          path={ROUTER_NAME.POLICY_CAM_NHAP_KHAU}
-          element={<ProhibitedPolicyPage />}
-        />
+        <Route index element={<PolicyHub />} />
+        <Route path={ROUTER_NAME.POLICY_DETAIL} element={<PolicyDetail />} />
       </Route>
       <Route path={ROUTER_PATH.HUONG_DAN} element={<TaticLayout />}>
         <Route index element={<TaticHub />} />

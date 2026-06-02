@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import { WAREHOUSE_SIDEBAR_LINKS } from "../data/pages";
+import { POLICY_SIDEBAR_LINKS } from "../data/content";
 
-export const WarehouseSidebar = () => {
+export const PolicySidebar = () => {
   const { pathname } = useLocation();
 
   return (
@@ -9,7 +9,7 @@ export const WarehouseSidebar = () => {
       <div className="warehouse-sidebar__block">
         <h3 className="warehouse-sidebar__title">Danh mục chính sách</h3>
         <ul className="warehouse-sidebar__links">
-          {WAREHOUSE_SIDEBAR_LINKS.map((item) => (
+          {POLICY_SIDEBAR_LINKS.map((item) => (
             <li key={item.href}>
               <Link
                 to={item.href}
@@ -36,4 +36,3 @@ export const WarehouseSidebar = () => {
     </aside>
   );
 };
-
