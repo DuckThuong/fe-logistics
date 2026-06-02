@@ -304,11 +304,19 @@
         vertical-align: middle;
       }
 
-      tr:first-child td,
-      th {
+      /* 表头样式：和 Price/Ant table 的视觉对齐 */
+      thead {
+        background: transparent;
+      }
+
+      thead tr th {
         background-color: #2d3436;
         color: $text-white;
         font-weight: $font-weight-bold;
+        text-align: center;
+      }
+
+      tbody tr td {
         text-align: center;
       }
     }

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { NEW_SIDEBAR_LINKS } from "../data/pages";
+import { NEW_SIDEBAR_LINKS } from "../data/content";
 
 export const NewSidebar = () => {
   const { pathname } = useLocation();

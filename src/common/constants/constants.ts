@@ -106,3 +106,10 @@ export const ABOUT_OPTION_TYPES = {
   options: "options",
   quick_link: "quick-link",
 };
+
+export const ITEM_DESCRIPTION_TYPES = {
+  TEXT: "text",
+  TABLE: "table",
+  TEXT_BULLET: "text-bullet",
+  TEXT_NUMBER: "text-number",
+};

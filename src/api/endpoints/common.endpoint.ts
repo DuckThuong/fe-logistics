@@ -8,4 +8,5 @@ export const CONTENT_ENDPOINTS = {
   GET_POLICY_CONTENT: "policy",
   GET_POLICY_BY_ID: "/api/v1/pages/{id}",
   GET_NEWS_CONTENT: "news",
+  GET_NEWS_BY_ID: "/api/v1/pages/{id}",
 };
