@@ -50,7 +50,6 @@ export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
     setLoading(isLoading);
   }, [isLoading, setLoading]);
 
-  console.log({ serviceContent });
   return (
     <div className="service-page">
       <div className="service-page__header">

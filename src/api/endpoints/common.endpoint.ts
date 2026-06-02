@@ -6,5 +6,6 @@ export const CONTENT_ENDPOINTS = {
   GET_PRICE_CONTENT: "price",
   GET_SERVICE_BY_ID: "/api/v1/pages/{id}",
   GET_POLICY_CONTENT: "policy",
+  GET_POLICY_BY_ID: "/api/v1/pages/{id}",
   GET_NEWS_CONTENT: "news",
 };

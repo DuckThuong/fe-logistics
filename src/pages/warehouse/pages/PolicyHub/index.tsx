@@ -6,21 +6,54 @@ import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
 import { POLICY_HUB_CHILDREN } from "../../data/content";
 import { navigateToPolicyDetail } from "../../utils/navigateToPolicy";
+import { useLoading } from "@/providers/loadingProvider";
+import { useNotification } from "@/providers/notificationProvider";
+import { useQuery } from "@tanstack/react-query";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import { getPolicyContent } from "@/api/configs/common.config";
+import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { isAxiosError } from "axios";
+import { emptyString, retractTitle } from "@/common/contexts/helper";
+import type { PolicyChildDto } from "@/api/dtos/policy.response";
 
 export const PolicyHub = () => {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
-
+  const { setLoading } = useLoading();
+  const { showNotification } = useNotification();
+  
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
 
-  const featuredChild = POLICY_HUB_CHILDREN.find((child) => child.sortIndex === 1);
-  const gridChildren = POLICY_HUB_CHILDREN.filter((child) => child.sortIndex > 1);
+  const { data: policyContent, isLoading } = useQuery({
+    queryKey: [CONTENT_ENDPOINTS.GET_POLICY_CONTENT],
+    queryFn: () => getPolicyContent(),
+    throwOnError: (error) => {
+      let message = DEFAULT_MESSAGE;
+      if (isAxiosError(error)) {
+        const apiMessage = error.response?.data?.message;
+        if (typeof apiMessage === "string") {
+          message = apiMessage;
+        } else if (Array.isArray(apiMessage) && apiMessage[0]) {
+          message = apiMessage[0];
+        }
+      }
+      showNotification(message, NOTI_ERROR);
+      return false;
+    },
+  });
+
+  const featuredChild = policyContent?.children?.find((child) => child.sortIndex === 1);
+  const gridChildren = policyContent?.children?.filter((child) => child.sortIndex > 1);
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading, setLoading]);
 
   const renderCard = (
-    child: (typeof POLICY_HUB_CHILDREN)[number],
+    child: PolicyChildDto,
     className: string,
     animationIndex: number,
   ) => (
@@ -79,7 +112,7 @@ export const PolicyHub = () => {
           <div className={animateClass("fade-down", visible, 2)}>
             <div className="warehouse-hub__hero-badge">
               <SafetyCertificateFilled className="warehouse-hub__hero-badge-icon" />
-              <span>Minh bạch điều khoản, an tâm sử dụng dịch vụ</span>
+              <span>{emptyString(policyContent?.shortDescription)}</span>
             </div>
           </div>
 
@@ -87,14 +120,27 @@ export const PolicyHub = () => {
             id="warehouse-hub-heading"
             className={`warehouse-hub__hero-title ${animateClass("fade-up", visible, 3)}`}
           >
-            Trung tâm{" "}
-            <span className="warehouse-hub__hero-title-highlight">chính sách dịch vụ</span>
+            {emptyString(
+              (policyContent?.description?.[0] ?? "")
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .slice(0, 2)
+                .join(" "),
+            )}{" "}
+            <span className="warehouse-hub__hero-title-highlight">
+              {(policyContent?.description?.[0] ?? "")
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .slice(2)
+                .join(" ")}
+            </span>
           </h1>
 
           <p className={`warehouse-hub__hero-subtitle ${animateClass("fade-in", visible, 4)}`}>
             <LayoutOutlined className="warehouse-hub__hero-subtitle-icon" />
-            Tổng hợp các quy định quan trọng về khiếu nại, bảo mật và hàng cấm để
-            <strong>&nbsp;bạn chủ động vận hành đơn hàng đúng chuẩn ngay từ đầu</strong>.
+            {retractTitle(policyContent?.otherOptions?.[0]?.value || "")[0]?.text || ""}
           </p>
         </div>
       </section>
@@ -108,7 +154,7 @@ export const PolicyHub = () => {
             )
           : null}
         <div className={`warehouse-hub__grid ${animateClass("fade-up", visible, 6)}`}>
-          {gridChildren.map((child, index) =>
+          {gridChildren?.map((child: PolicyChildDto, index: number) =>
             renderCard(child, "warehouse-hub__card", index + 7),
           )}
         </div>

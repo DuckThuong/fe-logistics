@@ -1,5 +1,6 @@
 import axiosClient from "../axiosClient";
 import type { AboutResponseDto } from "../dtos/about.response";
+import type { PolicyChildDto, PolicyContentDto } from "../dtos/policy.response";
 import type { ServiceByIdResponseDto as PricePageResponseDto } from "../dtos/priceResponse.dto";
 import type {
   ServiceChildDto,
@@ -43,5 +44,23 @@ export const getPriceContent = async (): Promise<PricePageResponseDto> => {
       url: CONTENT_ENDPOINTS.GET_PRICE_CONTENT,
     },
   });
+  return response.data.data;
+};
+
+export const getPolicyContent = async (): Promise<PolicyContentDto> => {
+  const response = await axiosClient.get(COMMON_ENDPOINT, {
+    params: {
+      url: CONTENT_ENDPOINTS.GET_POLICY_CONTENT,
+    },
+  });
+  return response.data.data;
+};
+
+export const getPolicyById = async (id: number): Promise<PolicyChildDto> => {
+  const endpoint = CONTENT_ENDPOINTS.GET_POLICY_BY_ID.replace(
+    "{id}",
+    id.toString(),
+  );
+  const response = await axiosClient.get(endpoint);
   return response.data.data;
 };
