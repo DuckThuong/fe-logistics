@@ -38,6 +38,7 @@ interface ServiceOptions {
 interface ServiceDescription {
   icon: string;
   text: string;
+  type?: string;
 }
 
 interface ServiceFeatured {

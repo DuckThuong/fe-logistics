@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Breadcrumb } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
-import type { ServiceSection } from "../data/content";
 import { getServiceById } from "@/api/configs/common.config";
+import { renderServiceSectionDescriptions } from "@/pages/service/utils/renderSectionDescriptions";
 import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
 import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
 import { useLoading } from "@/providers/loadingProvider";
@@ -50,6 +50,14 @@ export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
     setLoading(isLoading);
   }, [isLoading, setLoading]);
 
+  const sections = useMemo(
+    () =>
+      [...(serviceContent?.sections ?? [])]
+        .filter((section) => section.active)
+        .sort((a, b) => a.sortIndex - b.sortIndex),
+    [serviceContent?.sections],
+  );
+
   return (
     <div className="service-page">
       <div className="service-page__header">
@@ -84,12 +92,14 @@ export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
         <article
           className={`service-page__article ${animateClass("fade-up", visible, 3)}`}
         >
-          {serviceContent?.sections.map((item) => (
-            <section key={item.title} className="service-article__section">
-              <h3 className="service-article__heading">{retractTitle(item.title)[0]?.text || ""}</h3>
-              {item?.description?.map((desc, index) => (
-                <div dangerouslySetInnerHTML={{ __html: desc.text }} />
-              ))}
+          {sections.map((item) => (
+            <section key={item.id} className="service-article__section">
+              <h3 className="service-article__heading">
+                {retractTitle(item.title)[0]?.text || ""}
+              </h3>
+              <div className="service-article__body">
+                {renderServiceSectionDescriptions(item.description, visible)}
+              </div>
             </section>
           ))}
         </article>

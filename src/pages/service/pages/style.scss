@@ -177,6 +177,12 @@
     line-height: 1.4;
   }
 
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
   &__paragraph {
     margin: 0 0 $spacing-md;
     font-size: $font-size-base;
