@@ -1,6 +1,7 @@
 import {
   ABOUT_OPTION_TYPES,
   DEFAULT_MESSAGE,
+  ITEM_DESCRIPTION_TYPES,
   NOTI_ERROR,
 } from "@/common/constants/constants";
 import { emptyString, retractTitle, toRoman } from "@/common/contexts/helper";
@@ -21,6 +22,73 @@ import {
   handleAboutQuickNavClick,
   toAnchorId,
 } from "@/pages/about/utils/aboutAnchors";
+
+type AboutDescriptionItem = {
+  icon?: string;
+  text?: string;
+  type?: string;
+};
+
+const resolveDescriptionType = (type?: string) =>
+  type === ITEM_DESCRIPTION_TYPES.TEXT_BULLET
+    ? ITEM_DESCRIPTION_TYPES.TEXT_BULLET
+    : ITEM_DESCRIPTION_TYPES.TEXT;
+
+const renderAboutSectionDescriptions = (
+  descriptions: AboutDescriptionItem[] | undefined,
+  inView: boolean,
+) => {
+  const nodes: React.ReactNode[] = [];
+  let bulletItems: AboutDescriptionItem[] = [];
+  let bulletStartIndex = 0;
+
+  const flushBulletList = () => {
+    if (bulletItems.length === 0) {
+      return;
+    }
+    nodes.push(
+      <ul key={`bullets-${bulletStartIndex}`} className="about-page__list">
+        {bulletItems.map((desc, index) => (
+          <li
+            key={`${bulletStartIndex}-${index}`}
+            className={`about-page__list-item ${animateClass("fade-up", inView, bulletStartIndex + index + 2)}`}
+          >
+            <span className="about-page__list-icon">✓</span>
+            <span>{desc.text}</span>
+          </li>
+        ))}
+      </ul>,
+    );
+    bulletItems = [];
+  };
+
+  (descriptions ?? []).forEach((desc, index) => {
+    if (!desc.text?.trim()) {
+      return;
+    }
+
+    if (resolveDescriptionType(desc.type) === ITEM_DESCRIPTION_TYPES.TEXT_BULLET) {
+      if (bulletItems.length === 0) {
+        bulletStartIndex = index;
+      }
+      bulletItems.push(desc);
+      return;
+    }
+
+    flushBulletList();
+    nodes.push(
+      <p
+        key={`text-${index}`}
+        className={`about-page__section-text ${animateClass("fade-up", inView, index + 2)}`}
+      >
+        {desc.text}
+      </p>,
+    );
+  });
+
+  flushBulletList();
+  return nodes;
+};
 
 const AboutPage: React.FC = () => {
   const { setLoading } = useLoading();
@@ -244,17 +312,9 @@ const AboutPage: React.FC = () => {
               >
                 <span>{toRoman(item?.sortIndex - 1)} .</span> {retractTitle(item.title)[0]?.text || ""}
               </h2>
-              <ul className="about-page__list">
-                {item?.description?.map((desc, index) => (
-                  <li
-                    key={index}
-                    className={`about-page__list-item ${animateClass("fade-up", servicesInView, index + 2)}`}
-                  >
-                    <span className="about-page__list-icon">✓</span>
-                    <span>{desc.text}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="about-page__section-body">
+                {renderAboutSectionDescriptions(item.description, servicesInView)}
+              </div>
             </div>
           ))}
         </div>
