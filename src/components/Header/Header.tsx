@@ -87,12 +87,12 @@ const Header = () => {
                         state={child.state}
                         className="hk-header__dropdown-item"
                       >
-                        {child.icon && (
+                        {/* {child.icon && (
                           <i
                             className={`ti ${child.icon} hk-header__dropdown-icon`}
                             aria-hidden="true"
                           />
-                        )}
+                        )} */}
                         {child.label}
                       </HeaderLink>
                     ))}
