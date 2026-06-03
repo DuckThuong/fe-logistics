@@ -50,6 +50,10 @@ const Header = () => {
             alt={BRAND.name}
             className="hk-header__logo-img"
           />
+          <div className="hk-header__logo-text">
+            <span className="hk-header__logo-name">{BRAND.namePrimary}</span>
+            <span className="hk-header__logo-sub">{BRAND.nameSecondary}</span>
+          </div>
         </Link>
 
         <nav className="hk-header__nav">
@@ -121,6 +125,10 @@ const Header = () => {
               alt={BRAND.name}
               className="hk-header__logo-img"
             />
+            <div className="hk-header__logo-text">
+              <span className="hk-header__logo-name">{BRAND.namePrimary}</span>
+              <span className="hk-header__logo-sub">{BRAND.nameSecondary}</span>
+            </div>
           </div>
         }
       >

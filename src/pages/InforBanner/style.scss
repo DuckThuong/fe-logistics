@@ -108,6 +108,17 @@ $transition-base: all 0.25s ease;
     z-index: 1;
   }
 
+  &__logo-img {
+    height: 52px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: $bg-white;
+    border-radius: 10px;
+    padding: 4px 6px;
+  }
+
   &__logo-box {
     width: 52px;
     height: 52px;
@@ -159,12 +170,18 @@ $transition-base: all 0.25s ease;
   }
 
   &__hotline-num {
+    display: block;
     font-size: 36px;
     font-weight: $font-weight-extrabold;
     color: $primary;
     letter-spacing: 1px;
     margin: 0;
     line-height: 1;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($primary, 8%);
+    }
   }
 
   &__hotline-hint {

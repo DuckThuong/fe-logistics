@@ -29,17 +29,25 @@
   &__logo {
     display: flex;
     align-items: center;
-    gap: $spacing-sm;
+    gap: 10px;
     text-decoration: none;
     flex-shrink: 0;
+    min-width: 0;
+
+    &:hover {
+      .hk-header__logo-name {
+        color: $primary-light;
+      }
+    }
   }
 
   &__logo-img {
     height: 44px;
     width: auto;
-    max-width: 200px;
+    max-width: 120px;
     object-fit: contain;
     display: block;
+    flex-shrink: 0;
   }
 
   &__logo-icon {
@@ -58,22 +66,39 @@
   &__logo-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+    justify-content: center;
+    line-height: 1.15;
+    gap: 1px;
+    min-width: 0;
+
+    @media (max-width: 380px) {
+      display: none;
+    }
   }
 
   &__logo-name {
-    font-size: $font-size-base;
-    font-weight: $font-weight-bold;
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-extrabold;
     color: $text-white;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    transition: color $transition-fast;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: 1200px) {
+      font-size: $font-size-base;
+    }
   }
 
   &__logo-sub {
-    font-size: $font-size-xs;
+    font-family: $font-body;
+    font-size: 10px;
     color: $text-white-60;
-    font-weight: $font-weight-medium;
-    letter-spacing: 1.5px;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   // --- Desktop Nav ---
@@ -289,10 +314,17 @@
   &__logo {
     display: flex;
     align-items: center;
-    gap: $spacing-sm;
-    color: $text-white;
-    font-weight: $font-weight-bold;
-    font-size: $font-size-base;
+    gap: 10px;
+    min-width: 0;
+
+    .hk-header__logo-text {
+      display: flex;
+    }
+
+    .hk-header__logo-name {
+      font-size: $font-size-base;
+      text-shadow: none;
+    }
   }
 }
 

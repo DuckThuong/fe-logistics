@@ -1,12 +1,12 @@
+import { BRAND } from "@/common/constants/constants";
 import "./ZaloFloatButton.scss";
-import zalo from "../../assets/icons/zalo.svg"; 
-const ZALO_CHAT_URL = "https://zalo.me/0964671688";
+import zalo from "../../assets/icons/zalo.svg";
 
 export const ZaloFloatButton = () => (
   <div className="zalo-float">
     <span className="zalo-float__tooltip">Liên hệ qua Zalo</span>
     <a
-      href={ZALO_CHAT_URL}
+      href={BRAND.zaloUrl}
       className="zalo-float__btn"
       target="_blank"
       rel="noopener noreferrer"

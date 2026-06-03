@@ -2,6 +2,8 @@ import { ROUTER_PATH } from "@/routers/Route";
 
 export const BRAND = {
   name: "Mã Vận Logistics",
+  namePrimary: "Mã Vận",
+  nameSecondary: "Logistics",
   logoSrc: `${process.env.PUBLIC_URL}/image.png`,
   hotline: "0929905566",
   hotlineDisplay: "0929.905.566",
