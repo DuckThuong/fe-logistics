@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Drawer } from "antd";
 import "./Header.scss";
 import { ROUTER_PATH } from "@/routers/Route";
-import type { NavItemChild } from "@/common/constants/constants";
+import { BRAND, type NavItemChild } from "@/common/constants/constants";
 import { useNavItems } from "@/hooks/useNavItems";
 
 const isInternalPath = (href: string) => href?.startsWith("/");
@@ -45,12 +45,14 @@ const Header = () => {
     <header className={`hk-header ${scrolled ? "hk-header--scrolled" : ""}`}>
       <div className="hk-header__inner container">
         <Link to={ROUTER_PATH.MAIN_PAGE} className="hk-header__logo">
-          <div className="hk-header__logo-icon">
-            <i className="ti ti-truck-delivery" aria-hidden="true" />
-          </div>
+          <img
+            src={BRAND.logoSrc}
+            alt={BRAND.name}
+            className="hk-header__logo-img"
+          />
           <div className="hk-header__logo-text">
-            <span className="hk-header__logo-name">Công Ty</span>
-            <span className="hk-header__logo-sub">Logistics</span>
+            <span className="hk-header__logo-name">{BRAND.namePrimary}</span>
+            <span className="hk-header__logo-sub">{BRAND.nameSecondary}</span>
           </div>
         </Link>
 
@@ -118,10 +120,15 @@ const Header = () => {
         closeIcon={<i className="ti ti-x" />}
         title={
           <div className="hk-mobile-drawer__logo">
-            <div className="hk-header__logo-icon">
-              <i className="ti ti-truck-delivery" aria-hidden="true" />
+            <img
+              src={BRAND.logoSrc}
+              alt={BRAND.name}
+              className="hk-header__logo-img"
+            />
+            <div className="hk-header__logo-text">
+              <span className="hk-header__logo-name">{BRAND.namePrimary}</span>
+              <span className="hk-header__logo-sub">{BRAND.nameSecondary}</span>
             </div>
-            <span>Công Ty Logistics</span>
           </div>
         }
       >

@@ -89,7 +89,7 @@ export const ShipNoiDiaHtml = `
 
 <p><strong>Mọi thắc mắc li&ecirc;n quan đến việc order v&agrave; vận chuyển h&agrave;ng h&oacute;a Trung Quốc &ndash; Việt Nam h&atilde;y li&ecirc;n hệ ngay Hồng Kỳ Logistics để được hỗ trợ.</strong></p>
 
-<p><strong><span style="color:red">Hotline: 0964 67 1688</span></strong></p>
+<p><strong><span style="color:red">Hotline / Zalo: 0929 905 566</span></strong></p>
 
 <p><strong><span style="color:red">Email: hongkylogistics.lienhe@gmail.com</span></strong></p>
 

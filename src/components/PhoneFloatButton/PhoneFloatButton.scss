@@ -1,18 +1,11 @@
-// ===========================
-// VARIABLES
-// ===========================
-$zalo-blue: #0068ff;
-$zalo-blue-dark: #0052cc;
-$zalo-blue-light: #3d8eff;
-$zalo-size: 56px;
+$phone-red: #e30613;
+$phone-red-dark: #b8050f;
+$phone-red-light: #ff4d57;
+$phone-size: 56px;
 $font-body: "Be Vietnam Pro", sans-serif;
 $transition-base: all 0.25s ease;
-$shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
 
-// ===========================
-// KEYFRAMES
-// ===========================
-@keyframes zalo-pulse {
+@keyframes phone-pulse {
   0% {
     transform: scale(1);
     opacity: 0.6;
@@ -27,7 +20,7 @@ $shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
   }
 }
 
-@keyframes zalo-bounce {
+@keyframes phone-bounce {
   0%,
   100% {
     transform: translateY(0);
@@ -40,36 +33,30 @@ $shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
   }
 }
 
-// ===========================
-// COMPONENT
-// ===========================
-.zalo-float {
+.phone-float {
   position: fixed;
-  bottom: 32px;
+  bottom: 100px;
   right: 32px;
   z-index: 9999;
   display: flex;
   align-items: center;
   gap: 10px;
 
-  // Hover trên wrapper để trigger tooltip + icon bounce
   &:hover {
-    .zalo-float__tooltip {
+    .phone-float__tooltip {
       opacity: 1;
       transform: translateX(0);
     }
 
-    .zalo-float__btn {
+    .phone-float__btn {
       transform: scale(1.08);
     }
 
-    .zalo-float__logo {
-      animation: zalo-bounce 0.6s ease forwards;
-      filter: drop-shadow(0 8px 32px rgba(0, 104, 255, 0.55));
+    .phone-float__icon {
+      animation: phone-bounce 0.6s ease forwards;
     }
   }
 
-  // ── Tooltip (bên trái button) ─────────
   &__tooltip {
     font-family: $font-body;
     font-size: 13px;
@@ -81,12 +68,11 @@ $shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
     white-space: nowrap;
     pointer-events: none;
     opacity: 0;
-    transform: translateX(-8px); // slide từ trái vào
+    transform: translateX(-8px);
     transition: $transition-base;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
     position: relative;
 
-    // Mũi tên trỏ sang phải (về phía button)
     &::after {
       content: "";
       position: absolute;
@@ -99,26 +85,23 @@ $shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
     }
   }
 
-  // ── Button ───────────────────────────
   &__btn {
     position: relative;
-    width: $zalo-size;
-    height: $zalo-size;
+    width: $phone-size;
+    height: $phone-size;
     border-radius: 50%;
-    background: transparent;
+    background: linear-gradient(145deg, $phone-red-light, $phone-red);
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: none;
+    box-shadow: 0 6px 24px rgba(227, 6, 19, 0.45);
     transition: $transition-base;
     flex-shrink: 0;
     isolation: isolate;
-    padding: 0;
-    border: none;
 
     &:hover {
-      transform: scale(1.08);
+      background: linear-gradient(145deg, $phone-red, $phone-red-dark);
     }
 
     &:active {
@@ -126,25 +109,20 @@ $shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
     }
   }
 
-  &__logo {
+  &__icon {
     position: relative;
     z-index: 1;
-    display: block;
-    width: $zalo-size;
-    height: $zalo-size;
-    border-radius: 50%;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 24px rgba(0, 104, 255, 0.45));
+    font-size: 26px;
+    color: #fff;
     pointer-events: none;
   }
 
-  // ── Pulse rings ──────────────────────
   &__pulse {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: $zalo-blue-light;
-    animation: zalo-pulse 2.2s ease-out infinite;
+    background: $phone-red-light;
+    animation: phone-pulse 2.2s ease-out infinite;
     z-index: -1;
 
     &--delay {
@@ -154,8 +132,8 @@ $shadow-zalo: 0 6px 24px rgba(0, 104, 255, 0.45);
 }
 
 @media (max-width: 480px) {
-  .zalo-float {
-    bottom: 24px;
+  .phone-float {
+    bottom: 92px;
     right: 20px;
   }
 }

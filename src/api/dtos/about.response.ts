@@ -37,6 +37,7 @@ interface AboutOptions {
 interface AboutDescription {
   icon: string;
   text: string;
+  type: string;
 }
 
 export interface TitleInterfaceProps {

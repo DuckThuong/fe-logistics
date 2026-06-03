@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import { ArrowRightOutlined, PhoneOutlined } from "@ant-design/icons";
+import { BRAND } from "@/common/constants/constants";
 import { animateClass, useInView } from "@/hooks/useInView";
 import "./CTASection.scss";
 
@@ -24,7 +25,7 @@ const CTASection = () => {
           <h2 className={`hk-cta__title ${animateClass("fade-up", inView, 2)}`}>
             Sẵn sàng hợp tác cùng
             <br />
-            <span>Công Ty Logistics?</span>
+            <span>{BRAND.name}?</span>
           </h2>
 
           <p className={`hk-cta__desc ${animateClass("fade-up", inView, 3)}`}>
@@ -45,13 +46,15 @@ const CTASection = () => {
               <ArrowRightOutlined />
             </Button> */}
 
-            <a href="tel:0964671688" className="hk-cta__hotline">
+            <a href={BRAND.telHref} className="hk-cta__hotline">
               <div className="hk-cta__hotline-icon">
                 <PhoneOutlined />
               </div>
               <div className="hk-cta__hotline-content">
-                <span className="hk-cta__hotline-label">Hotline 24/7</span>
-                <strong className="hk-cta__hotline-number">0964.67.1688</strong>
+                <span className="hk-cta__hotline-label">Hotline / Zalo 24/7</span>
+                <strong className="hk-cta__hotline-number">
+                  {BRAND.hotlineDisplay}
+                </strong>
               </div>
             </a>
           </div>
