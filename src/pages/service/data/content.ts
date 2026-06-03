@@ -83,7 +83,7 @@ export const PAYMENT_PAGE_SECTIONS: ServiceSection[] = [
   {
     title: "Dịch vụ thanh toán hộ",
     paragraphs: [
-      "Công Ty Logistics hỗ trợ nạp tiền vào Alipay, WeChat Pay và thanh toán hộ các đơn hàng trên Taobao, 1688, Tmall với tỉ giá cạnh tranh, minh bạch.",
+      "Mã Vận Logistics hỗ trợ nạp tiền vào Alipay, WeChat Pay và thanh toán hộ các đơn hàng trên Taobao, 1688, Tmall với tỉ giá cạnh tranh, minh bạch.",
       "Khách hàng chỉ cần gửi link sản phẩm hoặc mã đơn — đội ngũ vận hành sẽ xác nhận và thanh toán nhanh chóng, phù hợp nhu cầu mua sỉ và mua lẻ từ Trung Quốc.",
     ],
     bullets: [
@@ -98,7 +98,7 @@ export const SHIPPING_PAGE_SECTIONS: ServiceSection[] = [
   {
     title: "Dịch vụ vận chuyển hộ",
     paragraphs: [
-      "Khi bạn đã có hàng tại kho Trung Quốc, Công Ty Logistics nhận ký gửi, đóng gói và vận chuyển về Việt Nam an toàn, theo dõi đơn thời gian thực.",
+      "Khi bạn đã có hàng tại kho Trung Quốc, Mã Vận Logistics nhận ký gửi, đóng gói và vận chuyển về Việt Nam an toàn, theo dõi đơn thời gian thực.",
       "Chúng tôi hỗ trợ gom hàng, bảo hiểm hàng hoá và tư vấn khai báo phù hợp từng loại mặt hàng.",
     ],
     bullets: [

@@ -1,5 +1,14 @@
 import { ROUTER_PATH } from "@/routers/Route";
 
+export const BRAND = {
+  name: "Mã Vận Logistics",
+  logoSrc: `${process.env.PUBLIC_URL}/image.png`,
+  hotline: "0929905566",
+  hotlineDisplay: "0929.905.566",
+  telHref: "tel:0929905566",
+  zaloUrl: "https://zalo.me/0929905566",
+} as const;
+
 export const NOTI_ERROR = "error";
 export const NOTI_SUCCESS = "success";
 export const DEFAULT_MESSAGE = "Đã xảy ra lỗi.";

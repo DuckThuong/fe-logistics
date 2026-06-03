@@ -7,6 +7,7 @@ import {
   EnvironmentOutlined,
   ClockCircleOutlined,
 } from "@ant-design/icons";
+import { BRAND } from "@/common/constants/constants";
 import { ROUTER_PATH } from "@/routers/Route";
 import "./Footer.scss";
 
@@ -47,15 +48,11 @@ const Footer = () => {
             <Col xs={24} sm={24} md={8}>
               <div className="hk-footer__brand">
                 <a href="/" className="hk-footer__logo">
-                  <div className="hk-footer__logo-icon">HK</div>
-                  <div>
-                    <div className="hk-footer__logo-name">
-                      Công Ty Logistics
-                    </div>
-                    <div className="hk-footer__logo-tagline">
-                      Chuyên hàng Trung Quốc
-                    </div>
-                  </div>
+                  <img
+                    src={BRAND.logoSrc}
+                    alt={BRAND.name}
+                    className="hk-footer__logo-img"
+                  />
                 </a>
 
                 <p className="hk-footer__brand-desc">
@@ -75,7 +72,17 @@ const Footer = () => {
                   </div>
                   <div className="hk-footer__contact-item">
                     <PhoneOutlined />
-                    <a href="tel:0964671688">0964.67.1688</a>
+                    <a href={BRAND.telHref}>Hotline: {BRAND.hotlineDisplay}</a>
+                  </div>
+                  <div className="hk-footer__contact-item">
+                    <PhoneOutlined />
+                    <a
+                      href={BRAND.zaloUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Zalo: {BRAND.hotlineDisplay}
+                    </a>
                   </div>
                   <div className="hk-footer__contact-item">
                     <ClockCircleOutlined />

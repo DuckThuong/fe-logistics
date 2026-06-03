@@ -46,7 +46,7 @@ const WhyChooseSection = () => {
           <h2>
             Lý do chọn
             <br />
-            <span className="text-gradient">Công Ty Logistics</span>
+            <span className="text-gradient">Mã Vận Logistics</span>
           </h2>
           <p>
             Chúng tôi không chỉ là đơn vị vận chuyển — chúng tôi là đối tác

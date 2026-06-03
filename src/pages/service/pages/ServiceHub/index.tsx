@@ -1,6 +1,6 @@
 import { getServiceContent } from "@/api/configs/common.config";
 import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
-import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { BRAND, DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
 import { emptyString } from "@/common/contexts/helper";
 import { animateClass } from "@/hooks/useInView";
 import { useLoading } from "@/providers/loadingProvider";
@@ -95,11 +95,11 @@ export const ServiceHub = () => {
         >
           <img
             src="https://hongkylogistics.vn/img/icontvt.png"
-            alt="Công Ty Logistics"
+            alt={BRAND.name}
             className="service-hub__app-icon"
           />
           <div className="service-hub__app-text">
-            <strong>Công Ty Logistics</strong>
+            <strong>{BRAND.name}</strong>
           </div>
         </a>
         {serviceContent?.children
