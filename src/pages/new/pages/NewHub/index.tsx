@@ -1,18 +1,96 @@
 import { useEffect, useState } from "react";
 import { Breadcrumb } from "antd";
-import { CalendarOutlined, HomeOutlined, MobileOutlined, NotificationOutlined, StarFilled } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import {
+  CalendarOutlined,
+  HomeOutlined,
+  MobileOutlined,
+  NotificationOutlined,
+  StarFilled,
+} from "@ant-design/icons";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
-import { NEW_HUB_ITEMS } from "../../data/content";
+import { navigateToNewsDetail } from "../../utils/navigateToNews";
+import { useLoading } from "@/providers/loadingProvider";
+import { useNotification } from "@/providers/notificationProvider";
+import { useQuery } from "@tanstack/react-query";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import { getNewsContent } from "@/api/configs/common.config";
+import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { isAxiosError } from "axios";
+import { emptyString, retractTitle } from "@/common/contexts/helper";
+import type { NewsChildDto } from "@/api/dtos/new.response";
+import type { OtherOptionDto } from "@/api/dtos/priceResponse.dto";
+
+const getNewsCardDate = (child: NewsChildDto): string =>
+  child.otherOptions?.find((option: OtherOptionDto) => option.type === "text")?.value ?? "";
 
 export const NewHub = () => {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
+  const { setLoading } = useLoading();
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
+
+  const { data: newsContent, isLoading } = useQuery({
+    queryKey: [CONTENT_ENDPOINTS.GET_NEWS_CONTENT],
+    queryFn: () => getNewsContent(),
+    throwOnError: (error) => {
+      let message = DEFAULT_MESSAGE;
+      if (isAxiosError(error)) {
+        const apiMessage = error.response?.data?.message;
+        if (typeof apiMessage === "string") {
+          message = apiMessage;
+        } else if (Array.isArray(apiMessage) && apiMessage[0]) {
+          message = apiMessage[0];
+        }
+      }
+      showNotification(message, NOTI_ERROR);
+      return false;
+    },
+  });
+
+  const featuredChild = newsContent?.children?.find((child) => child.sortIndex === 1);
+  const gridChildren = newsContent?.children?.filter((child) => child.sortIndex > 1);
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading, setLoading]);
+
+  const renderCard = (
+    child: NewsChildDto,
+    className: string,
+    animationIndex: number,
+  ) => (
+    console.log(child),
+    <div
+      key={child.id}
+      role="button"
+      tabIndex={0}
+      onClick={() => navigateToNewsDetail(navigate, child)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          navigateToNewsDetail(navigate, child);
+        }
+      }}
+      className={`${className} ${animateClass("fade-up", visible, animationIndex)}`}
+    >
+      <div className="new-hub__card-image-wrap">
+        <img src={child.image} alt={child.shortDescription} className="new-hub__card-image" />
+      </div>
+      <div className="new-hub__card-info">
+        <span className="new-hub__card-tag">{child.name}</span>
+        <p className="new-hub__card-title">{child.shortDescription}</p>
+        <time className="new-hub__card-date" dateTime={getNewsCardDate(child)}>
+          <CalendarOutlined aria-hidden /> {getNewsCardDate(child)}
+        </time>
+      </div>
+    </div>
+  );
 
   return (
     <div className="new-hub">
@@ -43,18 +121,32 @@ export const NewHub = () => {
           <div className={animateClass("fade-down", visible, 2)}>
             <div className="new-hub__hero-badge">
               <StarFilled className="new-hub__hero-badge-icon" />
-              <span>Cập nhật khuyến mãi, bảng giá và thị trường nhập hàng</span>
+              <span>{emptyString(newsContent?.shortDescription ?? "")}</span>
             </div>
           </div>
 
           <h1 id="new-hub-heading" className={`new-hub__hero-title ${animateClass("fade-up", visible, 3)}`}>
-            Tin{" "}
-            <span className="new-hub__hero-title-highlight">tức &amp; ưu đãi</span>
+            {emptyString(
+              (newsContent?.description?.[0] ?? "")
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .slice(0, 2)
+                .join(" "),
+            )}{" "}
+            <span className="new-hub__hero-title-highlight">
+              {(newsContent?.description?.[0] ?? "")
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .slice(2)
+                .join(" ")}
+            </span>
           </h1>
 
           <p className={`new-hub__hero-subtitle ${animateClass("fade-in", visible, 4)}`}>
             <NotificationOutlined className="new-hub__hero-subtitle-icon" />
-            Theo dõi chương trình sale Tmall, bảng giá vận chuyển và mẹo tìm nguồn hàng Trung Quốc.
+            {retractTitle(newsContent?.otherOptions?.[0]?.value || "")[0]?.text || ""}
           </p>
         </div>
       </section>
@@ -79,25 +171,13 @@ export const NewHub = () => {
           </div>
         </a>
 
-        <div className={`new-hub__grid ${animateClass("fade-up", visible, 6)}`}>
-          {NEW_HUB_ITEMS.map((item, index) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className={`new-hub__card ${animateClass("fade-up", visible, index + 7)}`}
-            >
-              <div className="new-hub__card-image-wrap">
-                <img src={item.image} alt={item.title} className="new-hub__card-image" />
-              </div>
-              <div className="new-hub__card-info">
-                <span className="new-hub__card-tag">{item.tag}</span>
-                <p className="new-hub__card-title">{item.title}</p>
-                <time className="new-hub__card-date" dateTime={item.date}>
-                  <CalendarOutlined aria-hidden /> {item.date}
-                </time>
-              </div>
-            </Link>
-          ))}
+        {featuredChild
+          ? renderCard(featuredChild, "new-hub__card new-hub__card--featured", 6)
+          : null}
+        <div className={`new-hub__grid ${animateClass("fade-up", visible, 7)}`}>
+          {gridChildren?.map((child, index) =>
+            renderCard(child, "new-hub__card", index + 8),
+          )}
         </div>
       </div>
     </div>

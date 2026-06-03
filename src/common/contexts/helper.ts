@@ -1,3 +1,4 @@
+import type { TitleInterfaceProps } from "@/api/dtos/about.response";
 import { useState, useEffect, useRef } from "react";
 
 export const childrenPath = (path: string, param?: string) =>
@@ -66,4 +67,44 @@ export const toRoman = (num: number): string => {
     }
   }
   return result;
+};
+
+const DEFAULT_TITLE_PART: TitleInterfaceProps = {
+  icon: "",
+  text: "",
+  type: "text",
+};
+
+const normalizeTitlePart = (item: unknown): TitleInterfaceProps => {
+  if (!item || typeof item !== "object") {
+    return { ...DEFAULT_TITLE_PART };
+  }
+
+  const entry = item as Partial<TitleInterfaceProps>;
+  return {
+    icon: String(entry.icon ?? ""),
+    text: String(entry.text ?? ""),
+    type: String(entry.type ?? "text"),
+  };
+};
+
+/** Parse `title` JSON: `[{"icon":"","text":"...","type":"text"}]` → TitleInterfaceProps[] */
+export const retractTitle = (title: string): TitleInterfaceProps[] => {
+  if (!title?.trim()) {
+    return [];
+  }
+
+  try {
+    const parsed: unknown = JSON.parse(title);
+    if (Array.isArray(parsed)) {
+      return parsed.map(normalizeTitlePart);
+    }
+    return [normalizeTitlePart(parsed)];
+  } catch {
+    const [icon, text, type] = title.split(".");
+    if (text !== undefined && type !== undefined) {
+      return [{ icon: icon ?? "", text, type }];
+    }
+    return [{ icon: "", text: title.trim(), type: "text" }];
+  }
 };

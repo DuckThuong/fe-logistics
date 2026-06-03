@@ -60,7 +60,10 @@ export type NavItemChild = {
   label: string;
   href: string;
   icon?: string;
-  state?: { serviceId: number };
+  state?: {
+    serviceId?: number;
+    policyId?: number;
+  };
 };
 
 export type NavItem = {
@@ -70,7 +73,7 @@ export type NavItem = {
   children?: NavItemChild[];
 };
 
-/** Menu tĩnh; mục con "Dịch vụ" được gắn từ API trong `useNavItems`. */
+/** Menu tĩnh; mục con "Dịch vụ/Chính sách" được gắn từ API trong `useNavItems`. */
 export const BASE_NAV_ITEMS: NavItem[] = [
   { label: "Giới thiệu", href: ROUTER_PATH.ABOUT_PAGE, icon: "ti-info-circle" },
   {
@@ -114,4 +117,11 @@ export const NAV_ITEMS = BASE_NAV_ITEMS;
 export const ABOUT_OPTION_TYPES = {
   options: "options",
   quick_link: "quick-link",
+};
+
+export const ITEM_DESCRIPTION_TYPES = {
+  TEXT: "text",
+  TABLE: "table",
+  TEXT_BULLET: "text-bullet",
+  TEXT_NUMBER: "text-number",
 };

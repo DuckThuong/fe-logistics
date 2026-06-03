@@ -1,6 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import { ZaloFloatButton } from '@/components/ZaloFloatButton/ZaloFloatButton';
+import { InfoBannerPopup } from '@/pages/InforBanner/InfoBannerPopup';
 import '@/global.scss';
 import './MainLayout.scss';
 
@@ -12,6 +14,8 @@ const MainLayout = () => {
         <Outlet />
       </main>
       <Footer />
+      <InfoBannerPopup />
+      <ZaloFloatButton />
     </div>
   );
 };

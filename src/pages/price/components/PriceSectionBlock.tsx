@@ -2,6 +2,7 @@ import type {
   SectionDescriptionDto,
   SectionDto,
 } from "@/api/dtos/priceResponse.dto";
+import { retractTitle } from "@/common/contexts/helper";
 import { buildAntdTable } from "@/pages/price/utils/priceTable";
 import { renderBoldText } from "@/pages/price/utils/renderBoldText";
 import { getSectionVariant } from "@/pages/price/utils/sectionVariant";
@@ -48,12 +49,12 @@ const renderSectionTitle = (section: SectionDto) => {
     case "main-title":
       return (
         <Title level={2} className="price-page__main-title">
-          {title}
+          {retractTitle(title)[0]?.text || ""}
         </Title>
       );
     case "tagline":
       return (
-        <Paragraph className="price-page__tagline">{title}</Paragraph>
+        <Paragraph className="price-page__tagline">{retractTitle(title)[0]?.text || ""}</Paragraph>
       );
     case "disclaimer":
       return (
@@ -61,25 +62,25 @@ const renderSectionTitle = (section: SectionDto) => {
           type="warning"
           showIcon
           className="price-page__disclaimer"
-          message={title}
+          message={retractTitle(title)[0]?.text || ""}
         />
       );
     case "closing":
       return (
         <Title level={3} className="price-page__closing">
-          {title}
+          {retractTitle(title)[0]?.text || ""}
         </Title>
       );
     case "numbered":
       return (
         <Title level={4} className="price-page__section-heading">
-          {title}
+          {retractTitle(title)[0]?.text || ""}
         </Title>
       );
     default:
       return (
         <Title level={4} className="price-page__heading">
-          {title}
+          {retractTitle(title)[0]?.text || ""}
         </Title>
       );
   }

@@ -14,6 +14,7 @@ export const ROUTER_NAME = {
   PRICE_CHINH_NGACH:
     "bang-gia-dich-vu-van-chuyen-chinh-ngach-trung-quoc-viet-nam",
   POLICY: "chinh-sach",
+  POLICY_DETAIL: "chinh-sach/:policyUrl",
   POLICY_KHIEN_NAI: "chinh-sach-khieu-nai",
   POLICY_BAO_MAT: "chinh-sach-bao-mat-thong-tin",
   POLICY_CAM_NHAP_KHAU: "danh-muc-hang-hoa-cam-nhap-khau",
@@ -26,6 +27,8 @@ export const ROUTER_NAME = {
   HUONG_DAN_TAO_TAI_KHOAN: "huong-dan-tao-tai-khoan-taobao-1688-nhanh-chong",
   POLICY_HUONG_DAN: "huong-dan",
   TIN_TUC: "tin-tuc",
+  NEWS_DETAIL: "tin-tuc/:newsUrl",
+  /** Slug tĩnh — dùng trong data fallback. */
   TIN_TUC_BANG_GIA:
     "bang-gia-van-chuyen-chinh-ngach-trung-quoc-viet-nam-tai-hong-ky-logisitcs",
   TIN_TUC_TIM_NGUON: "tim-nguon-hang-tan-goc-tai-trung-quoc",
@@ -33,8 +36,6 @@ export const ROUTER_NAME = {
     "sale-khung-tren-tmal-len-den-70-nhan-ngay-quoc-te-phu-nu-83",
   TIN_TUC_SAN_MY_PHAM:
     "san-my-pham-hang-hieu-gia-hap-dan-tren-tmal-dip-sale-83",
-  POLICY_TIN_TUC: "tin-tuc",
-  POLICY_TIN_TUC_DETAIL: "tin-tuc/:id",
 };
 
 export const ROUTER_PATH = {
@@ -50,6 +51,7 @@ export const ROUTER_PATH = {
   PRICE_KY_GUI: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_KY_GUI}`,
   PRICE_CHINH_NGACH: `${ROUTER}/${ROUTER_NAME.PRICE}/${ROUTER_NAME.PRICE_CHINH_NGACH}`,
   POLICY: `${ROUTER}/${ROUTER_NAME.POLICY}`,
+  POLICY_DETAIL: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_DETAIL}`,
   POLICY_KHIEN_NAI: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_KHIEN_NAI}`,
   POLICY_BAO_MAT: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_BAO_MAT}`,
   POLICY_CAM_NHAP_KHAU: `${ROUTER}/${ROUTER_NAME.POLICY}/${ROUTER_NAME.POLICY_CAM_NHAP_KHAU}`,
@@ -61,13 +63,14 @@ export const ROUTER_PATH = {
   HUONG_DAN_TAO_TAI_KHOAN: `${ROUTER}/${ROUTER_NAME.HUONG_DAN}/${ROUTER_NAME.HUONG_DAN_TAO_TAI_KHOAN}`,
   POLICY_HUONG_DAN: `${ROUTER}/${ROUTER_NAME.HUONG_DAN}`,
   TIN_TUC: `${ROUTER}/${ROUTER_NAME.TIN_TUC}`,
-  TIN_TUC_BANG_GIA: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.TIN_TUC_BANG_GIA}`,
-  TIN_TUC_TIM_NGUON: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.TIN_TUC_TIM_NGUON}`,
-  TIN_TUC_SALE_TMAL: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.TIN_TUC_SALE_TMAL}`,
-  TIN_TUC_SAN_MY_PHAM: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.TIN_TUC_SAN_MY_PHAM}`,
-  POLICY_TIN_TUC: `${ROUTER}/${ROUTER_NAME.TIN_TUC}`,
-  POLICY_TIN_TUC_DETAIL: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.POLICY_TIN_TUC_DETAIL}`,
+  NEWS_DETAIL: `${ROUTER}/${ROUTER_NAME.TIN_TUC}/${ROUTER_NAME.NEWS_DETAIL}`,
 };
 
 export const getServiceDetailPath = (serviceUrl: string) =>
   ROUTER_PATH.SERVICE_DETAIL.replace(":serviceUrl", serviceUrl);
+
+export const getPolicyDetailPath = (policyUrl: string) =>
+  ROUTER_PATH.POLICY_DETAIL.replace(":policyUrl", policyUrl);
+
+export const getNewsDetailPath = (newsUrl: string) =>
+  ROUTER_PATH.NEWS_DETAIL.replace(":newsUrl", newsUrl);
