@@ -70,12 +70,27 @@ const AboutPage: React.FC = () => {
     ? toAnchorId(quickLinks[0].value)
     : "gioi-thieu";
 
+  const closingSection = useMemo(() => {
+    const sections = aboutContent?.sections ?? [];
+    if (sections.length === 0) {
+      return undefined;
+    }
+    return sections.reduce((max, section) =>
+      section.sortIndex > max.sortIndex ? section : max,
+    );
+  }, [aboutContent?.sections]);
+
   const contentSections = useMemo(
     () =>
       [...(aboutContent?.sections ?? [])]
-        .filter((section) => section.active && section.sortIndex > 1)
+        .filter(
+          (section) =>
+            section.active &&
+            section.sortIndex > 1 &&
+            section.sortIndex !== closingSection?.sortIndex,
+        )
         .sort((a, b) => a.sortIndex - b.sortIndex),
-    [aboutContent?.sections],
+    [aboutContent?.sections, closingSection?.sortIndex],
   );
 
   const getSectionAnchorId = (sectionIndex: number, sectionTitle: string) => {
@@ -218,31 +233,30 @@ const AboutPage: React.FC = () => {
 
         <div ref={servicesRef as React.Ref<HTMLDivElement>}>
           {contentSections.map((item, sectionIndex) => (
-              <div
-                key={item.id}
-                id={getSectionAnchorId(sectionIndex, item.title)}
-                className={`about-page__section about-page__anchor-target ${
-                  item.sortIndex === 2 ? "about-page__section--services" : ""
+            <div
+              key={item.id}
+              id={getSectionAnchorId(sectionIndex, item.title)}
+              className={`about-page__section about-page__anchor-target ${item.sortIndex === 2 ? "about-page__section--services" : ""
                 }`}
+            >
+              <h2
+                className={`about-page__section-title ${animateClass("fade-up", servicesInView, 1)}`}
               >
-                <h2
-                  className={`about-page__section-title ${animateClass("fade-up", servicesInView, 1)}`}
-                >
-                  <span>{toRoman(item?.id)} .</span> {retractTitle(item.title)[0]?.text || ""}
-                </h2>
-                <ul className="about-page__list">
-                  {item?.description?.map((desc, index) => (
-                    <li
-                      key={index}
-                      className={`about-page__list-item ${animateClass("fade-up", servicesInView, index + 2)}`}
-                    >
-                      <span className="about-page__list-icon">✓</span>
-                      <span>{desc.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                <span>{toRoman(item?.sortIndex - 1)} .</span> {retractTitle(item.title)[0]?.text || ""}
+              </h2>
+              <ul className="about-page__list">
+                {item?.description?.map((desc, index) => (
+                  <li
+                    key={index}
+                    className={`about-page__list-item ${animateClass("fade-up", servicesInView, index + 2)}`}
+                  >
+                    <span className="about-page__list-icon">✓</span>
+                    <span>{desc.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Closing */}
@@ -251,19 +265,14 @@ const AboutPage: React.FC = () => {
           ref={closingRef as React.Ref<HTMLDivElement>}
         >
           <p className={animateClass("fade-in", closingInView, 2)}>
-            <strong>
-              {retractTitle(aboutContent?.sections?.find((s) => s.sortIndex === 1)?.title || "")[0]?.text ||
-                ""}
-            </strong>
+            <strong>{retractTitle(closingSection?.title || "")[0]?.text || ""}</strong>
             <span> </span>
-            {aboutContent?.sections
-              ?.find((s) => s.sortIndex === 1)
-              ?.description?.map((desc, index) => (
-                <span key={index}>{desc.text}</span>
-              )) || ""}
+            {closingSection?.description?.[0]?.text || ""}
           </p>
           <p className={animateClass("fade-in", closingInView, 3)}>
-            <strong>Trân trọng!</strong>
+            <strong>
+              {closingSection?.description?.[1]?.text || "Trân trọng!"}
+            </strong>
           </p>
         </div>
       </div>
