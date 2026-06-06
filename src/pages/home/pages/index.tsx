@@ -13,7 +13,7 @@ const MainPage = () => {
       <HeroSection />
       <PlatformsSection />
       <HowToOrderSection />
-      <DashboardSection />
+      {/* <DashboardSection /> */}
       <ServicesSection />
       <WhyChooseSection />
       <StatsSection />

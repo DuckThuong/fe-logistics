@@ -68,22 +68,22 @@ export const HeroSection = () => {
           </div>
 
           <div className={`hk-hero__actions ${animateClass('fade-down', visible, 5)}`}>
-            <Button type="primary" size="large" className="hk-hero__btn-primary" href="/dang-ky">
+            {/* <Button type="primary" size="large" className="hk-hero__btn-primary" href="/dang-ky">
               Tạo đơn hàng ngay
               <ArrowRightOutlined />
-            </Button>
+            </Button> */}
             <Button size="large" className="hk-hero__btn-secondary" href="/bang-gia">
               Xem bảng giá
             </Button>
           </div>
 
-          <div className={`hk-hero__extension ${animateClass('fade-in', visible, 6)}`}>
+          {/* <div className={`hk-hero__extension ${animateClass('fade-in', visible, 6)}`}>
             <ChromeOutlined className="hk-hero__extension-icon" />
             <span>Tải tiện ích đặt hàng cho</span>
             <a href="#chrome" className="hk-hero__extension-link">
               Chrome / Cốc Cốc
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className={`hk-hero__stats ${animateClass('fade-up', visible, 3)}`}>

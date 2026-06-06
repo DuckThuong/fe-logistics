@@ -117,7 +117,7 @@ const Footer = () => {
 
                     <EnvironmentOutlined />
 
-                    <span>40 louis 3, Hoàng Văn Thụ, Hoàng Mai, 000084</span>
+                    <span>L3-40 Đường Louis 3, Khu đô thị Hoàng Văn Thụ, Phường Hoàng Mai, Hà Nội</span>
 
                   </div>
 
