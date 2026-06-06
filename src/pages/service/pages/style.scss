@@ -143,6 +143,23 @@
 .service-page {
   padding-bottom: $spacing-4xl;
 
+  &__subtitle {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__subtitle-icon {
+    flex-shrink: 0;
+    font-size: $font-size-lg;
+    color: rgba($primary-light, 0.9);
+  }
+
+  &__subtitle time {
+    font-size: inherit;
+    color: inherit;
+  }
+
   &__body {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -175,6 +192,12 @@
     font-weight: $font-weight-bold;
     color: $text-primary;
     line-height: 1.4;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
   }
 
   &__paragraph {

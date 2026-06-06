@@ -1,27 +1,63 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Breadcrumb } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { CalendarOutlined, HomeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
-import type { ServiceSection } from "../data/content";
-import { ServiceSidebar } from "./ServiceSidebar";
-
+import { getServiceById } from "@/api/configs/common.config";
+import { renderServiceSectionDescriptions } from "@/pages/service/utils/renderSectionDescriptions";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
+import { DEFAULT_MESSAGE, NOTI_ERROR } from "@/common/constants/constants";
+import { useLoading } from "@/providers/loadingProvider";
+import { useNotification } from "@/providers/notificationProvider";
+import { useQuery } from "@tanstack/react-query";
+import { isAxiosError } from "axios";
+import { emptyString, retractTitle } from "@/common/contexts/helper";
+import { formatDateDDMMYYYY } from "@/common/contexts/format";
 type ServiceDetailPageProps = {
-  title: string;
-  sections: ServiceSection[];
+  id?: number;
 };
 
-export const ServiceDetailPage = ({
-  title,
-  sections,
-}: ServiceDetailPageProps) => {
+export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
   const [visible, setVisible] = useState(false);
+  const { setLoading } = useLoading();
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(timer);
   }, []);
+
+  const { data: serviceContent, isLoading } = useQuery({
+    queryKey: [CONTENT_ENDPOINTS.GET_SERVICE_BY_ID, id],
+    queryFn: () => getServiceById(id!),
+    enabled: Boolean(id),
+    throwOnError: (error) => {
+      let message = DEFAULT_MESSAGE;
+      if (isAxiosError(error)) {
+        const apiMessage = error.response?.data?.message;
+        if (typeof apiMessage === "string") {
+          message = apiMessage;
+        } else if (Array.isArray(apiMessage) && apiMessage[0]) {
+          message = apiMessage[0];
+        }
+      }
+      showNotification(message, NOTI_ERROR);
+      return false;
+    },
+  });
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading, setLoading]);
+
+  const sections = useMemo(
+    () =>
+      [...(serviceContent?.sections ?? [])]
+        .filter((section) => section.active)
+        .sort((a, b) => a.sortIndex - b.sortIndex),
+    [serviceContent?.sections],
+  );
 
   return (
     <div className="service-page">
@@ -42,14 +78,28 @@ export const ServiceDetailPage = ({
                 ),
               },
               { title: <Link to={ROUTER_PATH.SERVICE}>Dịch vụ</Link> },
-              { title },
+              { title: emptyString(serviceContent?.name) },
             ]}
           />
           <h1
             className={`service-page__title ${animateClass("fade-up", visible, 2)}`}
           >
-            {title}
+            {emptyString(serviceContent?.name)}
           </h1>
+
+          {serviceContent?.updatedAt && (
+            <p
+              className={`service-page__subtitle ${animateClass("fade-in", visible, 3)}`}
+            >
+              <CalendarOutlined
+                className="service-page__subtitle-icon"
+                aria-hidden
+              />
+              <time dateTime={serviceContent.updatedAt}>
+                Cập nhật: {formatDateDDMMYYYY(serviceContent.updatedAt)}
+              </time>
+            </p>
+          )}
         </div>
       </div>
 
@@ -57,30 +107,17 @@ export const ServiceDetailPage = ({
         <article
           className={`service-page__article ${animateClass("fade-up", visible, 3)}`}
         >
-          {sections.map((section) => (
-            <section key={section.title} className="service-article__section">
-              <h3 className="service-article__heading">{section.title}</h3>
-              {section.paragraphs?.map((paragraph) => (
-                <p key={paragraph} className="service-article__paragraph">
-                  {paragraph}
-                </p>
-              ))}
-              {section.quote && (
-                <blockquote className="service-article__quote">
-                  {section.quote}
-                </blockquote>
-              )}
-              {section.bullets && (
-                <ul className="service-article__list">
-                  {section.bullets.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              )}
+          {sections.map((item) => (
+            <section key={item.id} className="service-article__section">
+              <h3 className="service-article__heading">
+                {retractTitle(item.title)[0]?.text || ""}
+              </h3>
+              <div className="service-article__body">
+                {renderServiceSectionDescriptions(item.description, visible)}
+              </div>
             </section>
           ))}
         </article>
-        {/* <ServiceSidebar /> */}
       </div>
     </div>
   );

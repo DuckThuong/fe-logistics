@@ -1,3 +1,4 @@
+import type { TitleInterfaceProps } from "@/api/dtos/about.response";
 import { useState, useEffect, useRef } from "react";
 
 export const childrenPath = (path: string, param?: string) =>
@@ -33,4 +34,77 @@ export const useCountdown = (initialSeconds: number) => {
   const mm = String(Math.floor(secs / 60)).padStart(2, "0");
   const ss = String(secs % 60).padStart(2, "0");
   return `${mm}:${ss}`;
+};
+
+export const emptyString = (value: string) => {
+  return value;
+};
+
+export const toRoman = (num: number): string => {
+  if (num <= 0 || num > 3999) return "";
+
+  const map: [number, string][] = [
+    [1000, "M"],
+    [900, "CM"],
+    [500, "D"],
+    [400, "CD"],
+    [100, "C"],
+    [90, "XC"],
+    [50, "L"],
+    [40, "XL"],
+    [10, "X"],
+    [9, "IX"],
+    [5, "V"],
+    [4, "IV"],
+    [1, "I"],
+  ];
+
+  let result = "";
+  for (const [value, symbol] of map) {
+    while (num >= value) {
+      result += symbol;
+      num -= value;
+    }
+  }
+  return result;
+};
+
+const DEFAULT_TITLE_PART: TitleInterfaceProps = {
+  icon: "",
+  text: "",
+  type: "text",
+};
+
+const normalizeTitlePart = (item: unknown): TitleInterfaceProps => {
+  if (!item || typeof item !== "object") {
+    return { ...DEFAULT_TITLE_PART };
+  }
+
+  const entry = item as Partial<TitleInterfaceProps>;
+  return {
+    icon: String(entry.icon ?? ""),
+    text: String(entry.text ?? ""),
+    type: String(entry.type ?? "text"),
+  };
+};
+
+/** Parse `title` JSON: `[{"icon":"","text":"...","type":"text"}]` → TitleInterfaceProps[] */
+export const retractTitle = (title: string): TitleInterfaceProps[] => {
+  if (!title?.trim()) {
+    return [];
+  }
+
+  try {
+    const parsed: unknown = JSON.parse(title);
+    if (Array.isArray(parsed)) {
+      return parsed.map(normalizeTitlePart);
+    }
+    return [normalizeTitlePart(parsed)];
+  } catch {
+    const [icon, text, type] = title.split(".");
+    if (text !== undefined && type !== undefined) {
+      return [{ icon: icon ?? "", text, type }];
+    }
+    return [{ icon: "", text: title.trim(), type: "text" }];
+  }
 };

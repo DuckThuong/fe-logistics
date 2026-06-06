@@ -21,16 +21,12 @@
     width: fit-content;
   }
 
-  &__logo-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: $radius-sm;
-    background: $primary-gradient;
-    @include flex-center;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-extrabold;
-    color: white;
-    flex-shrink: 0;
+  &__logo-img {
+    height: 52px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    display: block;
   }
 
   &__logo-name {

@@ -8,6 +8,7 @@ import { Button, Checkbox, Divider, Form, Input, Typography } from "antd";
 import { useState } from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import { BRAND } from "@/common/constants/constants";
 import { ROUTER_PATH } from "@/routers/Route";
 
 const { Text, Link } = Typography;
@@ -28,8 +29,8 @@ export default function LoginPage() {
         <div className="login-header__left">
           <a href={ROUTER_PATH.HOME} title="Trang chủ">
             <img
-              src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Công Ty Logistics"
+              src={BRAND.logoSrc}
+              alt={BRAND.name}
               className="login-header__logo"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -59,8 +60,8 @@ export default function LoginPage() {
           <div className="login-card__accent" />
           <div className="login-card__logo">
             <img
-              src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Công Ty Logistics"
+              src={BRAND.logoSrc}
+              alt={BRAND.name}
               className="login-card__logo-img"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -152,7 +153,7 @@ export default function LoginPage() {
       </main>
 
       <footer className="login-footer">
-        Copyright © 2026 Công Ty Logistics
+        Copyright © 2026 {BRAND.name}
       </footer>
     </div>
   );

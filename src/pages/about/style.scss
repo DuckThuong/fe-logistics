@@ -5,6 +5,9 @@
 @include page-header.page-hero-header('about-page');
 
 .about-page {
+  &__anchor-target {
+    scroll-margin-top: calc($header-height + $spacing-md);
+  }
 
   &__header-main {
     display: grid;
@@ -172,6 +175,19 @@
     color: $text-primary;
     margin-bottom: $spacing-lg;
     line-height: 1.4;
+  }
+
+  &__section-body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__section-text {
+    margin: 0;
+    font-size: $font-size-base;
+    color: $text-secondary;
+    line-height: 1.7;
   }
 
   &__list {

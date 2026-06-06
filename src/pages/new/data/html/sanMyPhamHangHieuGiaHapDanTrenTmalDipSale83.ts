@@ -45,7 +45,7 @@ export const SanMyPhamHangHieuGiaHapDanTrenTmalDipSale83Html = `
 
 <p><span style="font-size:20px"><strong>Kho Mi&ecirc;̀n Nam</strong>&nbsp;:&nbsp;551/96 L&ecirc; Văn Khương, P.Hiệp Th&agrave;nh, Q.12, TP.HCM</span></p>
 
-<p><span style="font-size:20px"><strong>Phone</strong>: 0964671688</span></p>
+<p><span style="font-size:20px"><strong>Phone</strong>: 0929905566</span></p>
 
 <p><span style="font-size:20px"><strong>Website</strong>&nbsp;:Hongkylogistics.vn</span></p>
 

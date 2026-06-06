@@ -25,9 +25,9 @@ export const NapTienHtml = `
 
 <p style="text-align:justify"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">V&iacute; dụ: HK123</span></span></p>
 
-<p style="text-align:justify"><span style="color:#ff0000"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">(*) Mỗi một t&agrave;i khoản Hồng Kỳ sẽ cung cấp một m&atilde; kh&aacute;ch h&agrave;ng ri&ecirc;ng n&ecirc;n khi chuyển khoản Qu&yacute; kh&aacute;ch vui l&ograve;ng ghi đ&uacute;ng nội dung l&agrave; m&atilde; kh&aacute;ch h&agrave;ng của m&igrave;nh để được duyệt tiền tự động nhanh nhất.</span></span></span></p>
+<p style="text-align:justify"><span style="color:#e30613"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">(*) Mỗi một t&agrave;i khoản Hồng Kỳ sẽ cung cấp một m&atilde; kh&aacute;ch h&agrave;ng ri&ecirc;ng n&ecirc;n khi chuyển khoản Qu&yacute; kh&aacute;ch vui l&ograve;ng ghi đ&uacute;ng nội dung l&agrave; m&atilde; kh&aacute;ch h&agrave;ng của m&igrave;nh để được duyệt tiền tự động nhanh nhất.</span></span></span></p>
 
-<p style="text-align:justify"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:#ff0000">(**) Với những giao dịch nạp tiền ngo&agrave;i giờ h&agrave;nh ch&iacute;nh, thời gian duyệt tiền c&oacute; thể chậm hơn b&igrave;nh thường, Hồng Kỳ rất mong Qu&yacute; kh&aacute;ch h&agrave;ng th&ocirc;ng cảm</span><span style="color:#c45911">!</span></span></span></p>
+<p style="text-align:justify"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:#e30613">(**) Với những giao dịch nạp tiền ngo&agrave;i giờ h&agrave;nh ch&iacute;nh, thời gian duyệt tiền c&oacute; thể chậm hơn b&igrave;nh thường, Hồng Kỳ rất mong Qu&yacute; kh&aacute;ch h&agrave;ng th&ocirc;ng cảm</span><span style="color:#c45911">!</span></span></span></p>
 
 <p style="text-align:justify"><img alt="" src="https://imgur.com/a/huqCFOX" /><img alt="" src="https://hongkylogistics.vn/frontend/web/img/images/NAPTIEN.jpg" style="height:459px; width:600px" /></p>
 
@@ -41,11 +41,11 @@ export const NapTienHtml = `
 
 <p style="text-align:justify"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">Thời gian: Từ <strong>8h30 - 12h00 </strong>v&agrave;<strong> 13h30 - 17h30</strong> c&aacute;c ng&agrave;y trong tuần <em>(trừ ng&agrave;y Lễ, Tết v&agrave; Chủ nhật).</em></span></span></span></p>
 
-<p style="text-align:justify"><span style="color:#ff0000"><em><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Lưu &yacute;: Qu&yacute; kh&aacute;ch khi đến kho giao dịch nộp tiền mặt vui l&ograve;ng cung cấp đ&uacute;ng m&atilde; kh&aacute;ch h&agrave;ng cho nh&acirc;n vi&ecirc;n kho (ghi r&otilde; m&atilde; kh&aacute;ch h&agrave;ng v&agrave; số điện thoại đ&atilde; đăng k&yacute; t&agrave;i khoản trong nội dung của phiếu nộp tiền tại kho).</span></span></em></span></p>
+<p style="text-align:justify"><span style="color:#e30613"><em><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Lưu &yacute;: Qu&yacute; kh&aacute;ch khi đến kho giao dịch nộp tiền mặt vui l&ograve;ng cung cấp đ&uacute;ng m&atilde; kh&aacute;ch h&agrave;ng cho nh&acirc;n vi&ecirc;n kho (ghi r&otilde; m&atilde; kh&aacute;ch h&agrave;ng v&agrave; số điện thoại đ&atilde; đăng k&yacute; t&agrave;i khoản trong nội dung của phiếu nộp tiền tại kho).</span></span></em></span></p>
 
 <p><strong>Mọi thắc mắc li&ecirc;n quan đến việc order v&agrave; vận chuyển h&agrave;ng h&oacute;a Trung Quốc &ndash; Việt Nam h&atilde;y li&ecirc;n hệ ngay Hồng Kỳ Logistics để được hỗ trợ.</strong></p>
 
-<p><strong><span style="color:red">Hotline: 0964 67 1688</span></strong></p>
+<p><strong><span style="color:red">Hotline / Zalo: 0929 905 566</span></strong></p>
 
 <p><strong><span style="color:red">Email: hongkylogistics.lienhe@gmail.com</span></strong></p>
 

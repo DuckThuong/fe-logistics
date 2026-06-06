@@ -1,32 +1,32 @@
 // ===========================
-// COLOR PALETTE — Logistics Orange
+// COLOR PALETTE — MVL Brand
 // ===========================
-$logistics-orange: #ff6a00;
-$primary: $logistics-orange;
-$primary-dark: #e55d00;
-$primary-light: #ff8533;
-$primary-soft: #ffb380; // accent text on dark backgrounds
-$primary-gradient: linear-gradient(135deg, #ff6a00 0%, #ff8533 100%);
+$mvl-red: #e30613;
+$primary: $mvl-red;
+$primary-dark: #a50000;
+$primary-light: #ff3d4a;
+$primary-soft: #ff8a8f; // accent text on dark backgrounds
+$primary-gradient: linear-gradient(135deg, #e30613 0%, #ff3d4a 100%);
 
-$secondary: #1a1a2e;
-$secondary-light: #16213e;
+$secondary: #333333;
+$secondary-light: #2b2b2b;
 
-$accent-gold: #f5a623;
-$accent-blue: #0f3460;
+$accent-gold: #a50000;
+$accent-blue: #333333;
 
-$bg-dark: #0d0d1a;
-$bg-dark-2: #141428;
-$bg-section: #f8f9ff;
+$bg-dark: #1a1a1a;
+$bg-dark-2: #2b2b2b;
+$bg-section: #f2f2f2;
 $bg-white: #ffffff;
 
-$text-primary: #1a1a2e;
-$text-secondary: #5a6482;
-$text-light: #8892b0;
+$text-primary: #333333;
+$text-secondary: #5a5a5a;
+$text-light: #888888;
 $text-white: #ffffff;
 $text-white-80: rgba(255, 255, 255, 0.8);
 $text-white-60: rgba(255, 255, 255, 0.6);
 
-$border-color: #e8ecf5;
+$border-color: #e0e0e0;
 $border-light: rgba(255, 255, 255, 0.1);
 
 // ===========================
@@ -88,8 +88,8 @@ $shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
 $shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
 $shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.16);
 $shadow-xl: 0 16px 60px rgba(0, 0, 0, 0.24);
-$shadow-primary: 0 8px 32px rgba(255, 106, 0, 0.35);
-$shadow-card: 0 4px 24px rgba(26, 26, 46, 0.08);
+$shadow-primary: 0 8px 32px rgba(227, 6, 19, 0.35);
+$shadow-card: 0 4px 24px rgba(51, 51, 51, 0.08);
 
 // ===========================
 // TRANSITIONS

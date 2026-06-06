@@ -1,5 +1,16 @@
 import { ROUTER_PATH } from "@/routers/Route";
 
+export const BRAND = {
+  name: "Mã Vận Logistics",
+  namePrimary: "Mã Vận",
+  nameSecondary: "Logistics",
+  logoSrc: `${process.env.PUBLIC_URL}/image.png`,
+  hotline: "0929905566",
+  hotlineDisplay: "0929.905.566",
+  telHref: "tel:0929905566",
+  zaloUrl: "https://zalo.me/0929905566",
+} as const;
+
 export const NOTI_ERROR = "error";
 export const NOTI_SUCCESS = "success";
 export const DEFAULT_MESSAGE = "Đã xảy ra lỗi.";
@@ -47,51 +58,35 @@ export const TAG_COLORS: Record<string, string> = {
   red: "service-card__tag--red",
 };
 
-export const NAV_ITEMS = [
+export type NavItemChild = {
+  label: string;
+  href: string;
+  icon?: string;
+  state?: {
+    serviceId?: number;
+    policyId?: number;
+  };
+};
+
+export type NavItem = {
+  label: string;
+  href: string;
+  icon?: string;
+  children?: NavItemChild[];
+};
+
+/** Menu tĩnh; mục con "Dịch vụ/Chính sách" được gắn từ API trong `useNavItems`. */
+export const BASE_NAV_ITEMS: NavItem[] = [
   { label: "Giới thiệu", href: ROUTER_PATH.ABOUT_PAGE, icon: "ti-info-circle" },
   {
     label: "Dịch vụ",
     href: ROUTER_PATH.SERVICE,
     icon: "ti-packages",
-    children: [
-      {
-        label: "Đặt hàng Trung Quốc",
-        href: ROUTER_PATH.SERVICE_ORDER,
-        icon: "ti-shopping-cart",
-      },
-      {
-        label: "Thanh toán hộ",
-        href: ROUTER_PATH.SERVICE_PAYMENT,
-        icon: "ti-credit-card",
-      },
-      {
-        label: "Vận chuyển hộ",
-        href: ROUTER_PATH.SERVICE_SHIPPING,
-        icon: "ti-truck-delivery",
-      },
-    ],
   },
   {
     label: "Bảng giá",
     href: ROUTER_PATH.PRICE,
     icon: "ti-receipt-2",
-    children: [
-      {
-        label: "Giá Order Hàng TQ",
-        href: ROUTER_PATH.PRICE_ORDER,
-        icon: "ti-tag",
-      },
-      {
-        label: "Giá Ký Gửi Hàng Hoá",
-        href: ROUTER_PATH.PRICE_KY_GUI,
-        icon: "ti-package",
-      },
-      {
-        label: "Giá Vận Chuyển Chính Ngạch",
-        href: ROUTER_PATH.PRICE_CHINH_NGACH,
-        icon: "ti-route",
-      },
-    ],
   },
   {
     label: "Chính sách",
@@ -115,6 +110,20 @@ export const NAV_ITEMS = [
       },
     ],
   },
-  // { label: 'Hướng dẫn', href: ROUTER_PATH.HUONG_DAN, icon: 'ti-book-2' },
   { label: "Tin tức", href: ROUTER_PATH.TIN_TUC, icon: "ti-news" },
 ];
+
+/** @deprecated Dùng `useNavItems()` để có submenu dịch vụ từ API. */
+export const NAV_ITEMS = BASE_NAV_ITEMS;
+
+export const ABOUT_OPTION_TYPES = {
+  options: "options",
+  quick_link: "quick-link",
+};
+
+export const ITEM_DESCRIPTION_TYPES = {
+  TEXT: "text",
+  TABLE: "table",
+  TEXT_BULLET: "text-bullet",
+  TEXT_NUMBER: "text-number",
+};

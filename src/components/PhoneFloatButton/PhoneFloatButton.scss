@@ -1,0 +1,139 @@
+$phone-red: #e30613;
+$phone-red-dark: #b8050f;
+$phone-red-light: #ff4d57;
+$phone-size: 56px;
+$font-body: "Be Vietnam Pro", sans-serif;
+$transition-base: all 0.25s ease;
+
+@keyframes phone-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes phone-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.phone-float {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &:hover {
+    .phone-float__tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .phone-float__btn {
+      transform: scale(1.08);
+    }
+
+    .phone-float__icon {
+      animation: phone-bounce 0.6s ease forwards;
+    }
+  }
+
+  &__tooltip {
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: #1a1a1a;
+    padding: 7px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: $transition-base;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: #1a1a1a;
+      border-right: 0;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    width: $phone-size;
+    height: $phone-size;
+    border-radius: 50%;
+    background: linear-gradient(145deg, $phone-red-light, $phone-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(227, 6, 19, 0.45);
+    transition: $transition-base;
+    flex-shrink: 0;
+    isolation: isolate;
+
+    &:hover {
+      background: linear-gradient(145deg, $phone-red, $phone-red-dark);
+    }
+
+    &:active {
+      transform: scale(0.96) !important;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    z-index: 1;
+    font-size: 26px;
+    color: #fff;
+    pointer-events: none;
+  }
+
+  &__pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: $phone-red-light;
+    animation: phone-pulse 2.2s ease-out infinite;
+    z-index: -1;
+
+    &--delay {
+      animation-delay: 0.8s;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-float {
+    bottom: 92px;
+    right: 20px;
+  }
+}

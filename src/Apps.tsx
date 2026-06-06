@@ -26,7 +26,7 @@ const App = () => {
         theme={{
           token: {
             fontFamily: "Open Sans",
-            colorPrimary: "#ff6a00",
+            colorPrimary: "#e30613",
           },
         }}
       >

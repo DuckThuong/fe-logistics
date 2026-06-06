@@ -1,0 +1,244 @@
+// ===========================
+// COLOR PALETTE — MVL Brand
+// ===========================
+$mvl-red: #e30613;
+$primary: $mvl-red;
+$primary-dark: #a50000;
+$primary-gradient: linear-gradient(135deg, #e30613 0%, #ff3d4a 100%);
+
+$bg-white: #ffffff;
+$text-white: #ffffff;
+$text-white-60: rgba(255, 255, 255, 0.6);
+$text-primary: #333333;
+$border-color: #e0e0e0;
+
+$font-body: "Be Vietnam Pro", sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+$radius-sm: 6px;
+$radius-lg: 16px;
+$radius-full: 9999px;
+
+$shadow-xl: 0 16px 60px rgba(0, 0, 0, 0.24);
+$shadow-primary: 0 8px 32px rgba(227, 6, 19, 0.35);
+
+$transition-fast: all 0.15s ease;
+$transition-base: all 0.25s ease;
+
+// ===========================
+// COMPONENT: mvl-popup
+// ===========================
+.mvl-popup {
+  font-family: $font-body;
+
+  .ant-modal-content {
+    padding: 0;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-xl;
+  }
+
+  // ── Header ──────────────────────────────
+  &__header {
+    background: $primary-gradient;
+    padding: $spacing-xl $spacing-xl $spacing-lg;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__header-decor {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+
+    &--a {
+      right: -20px;
+      top: -20px;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    &--b {
+      right: 40px;
+      bottom: -40px;
+      width: 170px;
+      height: 170px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 0.5px solid rgba(255, 255, 255, 0.25);
+    color: $text-white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: $font-weight-semibold;
+    z-index: 2;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+  }
+
+  &__logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__logo-img {
+    height: 52px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: $bg-white;
+    border-radius: 10px;
+    padding: 4px 6px;
+  }
+
+  &__logo-box {
+    width: 52px;
+    height: 52px;
+    background: $bg-white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__logo-text {
+    font-size: 16px;
+    font-weight: $font-weight-extrabold;
+    color: $primary;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  &__company-name {
+    font-size: 20px;
+    font-weight: $font-weight-bold;
+    color: $text-white;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  &__company-sub {
+    font-size: 12px;
+    color: $text-white-60;
+    font-weight: $font-weight-regular;
+    margin: 3px 0 0;
+  }
+
+  // ── Hotline ─────────────────────────────
+  &__hotline {
+    padding: 28px $spacing-xl 24px;
+    text-align: center;
+    border-bottom: 0.5px solid $border-color;
+  }
+
+  &__hotline-label {
+    font-size: 11px;
+    font-weight: $font-weight-bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #888888;
+    margin: 0 0 8px;
+  }
+
+  &__hotline-num {
+    display: block;
+    font-size: 36px;
+    font-weight: $font-weight-extrabold;
+    color: $primary;
+    letter-spacing: 1px;
+    margin: 0;
+    line-height: 1;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($primary, 8%);
+    }
+  }
+
+  &__hotline-hint {
+    font-size: 12px;
+    color: #888888;
+    margin: 8px 0 0;
+  }
+
+  // ── Footer ──────────────────────────────
+  &__footer {
+    padding: $spacing-md $spacing-xl $spacing-lg;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__btn-primary {
+    &.ant-btn {
+      flex: 1;
+      height: 42px;
+      background: $primary !important;
+      border-color: $primary !important;
+      border-radius: $radius-sm !important;
+      font-family: $font-body;
+      font-size: 14px;
+      font-weight: $font-weight-bold;
+      box-shadow: $shadow-primary;
+      transition: $transition-base;
+
+      &:hover {
+        background: $primary-dark !important;
+        border-color: $primary-dark !important;
+        box-shadow: none;
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &__btn-secondary {
+    &.ant-btn {
+      height: 42px;
+      padding: 0 20px;
+      background: transparent !important;
+      color: $text-primary !important;
+      border: 0.5px solid $border-color !important;
+      border-radius: $radius-sm !important;
+      font-family: $font-body;
+      font-size: 13px;
+      font-weight: $font-weight-semibold;
+      transition: $transition-base;
+
+      &:hover {
+        border-color: $primary !important;
+        color: $primary !important;
+      }
+    }
+  }
+}

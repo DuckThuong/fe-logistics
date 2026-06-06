@@ -19,6 +19,7 @@ import {
   GiftOutlined,
 } from "@ant-design/icons";
 import "./style.scss";
+import { BRAND } from "@/common/constants/constants";
 import { ROUTER_PATH } from "@/routers/Route";
 
 const { Text, Link } = Typography;
@@ -47,8 +48,8 @@ export default function RegisterPage() {
         <div className="register-header__left">
           <a href={ROUTER_PATH.HOME} title="Trang chủ">
             <img
-              src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Công Ty Logistics"
+              src={BRAND.logoSrc}
+              alt={BRAND.name}
               className="register-header__logo"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -87,8 +88,8 @@ export default function RegisterPage() {
           {/* Logo */}
           <div className="register-card__logo">
             <img
-              src="https://hongkylogistics.vn/img/logo/logohk.png"
-              alt="Công Ty Logistics"
+              src={BRAND.logoSrc}
+              alt={BRAND.name}
               className="register-card__logo-img"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -257,7 +258,7 @@ export default function RegisterPage() {
               <Checkbox>
                 <span className="register-card__terms">
                   Tôi đồng ý với <a href="#/">điều khoản sử dụng</a> và{" "}
-                  <a href="#/">chính sách bảo mật</a> của Công Ty Logistics
+                  <a href="#/">chính sách bảo mật</a> của {BRAND.name}
                 </span>
               </Checkbox>
             </Form.Item>
@@ -295,7 +296,7 @@ export default function RegisterPage() {
 
       {/* ── Footer ── */}
       <footer className="register-footer">
-        Copyright © 2026 Công Ty Logistics
+        Copyright © 2026 {BRAND.name}
       </footer>
     </div>
   );

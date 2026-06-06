@@ -13,7 +13,7 @@ export const SaleKhungTrenTmalLenDen70NhanNgayQuocTePhuNu83Html = `
 
 <p><span style="font-size:22px"><strong>Kho Mi&ecirc;̀n Nam&nbsp;:&nbsp;551/96 L&ecirc; Văn Khương, P.Hiệp Th&agrave;nh, Q.12, TP.HCM</strong></span></p>
 
-<p><span style="font-size:22px"><strong>Phone</strong>:0964671688</span></p>
+<p><span style="font-size:22px"><strong>Phone</strong>: 0929905566</span></p>
 
 <p><span style="font-size:22px"><strong>Website</strong>&nbsp;:&nbsp;<a href="https://nhaphang365.vn/">Hongkylogistics.vn</a></span></p>
 
