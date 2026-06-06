@@ -47,18 +47,6 @@ const PlatformsSection = () => {
           ))}
         </Row>
 
-        <div className={`hk-platforms__extension-banner ${animateClass('fade-up', inView, 4)}`}>
-          <div className="hk-platforms__extension-banner-content">
-            <span className="hk-platforms__extension-banner-icon">🔌</span>
-            <div>
-              <strong>Tiện ích đặt hàng nhanh</strong>
-              <p>Cài extension Chrome / Cốc Cốc — thêm vào giỏ hàng chỉ với 1 click</p>
-            </div>
-          </div>
-          <a href="#chrome" className="hk-platforms__extension-banner-cta">
-            Tải tiện ích →
-          </a>
-        </div>
       </div>
     </section>
   );
