@@ -1,71 +1,58 @@
-import { Row, Col, Button } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { getServiceContent } from "@/api/configs/common.config";
+import { CONTENT_ENDPOINTS } from "@/api/endpoints/common.endpoint";
 import { animateClass, useInView } from "@/hooks/useInView";
-import { ROUTER_PATH } from "@/routers/Route";
+import { getServiceDetailPath } from "@/routers/Route";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { useQuery } from "@tanstack/react-query";
+import { Col, Row } from "antd";
+import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import "./ServicesSection.scss";
 
-const SERVICES = [
-  // {
-  //   icon: "🛒",
-  //   title: "Đặt hàng Trung Quốc",
-  //   desc: "Order hàng từ Taobao, 1688, Tmall và các sàn nội địa Trung Quốc. Kiểm tra hàng trước khi gửi về.",
-  //   features: [
-  //     "Order nhanh bằng link",
-  //     "Kiểm tra hàng miễn phí",
-  //     "Hỗ trợ mặc cả với seller",
-  //   ],
-  //   href: ROUTER_PATH.SERVICE_ORDER,
-  //   highlight: true,
-  // },
-  {
-    icon: "💳",
-    title: "Thanh toán hộ",
-    desc: "Nạp tiền vào Alipay, WeChat, thanh toán Taobao, 1688, Tmall khi mua hàng. Không phí dịch vụ.",
-    features: [
-      "Nạp Alipay / WeChat",
-      "Thanh toán Taobao, 1688",
-      "Tỉ giá cạnh tranh",
-    ],
-    href: ROUTER_PATH.SERVICE_PAYMENT,
-    highlight: true,
-  },
-  {
-    icon: "🚚",
-    title: "Ký gửi vận chuyển",
-    desc: "Bạn đã có hàng bên Trung Quốc? Ký gửi để chúng tôi vận chuyển về Việt Nam nhanh, an toàn.",
-    features: [
-      "Nhận hàng tại kho TQ",
-      "Bảo hiểm hàng hoá",
-      "Tra cứu đơn thời gian thực",
-    ],
-    href: ROUTER_PATH.SERVICE_SHIPPING,
-  },
-  {
-    icon: "🏢",
-    title: "Gửi hàng Trung Quốc",
-    desc: "Gửi hàng từ Việt Nam sang Trung Quốc cho đối tác, khách hàng với chi phí tối ưu nhất.",
-    features: [
-      "Giao tận địa chỉ TQ",
-      "Theo dõi đơn online",
-      "Hỗ trợ khai báo hải quan",
-    ],
-    href: "/dich-vu/gui-hang-tq",
-  },
-  {
-    icon: "📋",
-    title: "Uỷ thác nhập khẩu",
-    desc: "Nhập khẩu chính ngạch số lượng lớn qua cửa khẩu. Đầy đủ thủ tục, thuế quan minh bạch.",
-    features: [
-      "Nhập chính ngạch",
-      "Thủ tục hải quan trọn gói",
-      "Tư vấn thuế nhập khẩu",
-    ],
-    href: "/dich-vu/uy-thac-nhap-khau",
-  },
-];
+const SERVICE_HOME_ICONS: Record<string, string> = {
+  "dat-hang-trung-quoc": "🛒",
+  "thanh-toan-ho": "💳",
+  "van-chuyen-ho": "🚚",
+  "ky-gui-van-chuyen": "🚚",
+  "gui-hang-tq": "🏢",
+  "uy-thac-nhap-khau": "📋",
+};
+
+type HomeServiceCard = {
+  id: number;
+  icon: string;
+  title: string;
+  desc: string;
+  features: string[];
+  href: string;
+  highlight: boolean;
+};
 
 const ServicesSection = () => {
   const { ref, inView } = useInView();
+
+  const { data: serviceContent } = useQuery({
+    queryKey: [CONTENT_ENDPOINTS.GET_SERIVICE_CONTENT],
+    queryFn: getServiceContent,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const services = useMemo((): HomeServiceCard[] => {
+    return [...(serviceContent?.children ?? [])]
+      .filter((item) => item.active)
+      .sort((a, b) => a.sortIndex - b.sortIndex)
+      .map((child) => ({
+        id: child.id,
+        icon: SERVICE_HOME_ICONS[child.url] ?? "📦",
+        title: child.shortDescription || child.name,
+        desc: child.content || "",
+        features: (Array.isArray(child.description) ? child.description : [])
+          .map((feature) => String(feature).trim())
+          .filter(Boolean),
+        href: getServiceDetailPath(child.url),
+        highlight: child.sortIndex === 1,
+      }));
+  }, [serviceContent?.children]);
 
   return (
     <section className="hk-services section" ref={ref}>
@@ -81,9 +68,9 @@ const ServicesSection = () => {
         </div>
 
         <Row gutter={[20, 20]}>
-          {SERVICES.map((service, index) => (
+          {services.map((service, index) => (
             <Col
-              key={service.title}
+              key={service.id}
               xs={24}
               sm={24}
               md={12}
@@ -95,17 +82,19 @@ const ServicesSection = () => {
                 <div className="hk-services__card-icon">{service.icon}</div>
                 <h3 className="hk-services__card-title">{service.title}</h3>
                 <p className="hk-services__card-desc">{service.desc}</p>
-                <ul className="hk-services__card-features">
-                  {service.features.map((f) => (
-                    <li key={f}>
-                      <span className="hk-services__check">✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a href={service.href} className="hk-services__card-link">
+                {service.features.length > 0 ? (
+                  <ul className="hk-services__card-features">
+                    {service.features.map((feature) => (
+                      <li key={feature}>
+                        <span className="hk-services__check">✓</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                <Link to={service.href} className="hk-services__card-link">
                   Tìm hiểu thêm <ArrowRightOutlined />
-                </a>
+                </Link>
               </div>
             </Col>
           ))}

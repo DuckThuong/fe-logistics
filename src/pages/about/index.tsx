@@ -234,36 +234,38 @@ const AboutPage: React.FC = () => {
               </ul>
             </div>
 
-            <nav
-              className={`about-page__quick-nav ${animateClass("fade-left", headerVisible, 3)}`}
-              aria-label="Điều hướng nhanh trong trang"
-            >
-              <span className="about-page__quick-nav-label">Xem nhanh</span>
-              <ul className="about-page__quick-links">
-                {quickLinks.map((item, index) => {
-                  const anchorId = toAnchorId(item.value);
+            {quickLinks.length > 0 ? (
+              <nav
+                className={`about-page__quick-nav ${animateClass("fade-left", headerVisible, 3)}`}
+                aria-label="Điều hướng nhanh trong trang"
+              >
+                <span className="about-page__quick-nav-label">Xem nhanh</span>
+                <ul className="about-page__quick-links">
+                  {quickLinks.map((item, index) => {
+                    const anchorId = toAnchorId(item.value);
 
-                  return (
-                    <li key={`${anchorId}-${index}`}>
-                      <a
-                        href={`#${anchorId}`}
-                        className={`about-page__quick-link ${animateClass("fade-left", headerVisible, index + 4)}`}
-                        onClick={(event) =>
-                          handleAboutQuickNavClick(event, anchorId)
-                        }
-                      >
-                        <img
-                          src={item.icon}
-                          alt={item.value}
-                          style={{ width: "20px", height: "20px" }}
-                        />
-                        {item.value}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
+                    return (
+                      <li key={`${anchorId}-${index}`}>
+                        <a
+                          href={`#${anchorId}`}
+                          className={`about-page__quick-link ${animateClass("fade-left", headerVisible, index + 4)}`}
+                          onClick={(event) =>
+                            handleAboutQuickNavClick(event, anchorId)
+                          }
+                        >
+                          <img
+                            src={item.icon}
+                            alt={item.value}
+                            style={{ width: "20px", height: "20px" }}
+                          />
+                          {item.value}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            ) : null}
           </div>
         </div>
       </div>

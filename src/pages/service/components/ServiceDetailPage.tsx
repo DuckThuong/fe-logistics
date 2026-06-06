@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Breadcrumb } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { CalendarOutlined, HomeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/routers/Route";
 import { animateClass } from "@/hooks/useInView";
@@ -13,6 +13,7 @@ import { useNotification } from "@/providers/notificationProvider";
 import { useQuery } from "@tanstack/react-query";
 import { isAxiosError } from "axios";
 import { emptyString, retractTitle } from "@/common/contexts/helper";
+import { formatDateDDMMYYYY } from "@/common/contexts/format";
 type ServiceDetailPageProps = {
   id?: number;
 };
@@ -85,6 +86,20 @@ export const ServiceDetailPage = ({ id }: ServiceDetailPageProps) => {
           >
             {emptyString(serviceContent?.name)}
           </h1>
+
+          {serviceContent?.updatedAt && (
+            <p
+              className={`service-page__subtitle ${animateClass("fade-in", visible, 3)}`}
+            >
+              <CalendarOutlined
+                className="service-page__subtitle-icon"
+                aria-hidden
+              />
+              <time dateTime={serviceContent.updatedAt}>
+                Cập nhật: {formatDateDDMMYYYY(serviceContent.updatedAt)}
+              </time>
+            </p>
+          )}
         </div>
       </div>
 
